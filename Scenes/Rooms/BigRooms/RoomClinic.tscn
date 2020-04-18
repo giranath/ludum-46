@@ -6,6 +6,11 @@
 [node name="RoomClinic" instance=ExtResource( 1 )]
 roomName = "Medical Clinic"
 
+[node name="BackgroundPanel" parent="." index="0"]
+position = Vector2( 0.663391, 0 )
+
 [node name="DoorSmartObject" parent="." index="2" instance=ExtResource( 2 )]
 position = Vector2( 497.153, 190.876 )
 currentState = 1
+locked = true
+requiredKey = 666

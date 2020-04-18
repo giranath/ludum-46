@@ -170,11 +170,5 @@ shape = SubResource( 6 )
 
 [node name="Inventory" type="Node2D" parent="."]
 script = ExtResource( 2 )
-right = NodePath("right")
-left = NodePath("left")
-
-[node name="right" type="Node2D" parent="Inventory"]
-position = Vector2( -2.44091, -11.9407 )
-
-[node name="left" type="Node2D" parent="Inventory"]
-position = Vector2( 4.35405, -11.4129 )
+right = NodePath("../Skeleton2D/Hip/Chest/ArmRight/ForearmRight/HandRight")
+left = NodePath("../Skeleton2D/Hip/Chest/ArmLeft/ForearmLeft/HandLeft")
