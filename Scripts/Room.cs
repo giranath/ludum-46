@@ -51,8 +51,8 @@ public class Room : Node2D
 			if (roomArea != null)
 			{
 				GD.Print("Connecting Area 2D to signals");
-				roomArea.Connect("area_entered", this, "OnAreaEnterRoom");
-				roomArea.Connect("area_exited", this, "OnAreaExitRoom");
+				roomArea.Connect("body_entered", this, "OnBodyEnterRoom");
+				roomArea.Connect("body_exited", this, "OnBodyExitRoom");
 			}
 			else
 			{
@@ -64,17 +64,15 @@ public class Room : Node2D
 			GD.PushWarning("Missing Path to Room Area");
 		}
 	}
-
-	private void OnAreaEnterRoom(Area2D otherArea)
+	private void OnBodyEnterRoom(Node body)
 	{
-		GD.Print("On Area Enter Room");
+		EmitSignal(nameof(PlayerEntered));
 	}
 
-	private void OnAreaExitRoom(Area2D otherArea)
+	private void OnBodyExitRoom(Node body)
 	{
-		GD.Print("On Area Exit Room");
+		EmitSignal(nameof(PlayerLeft));
 	}
-
 
 	public void SetConnectionStateToRoom(RoomDirection direction, bool newConnectionState)
 	{
