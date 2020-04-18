@@ -61,7 +61,8 @@
     <Compile Include="Scripts\SmartObjects\SmartObject.cs" />
     <Compile Include="Scripts\SmartObjects\SOTerminal.cs" />
     <Compile Include="Scripts\SmartObjects\PowerCoreSmartObject.cs" />
-    <Compile Include="Scripts\GameState.cs" />
+    <Compile Include="Scripts\SmartObjects\SOBaseDoor.cs" />
+	<Compile Include="Scripts\SmartObjects\PowerCoreSmartObject.cs" /> <Compile Include="Scripts\GameState.cs" />
     <Compile Include="Scripts\CharacterMovement.cs" />
     <Compile Include="Scripts\CharacterStates\CharacterStateClimbing.cs" />
     <Compile Include="Scripts\CharacterStates\CharacterStateClimbingIdle.cs" />
