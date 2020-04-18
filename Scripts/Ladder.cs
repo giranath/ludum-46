@@ -10,7 +10,7 @@ public class Ladder : Node
 
 	public void OnBodyEntered(object body)
 	{
-		var characterMovement = ((Node)body).GetParent() as CharacterMovement;
+		var characterMovement = ((Node)body) as CharacterMovement;
 
 		if (characterMovement != null)
 		{
@@ -18,10 +18,10 @@ public class Ladder : Node
 		}
 	}
 	public void OnBodyExited(object body)
-	{
-		var characterMovement = ((Node)body).GetParent() as CharacterMovement;
+    {
+        var characterMovement = ((Node)body) as CharacterMovement;
 
-		if (characterMovement != null)
+        if (characterMovement != null)
 		{
 			characterMovement.Climb -= 1;
 		}

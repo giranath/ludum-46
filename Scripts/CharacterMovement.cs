@@ -1,13 +1,10 @@
 using Godot;
 using System;
 
-public class CharacterMovement : Node2D
+public class CharacterMovement : KinematicBody2D
 {
 	private CharacterStates CharacterState { get; set; } = new CharacterStateIdle();
-		
-	[Export]
-	public NodePath Body;
-	
+			
 	[Export]
 	public float RunSpeed;
 	
@@ -20,6 +17,11 @@ public class CharacterMovement : Node2D
 	public int Climb = 0;
 
 	public Vector2 Velocity;
+
+	public KinematicBody2D GetBody()
+	{
+		return this;
+	}
 
 	public override void _Ready()
 	{
@@ -43,6 +45,7 @@ public class CharacterMovement : Node2D
 	public override void _PhysicsProcess(float delta)
 	{
 		Velocity.x = 0;
+
 		CharacterState = CharacterState.HandleInput(this, delta);
 	}
 

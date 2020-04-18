@@ -9,10 +9,10 @@ public class CharacterStateClimbing : CharacterStates
 	}
 
 	public override CharacterStates HandleInput(CharacterMovement characterMovement, float delta)
-	{
-		var body = characterMovement.GetNode<KinematicBody2D>(characterMovement.Body);
+    {
+        var body = characterMovement.GetBody();
 
-		if (Input.IsActionPressed(Ascend) && characterMovement.CanClimb())
+        if (Input.IsActionPressed(Ascend) && characterMovement.CanClimb())
 		{
 			characterMovement.Velocity.y = -characterMovement.ClimbingSpeed;
 			body.MoveAndSlide(characterMovement.Velocity, Vector2.Up);

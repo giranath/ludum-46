@@ -9,9 +9,9 @@ public class CharacterStateMoving : CharacterStates
 	}
 
 	public override CharacterStates HandleInput(CharacterMovement characterMovement, float delta)
-	{
-		var body = characterMovement.GetNode<KinematicBody2D>(characterMovement.Body);
-        
+    {
+        var body = characterMovement.GetBody();
+
         if (Input.IsActionPressed(Jump) && body.IsOnFloor())
         {
             characterMovement.Velocity.y = -characterMovement.JumpForce;
