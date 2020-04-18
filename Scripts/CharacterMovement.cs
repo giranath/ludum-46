@@ -8,13 +8,22 @@ public class CharacterMovement : Node2D
 	[Export]
 	public NodePath Body;
 
-	public bool CanClimb = false;
+	public int Climb = 0;
 
 	public Vector2 Velocity;
 
 	public override void _Ready()
 	{
-		CanClimb = false;
+	}
+
+	public bool CanClimb()
+	{
+		if(Climb > 0)
+		{
+			return true;
+		}
+
+		return false;
 	}
 
 	public override void _Process(float delta)

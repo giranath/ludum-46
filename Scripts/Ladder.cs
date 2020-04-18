@@ -14,7 +14,7 @@ public class Ladder : Node
 
 		if (characterMovement != null)
 		{
-			characterMovement.CanClimb = true;
+			characterMovement.Climb += 1;
 		}
 	}
 	public void OnBodyExited(object body)
@@ -23,7 +23,7 @@ public class Ladder : Node
 
 		if (characterMovement != null)
 		{
-			characterMovement.CanClimb = false;
+			characterMovement.Climb -= 1;
 		}
 	}
 }

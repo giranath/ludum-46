@@ -4,7 +4,7 @@ using System;
 public class CharacterStateMoving : CharacterStates
 {
 	private readonly float Speed = 120f;
-    private readonly float JumpForce = 250f;
+    private readonly float JumpForce = 120f;
 
 	public override void _Process(float delta)
 	{
@@ -28,7 +28,7 @@ public class CharacterStateMoving : CharacterStates
             characterMovement.Velocity.y = 0;
         }
 
-        if ((Input.IsActionPressed(Ascend) || Input.IsActionPressed(Descend)) && characterMovement.CanClimb)
+        if ((Input.IsActionPressed(Ascend) || Input.IsActionPressed(Descend)) && characterMovement.CanClimb())
 		{
 			return new CharacterStateClimbing();
 		}

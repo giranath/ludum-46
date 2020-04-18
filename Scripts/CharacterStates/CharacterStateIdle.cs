@@ -2,7 +2,7 @@ using Godot;
 
 public class CharacterStateIdle : CharacterStates
 {
-    private readonly float JumpForce = 250f;
+    private readonly float JumpForce = 120f;
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
@@ -32,7 +32,7 @@ public class CharacterStateIdle : CharacterStates
             return new CharacterStateMoving();
         }
 
-        if ((Input.IsActionPressed(Ascend) || Input.IsActionPressed(Descend)) && characterMovement.CanClimb)
+        if ((Input.IsActionPressed(Ascend) || Input.IsActionPressed(Descend)) && characterMovement.CanClimb())
         {
             return new CharacterStateClimbing();
         }

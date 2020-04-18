@@ -15,17 +15,23 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 [node name="Platforms" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 format = 1
-tile_data = PoolIntArray( 65545, 0, 0, 65546, 1, 0, 65547, 2, 0, 131074, 0, 0, 131075, 1, 0, 131076, 2, 0, 131080, 0, 0, 131081, 1, 0, 131082, 2, 0, 196619, 0, 0, 196620, 1, 0, 196621, 2, 0, 262149, 0, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 2, 0, 262157, 0, 0, 262158, 1, 0, 262159, 2, 0, 327691, 0, 0, 327692, 1, 0, 327693, 2, 0, 393218, 0, 0, 393219, 1, 0, 393220, 2, 0, 393224, 0, 0, 393225, 1, 0, 393226, 2, 0, 458761, 0, 0, 458762, 1, 0, 458763, 2, 0 )
+tile_data = PoolIntArray( 65545, 0, 0, 65546, 1, 0, 65547, 2, 0, 131074, 0, 0, 131075, 1, 0, 131076, 1, 0, 131077, 2, 0, 131080, 0, 0, 131081, 1, 0, 131082, 1, 0, 131083, 2, 0, 196619, 0, 0, 196620, 1, 0, 196621, 2, 0, 262150, 0, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 2, 0, 262155, 2, 0, 262158, 0, 0, 262159, 2, 0, 327691, 0, 0, 327692, 1, 0, 327693, 2, 0, 393218, 0, 0, 393219, 1, 0, 393220, 1, 0, 393221, 2, 0, 393225, 0, 0, 393226, 2, 0, 393227, 2, 0, 458760, 0, 0, 458761, 1, 0, 458762, 1, 0, 458763, 2, 0 )
 
 [node name="Character" parent="Platforms" instance=ExtResource( 3 )]
 position = Vector2( 153.895, 129.211 )
 z_index = 1
 
 [node name="Ladder" parent="Platforms" instance=ExtResource( 4 )]
-position = Vector2( 568.421, 96 )
+position = Vector2( 568, 96 )
+
+[node name="Ladder4" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 392, 158 )
+
+[node name="Ladder5" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 392, 221 )
 
 [node name="Ladder2" parent="Platforms" instance=ExtResource( 4 )]
-position = Vector2( 712, 156 )
+position = Vector2( 776, 156 )
 
 [node name="Ladder3" parent="Platforms" instance=ExtResource( 4 )]
 position = Vector2( 697, 223 )

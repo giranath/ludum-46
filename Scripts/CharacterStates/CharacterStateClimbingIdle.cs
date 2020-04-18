@@ -18,7 +18,7 @@ public class CharacterStateClimbingIdle : CharacterStates
 
         if (Input.IsActionPressed(MoveRight) || Input.IsActionPressed(MoveLeft))
         {
-            if (characterMovement.CanClimb)
+            if (characterMovement.CanClimb())
             {
                 return new CharacterStateClimbing();
             }

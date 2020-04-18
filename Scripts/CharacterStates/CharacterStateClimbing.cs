@@ -14,21 +14,21 @@ public class CharacterStateClimbing : CharacterStates
     {
         var body = characterMovement.GetNode<KinematicBody2D>(characterMovement.Body);
 
-        if (Input.IsActionPressed(Ascend) && characterMovement.CanClimb)
+        if (Input.IsActionPressed(Ascend) && characterMovement.CanClimb())
         {
             characterMovement.Velocity.y = -Speed;
             body.MoveAndSlide(characterMovement.Velocity, Vector2.Up);
             return this;
         }
 
-        if (Input.IsActionPressed(Descend) && characterMovement.CanClimb)
+        if (Input.IsActionPressed(Descend) && characterMovement.CanClimb())
         {
             characterMovement.Velocity.y = Speed;
             body.MoveAndSlide(characterMovement.Velocity, Vector2.Up);
             return this;
         }
 
-        if (Input.IsActionPressed(MoveLeft) && characterMovement.CanClimb)
+        if (Input.IsActionPressed(MoveLeft) && characterMovement.CanClimb())
         {
             characterMovement.Velocity.y = 0;
             characterMovement.Velocity.x = -Speed;
@@ -36,7 +36,7 @@ public class CharacterStateClimbing : CharacterStates
             return this;
         }
 
-        if (Input.IsActionPressed(MoveRight) && characterMovement.CanClimb)
+        if (Input.IsActionPressed(MoveRight) && characterMovement.CanClimb())
         {
             characterMovement.Velocity.y = 0;
             characterMovement.Velocity.x = Speed;
@@ -44,7 +44,7 @@ public class CharacterStateClimbing : CharacterStates
             return this;
         }
 
-        if(!characterMovement.CanClimb)
+        if(!characterMovement.CanClimb())
         {
             return new CharacterStateIdle();
         }
