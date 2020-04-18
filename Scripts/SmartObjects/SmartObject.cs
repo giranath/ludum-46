@@ -52,8 +52,4 @@ public class SmartObject : Node
 			playerInside = false;
 		}
 	}
-
 }
-
-
-
