@@ -4,18 +4,15 @@
 [ext_resource path="res://Scenes/UI/DialogUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/UI/ZonePromptUI.tscn" type="PackedScene" id=3]
 
-[node name="UIManager" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="UIManager" type="CanvasLayer"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-DialogUIPath = NodePath("../UIManager/DialogUI")
-ZonePromptUIPath = NodePath("../UIManager/ZonePromptUI")
+DialogUIPath = NodePath("DialogUI")
+ZonePromptUIPath = NodePath("ZonePromptUI")
 
 [node name="DialogUI" parent="." instance=ExtResource( 2 )]
+mouse_filter = 2
 DialogLabelPath = NodePath("../../UIManager/DialogUI/DialogLabel")
 
 [node name="ZonePromptUI" parent="." instance=ExtResource( 3 )]
+mouse_filter = 2
 DialogLabelPath = NodePath("../../UIManager/ZonePromptUI/ZonePromptLabel")

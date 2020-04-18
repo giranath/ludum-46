@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class UIManager : Node
+public class UIManager : CanvasLayer
 {
 	[Export]
 	public NodePath DialogUIPath;
@@ -20,6 +20,9 @@ public class UIManager : Node
 	{
 		DialogUI = GetNode<DialogUI>(DialogUIPath);
 		ZonePromptUI = GetNode<DialogUI>(ZonePromptUIPath);
+		
+		var gameState = GetNode<GameState>("/root/GameState");
+		gameState.uiManager = this;
 	}
 
 	public override void _Process(float delta)

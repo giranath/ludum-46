@@ -23,17 +23,20 @@ public class DialogUI : Node
 	}
 
 	public void SetText(float timeShown, string text)
-	{
-		if(TimedRepeater == null)
-		{
-			DialogLabel.Text = text;
+    {
+        GD.Print("1");
+        if (TimedRepeater == null)
+        {
+            GD.Print("2");
+            DialogLabel.Text = text;
 			TimedRepeater = new TimedRepeater(timeShown, 1, TimerExpired);
 		}
 	}
 
 	public void TimerExpired(int count)
-	{
-		DialogLabel.Text = "";
+    {
+        GD.Print("3");
+        DialogLabel.Text = "";
 		TimedRepeater = null;
 	} 
 }
