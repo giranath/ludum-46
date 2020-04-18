@@ -21,6 +21,7 @@ public class TimedRepeater
 
         Cooldown = cooldown;
         Repeatition = repeat;
+        Current = Cooldown;
     }
 
     public void _Process(float delta)
@@ -42,7 +43,7 @@ public class TimedRepeater
             return true;
         }
 
-        if(Count < Repeatition)
+        if(Count <= Repeatition)
         {
             return true;
         }

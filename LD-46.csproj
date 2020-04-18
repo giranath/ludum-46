@@ -74,6 +74,8 @@
     <Compile Include="Scripts\Room.cs" />
     <Compile Include="Scripts\RoomGraph.cs" />
     <Compile Include="Scripts\TimedRepeater.cs" />
+    <Compile Include="Scripts\UI\UIManager.cs" />
+    <Compile Include="Scripts\UI\DialogUI.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

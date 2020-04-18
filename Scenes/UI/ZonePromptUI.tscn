@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/UI/DialogUI.cs" type="Script" id=1]
+[ext_resource path="res://Fonts/PressStart2P-16.tres" type="DynamicFont" id=2]
+
+[node name="ZonePromptUI" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 0.2
+grow_horizontal = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+DialogLabelPath = NodePath("ZonePromptLabel")
+
+[node name="ZonePromptLabel" type="Label" parent="."]
+margin_left = 62.0
+margin_top = 10.0
+margin_right = 962.0
+margin_bottom = 110.0
+grow_vertical = 0
+rect_min_size = Vector2( 900, 100 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+valign = 1
+autowrap = true
