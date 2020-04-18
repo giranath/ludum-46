@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/RoomGraph.cs" type="Script" id=1]
+[ext_resource path="res://Scenes/Rooms/Room.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Developers/GraphPropertyInitializer.cs" type="Script" id=3]
+
+[node name="WorldRoot" type="Node2D"]
+script = ExtResource( 1 )
+centralRoom = NodePath("RoomRoot")
+
+[node name="RoomRoot" parent="." instance=ExtResource( 2 )]
+connectedLeftRoom = NodePath("../RoomRoot3")
+connectedRightRoom = NodePath("../RoomRoot2")
+connectedTopRoom = NodePath("")
+connectedBottomRoom = NodePath("../RoomRoot4")
+
+[node name="RoomRoot2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 5120.21, -6.62988 )
+connectedLeftRoom = NodePath("../RoomRoot")
+
+[node name="RoomRoot3" parent="." instance=ExtResource( 2 )]
+position = Vector2( -5108.08, -2.7998 )
+connectedRightRoom = NodePath("../RoomRoot")
+
+[node name="RoomRoot4" parent="." instance=ExtResource( 2 )]
+position = Vector2( -0.683594, 2580.03 )
+connectedTopRoom = NodePath("../RoomRoot")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource( 3 )
+graphPath = NodePath("..")
+roomPath = NodePath("../RoomRoot")
