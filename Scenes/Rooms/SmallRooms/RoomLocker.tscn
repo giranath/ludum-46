@@ -3,4 +3,9 @@
 [ext_resource path="res://Scenes/Rooms/SmallRoom.tscn" type="PackedScene" id=1]
 
 [node name="RoomLocker" instance=ExtResource( 1 )]
-coveredAreaPath = NodePath("../RoomLocker/RoomCoverArea")
+
+[node name="RoomCoverArea" parent="." index="1"]
+visible = false
+
+[node name="CollisionShape2D" parent="RoomCoverArea" index="0"]
+visible = true
