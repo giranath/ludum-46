@@ -32,6 +32,10 @@ public class Inventory : Node {
         return null;
     }
 
+    public Item GetCurrentItem() {
+        return GetItemInHand(handUsed);
+    }
+
     public override void _Process(float delta) {
         if (Input.IsActionJustPressed("useItemRight")) {
             handUsed = Hand.Right;

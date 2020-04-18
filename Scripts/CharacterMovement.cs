@@ -62,4 +62,8 @@ public class CharacterMovement : KinematicBody2D
 	public Item GetItemInHand(Inventory.Hand hand) {
 		return inventory.GetItemInHand(hand);
 	}
+
+	public Item GetItemInCurrentHand() {
+		return inventory.GetCurrentItem();
+	}
 }

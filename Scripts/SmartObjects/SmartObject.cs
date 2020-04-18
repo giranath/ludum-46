@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class SmartObject : Node
 {
-
 	public Dictionary<itemType, Action<Item>> itemActionMap = new Dictionary<itemType, Action<Item>>();
 	bool playerInside = false;
 
@@ -41,11 +40,7 @@ public class SmartObject : Node
 		{
 			if(btn.ButtonIndex == (int)ButtonList.Left && btn.IsPressed() && playerInside)
 			{
-				interact(gameState.player.GetItemInHand(Inventory.Hand.Left));
-			}
-			else if(btn.ButtonIndex == (int)ButtonList.Right && btn.IsPressed() && playerInside)
-			{
-				interact(gameState.player.GetItemInHand(Inventory.Hand.Right));
+				interact(gameState.player.GetItemInCurrentHand());
 			}
 		}
 	}
