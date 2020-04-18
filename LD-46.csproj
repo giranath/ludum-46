@@ -55,6 +55,9 @@
   <ItemGroup>
     <Compile Include="new_script.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\PowerCoreSmartObject.cs" />
+    <Compile Include="Scripts\SmartObject.cs" />
+    <Compile Include="Scripts\SmartObjectTester.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
