@@ -20,4 +20,3 @@ playerPath = NodePath("../Character")
 
 [node name="UI" type="Node" parent="."]
 script = ExtResource( 4 )
-[connection signal="PlayerChangedRoom" from="Station" to="UI" method="_on_Station_PlayerChangedRoom"]
