@@ -7,6 +7,15 @@ public class CharacterMovement : Node2D
 		
 	[Export]
 	public NodePath Body;
+	
+	[Export]
+	public float RunSpeed;
+	
+	[Export]
+	public float ClimbingSpeed;
+	
+	[Export]
+	public float JumpForce;
 
 	public int Climb = 0;
 

@@ -3,9 +3,6 @@ using System;
 
 public class CharacterStateMoving : CharacterStates
 {
-	private readonly float Speed = 120f;
-    private readonly float JumpForce = 120f;
-
 	public override void _Process(float delta)
 	{
 
@@ -17,7 +14,7 @@ public class CharacterStateMoving : CharacterStates
         
         if (Input.IsActionPressed(Jump) && body.IsOnFloor())
         {
-            characterMovement.Velocity.y = -JumpForce;
+            characterMovement.Velocity.y = -characterMovement.JumpForce;
         }
         else if (!body.IsOnFloor())
         {
@@ -35,15 +32,16 @@ public class CharacterStateMoving : CharacterStates
 
 		if (Input.IsActionPressed(MoveLeft))
 		{         
-            characterMovement.Velocity.x = -Speed;
+            characterMovement.Velocity.x = -characterMovement.RunSpeed;
 
 			body.MoveAndSlide(characterMovement.Velocity, Vector2.Up);
+
 			return this;
 		}
 
 		if (Input.IsActionPressed(MoveRight))
         {
-            characterMovement.Velocity.x = Speed;
+            characterMovement.Velocity.x = characterMovement.RunSpeed;
 
             body.MoveAndSlide(characterMovement.Velocity, Vector2.Up);
             return this;

@@ -2,8 +2,6 @@ using Godot;
 
 public class CharacterStateIdle : CharacterStates
 {
-    private readonly float JumpForce = 120f;
-
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
@@ -15,7 +13,7 @@ public class CharacterStateIdle : CharacterStates
 
         if (Input.IsActionPressed(Jump) && body.IsOnFloor())
         {
-            characterMovement.Velocity.y = -JumpForce;
+            characterMovement.Velocity.y = -characterMovement.JumpForce;
         }
         else if (!body.IsOnFloor())
         {
