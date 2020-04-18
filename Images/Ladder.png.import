@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tile-Backgrounds.png-50b845b1bb46580c0e371db71b9d06b0.stex"
+path="res://.import/Ladder.png-c1cc467553bf4ff0def814bb74b19e23.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Tile-Backgrounds.png"
-dest_files=[ "res://.import/Tile-Backgrounds.png-50b845b1bb46580c0e371db71b9d06b0.stex" ]
+source_file="res://Images/Ladder.png"
+dest_files=[ "res://.import/Ladder.png-c1cc467553bf4ff0def814bb74b19e23.stex" ]
 
 [params]
 
