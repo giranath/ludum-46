@@ -3,4 +3,3 @@
 [ext_resource path="res://Scenes/Rooms/BigRoom.tscn" type="PackedScene" id=1]
 
 [node name="RoomWorkshop" instance=ExtResource( 1 )]
-coveredAreaPath = NodePath("../RoomWorkshop/RoomCoverArea")

@@ -8,7 +8,7 @@ extents = Vector2( 255.563, 259.75 )
 
 [node name="SmallRoom" type="Node2D"]
 script = ExtResource( 1 )
-coveredAreaPath = NodePath("../SmallRoom/RoomCoverArea")
+coveredAreaPath = NodePath("RoomCoverArea")
 
 [node name="BackgroundPanel" type="Sprite" parent="."]
 texture = ExtResource( 2 )
