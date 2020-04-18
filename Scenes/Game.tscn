@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Station.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/PlayerCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/RoomAnnoncerUI.vs" type="Script" id=4]
 [ext_resource path="res://Scenes/Manager/FuelManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Curves/SpeedFromFuelCurve.tres" type="Curve" id=6]
 
 [node name="Game" type="Node2D"]
 
 [node name="Station" parent="." instance=ExtResource( 1 )]
 position = Vector2( 156.314, 10.8707 )
+fuelToSpeedCurve = ExtResource( 6 )
 
 [node name="Character" parent="." instance=ExtResource( 2 )]
 position = Vector2( 363.54, 234.159 )
