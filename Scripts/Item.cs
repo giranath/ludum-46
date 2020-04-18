@@ -24,7 +24,6 @@ public abstract class Item : Node2D {
 
     protected void bodyEnter(object body) {
     
-        GD.Print("Enter!");
         var inventaire = ((Node)body).GetParent().FindNode("Inventory") as Inventory;
         if (inventaire != null) {
             inventaire.groundItem = GetPath();
@@ -33,7 +32,6 @@ public abstract class Item : Node2D {
 
     protected void bodyExit(object body) {
     
-        GD.Print("Exit!");
         var inventaire = ((Node)body).GetParent().FindNode("Inventory") as Inventory;
         if (inventaire != null) {
             inventaire.groundItem = null;
