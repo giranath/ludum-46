@@ -2,12 +2,11 @@
 
 [ext_resource path="res://Scripts/SmartObjects/SmartObject.cs" type="Script" id=1]
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 50, 32 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 50, 32 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -21,17 +20,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ClickArea" type="Area2D" parent="ColorRect"]
-position = Vector2( 32, 32 )
-
-[node name="ClickSphape" type="CollisionShape2D" parent="ColorRect/ClickArea"]
-shape = SubResource( 1 )
-
 [node name="PlayerArea" type="Area2D" parent="ColorRect"]
 
 [node name="PlayerShape" type="CollisionShape2D" parent="ColorRect/PlayerArea"]
 position = Vector2( 32, 32 )
 shape = SubResource( 2 )
-[connection signal="input_event" from="ColorRect/ClickArea" to="." method="OnClickSmartObject"]
+
+[node name="ClickArea" type="Area2D" parent="."]
+position = Vector2( 32, 32 )
+
+[node name="ClickSphape" type="CollisionShape2D" parent="ClickArea"]
+shape = SubResource( 1 )
 [connection signal="body_entered" from="ColorRect/PlayerArea" to="." method="SmartObjectBodyEntered"]
 [connection signal="body_exited" from="ColorRect/PlayerArea" to="." method="SmartObjectBodyExited"]
+[connection signal="input_event" from="ClickArea" to="." method="OnClickSmartObject"]

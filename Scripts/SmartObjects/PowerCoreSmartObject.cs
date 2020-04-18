@@ -3,11 +3,12 @@ using System;
 
 public class PowerCoreSmartObject : SmartObject
 {
-	int fuel = 10;
 	
 	public void refuel()
 	{
-		fuel += 15;
+		GameState gamestate = GetNode<GameState>("/root/GameState");
+		gamestate.fuel += 25.0f;
+
 		GD.Print("wow refuel");
 	}
 
