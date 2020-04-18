@@ -1,32 +1,98 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/RoomGraph.cs" type="Script" id=1]
-[ext_resource path="res://Scenes/Rooms/Room.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/Developers/GraphPropertyInitializer.cs" type="Script" id=3]
+[ext_resource path="res://Scenes/Rooms/BigRooms/RoomClinic.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Rooms/SmallRooms/RoomLocker.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Rooms/BigRooms/RoomWorkshop.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Rooms/BigRooms/RoomCockpit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Rooms/BigRooms/RoomEngine.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Ladder.tscn" type="PackedScene" id=8]
 
-[node name="WorldRoot" type="Node2D"]
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( 492.08, -260.945 )
+b = Vector2( -1146.08, -258.674 )
+
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( 685.206, -263.218 )
+b = Vector2( 1930.3, -258.674 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 920.668, 259.887 )
+b = Vector2( -1644.56, 263.989 )
+
+[node name="Station" type="Node2D"]
 script = ExtResource( 1 )
-centralRoom = NodePath("RoomRoot")
+centralRoom = NodePath("../Station/Rooms/RoomRoot")
 
-[node name="RoomRoot" parent="." instance=ExtResource( 2 )]
-connectedLeftRoom = NodePath("../RoomRoot3")
-connectedRightRoom = NodePath("../RoomRoot2")
-connectedTopRoom = NodePath("")
-connectedBottomRoom = NodePath("../RoomRoot4")
+[node name="Rooms" type="Node" parent="."]
 
-[node name="RoomRoot2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 5120.21, -6.62988 )
-connectedLeftRoom = NodePath("../RoomRoot")
+[node name="Floor 1" type="Node" parent="Rooms"]
 
-[node name="RoomRoot3" parent="." instance=ExtResource( 2 )]
-position = Vector2( -5108.08, -2.7998 )
-connectedRightRoom = NodePath("../RoomRoot")
+[node name="Rooms" type="Node" parent="Rooms/Floor 1"]
 
-[node name="RoomRoot4" parent="." instance=ExtResource( 2 )]
-position = Vector2( -0.683594, 2580.03 )
-connectedTopRoom = NodePath("../RoomRoot")
+[node name="RoomCockpit" parent="Rooms/Floor 1/Rooms" instance=ExtResource( 5 )]
+position = Vector2( 1417.49, -509.749 )
+connectedLeftRoom = NodePath("../Rooms/RoomLocker")
 
-[node name="Node" type="Node" parent="."]
-script = ExtResource( 3 )
-graphPath = NodePath("..")
-roomPath = NodePath("../RoomRoot")
+[node name="RoomLocker" parent="Rooms/Floor 1/Rooms" instance=ExtResource( 3 )]
+position = Vector2( 649.354, -510.852 )
+connectedLeftRoom = NodePath("../Rooms/RoomClinic")
+connectedRightRoom = NodePath("../Rooms/RoomCockpit")
+connectedBottomRoom = NodePath("../../Floor2/RoomWorkshop")
+
+[node name="RoomClinic" parent="Rooms/Floor 1/Rooms" instance=ExtResource( 2 )]
+position = Vector2( -119.997, -510.354 )
+connectedLeftRoom = NodePath("../Rooms/RoomLocker2")
+connectedRightRoom = NodePath("../Rooms/RoomLocker")
+
+[node name="RoomLocker2" parent="Rooms/Floor 1/Rooms" instance=ExtResource( 3 )]
+position = Vector2( -889.768, -509.092 )
+coveredAreaPath = NodePath("../Floor1/RoomLocker/RoomCoverArea")
+
+[node name="Collisions" type="Node" parent="Rooms/Floor 1"]
+
+[node name="Floors" type="Node" parent="Rooms/Floor 1/Collisions"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rooms/Floor 1/Collisions/Floors"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 1/Collisions/Floors/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Rooms/Floor 1/Collisions/Floors"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 1/Collisions/Floors/StaticBody2D2"]
+shape = SubResource( 2 )
+
+[node name="Floor 2" type="Node" parent="Rooms"]
+
+[node name="Rooms" type="Node" parent="Rooms/Floor 2"]
+
+[node name="RoomEngine" parent="Rooms/Floor 2/Rooms" instance=ExtResource( 6 )]
+position = Vector2( -1135.61, 8.12054 )
+connectedRightRoom = NodePath("../Rooms/RoomLocker3")
+
+[node name="RoomWorkshop" parent="Rooms/Floor 2/Rooms" instance=ExtResource( 4 )]
+position = Vector2( 406.627, 8.14856 )
+connectedLeftRoom = NodePath("../Rooms/RoomLocker3")
+connectedTopRoom = NodePath("../../Floor1/Rooms/RoomLocker")
+
+[node name="RoomLocker3" parent="Rooms/Floor 2/Rooms" instance=ExtResource( 3 )]
+position = Vector2( -365.221, 6.7782 )
+connectedLeftRoom = NodePath("../Rooms/RoomEngine")
+connectedRightRoom = NodePath("../Rooms/RoomWorkshop")
+coveredAreaPath = NodePath("../Floor1/RoomLocker/RoomCoverArea")
+
+[node name="Collisions" type="Node" parent="Rooms/Floor 2"]
+
+[node name="Floors" type="Node" parent="Rooms/Floor 2/Collisions"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rooms/Floor 2/Collisions/Floors"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 2/Collisions/Floors/StaticBody2D"]
+shape = SubResource( 3 )
+
+[node name="Ladders" type="Node" parent="."]
+
+[node name="Ladder" parent="Ladders" instance=ExtResource( 8 )]
+position = Vector2( 617.087, -58.0167 )
+scale = Vector2( 5, 10 )
