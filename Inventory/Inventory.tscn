@@ -12,6 +12,9 @@ position = Vector2( 390.727, 583.174 )
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
 position = Vector2( 314.399, 586.443 )
+RunSpeed = 0.0
+ClimbingSpeed = 0.0
+JumpForce = 0.0
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )

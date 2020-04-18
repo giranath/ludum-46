@@ -1,8 +1,9 @@
 using Godot;
 using System;
 
-public abstract class Item : Node2D {
 
+public abstract class Item : Node2D {
+    public itemType type;
     public abstract void act();
 
     public void throwItem(Node2D Character) {

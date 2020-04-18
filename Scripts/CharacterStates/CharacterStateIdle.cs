@@ -2,9 +2,14 @@ using Godot;
 
 public class CharacterStateIdle : CharacterStates
 {
+	
+
     private readonly float JumpForce = 400f;
 
-	public override CharacterStates HandleInput(CharacterMovement characterMovement, float delta)
+    public override void _Process(float delta) {
+    }
+
+    public override CharacterStates HandleInput(CharacterMovement characterMovement, float delta)
 	{
         var body = characterMovement.GetBody();
 

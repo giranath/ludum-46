@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/CharacterMovement.cs" type="Script" id=1]
-[ext_resource path="res://Scripts/Inventory.cs" type="Script" id=2]
 
 [sub_resource type="MeshTexture" id=1]
 
@@ -167,15 +166,3 @@ position = Vector2( -0.527039, -15.1415 )
 rotation = 0.00832036
 scale = Vector2( 0.25, 0.25 )
 shape = SubResource( 6 )
-
-[node name="Inventaire" type="Node2D" parent="KinematicBody2D"]
-position = Vector2( 0, 0.0537319 )
-script = ExtResource( 2 )
-right = NodePath("right")
-left = NodePath("left")
-
-[node name="right" type="Node2D" parent="KinematicBody2D/Inventaire"]
-position = Vector2( -2.28679, -11.0182 )
-
-[node name="left" type="Node2D" parent="KinematicBody2D/Inventaire"]
-position = Vector2( 3.55491, -11.7312 )

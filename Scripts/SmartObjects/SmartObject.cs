@@ -9,21 +9,8 @@ public enum itemType
 	Pistol
 }
 
-public class Item
-{
-	public itemType type;
-
-	public Item(itemType _type)
-	{
-		type = _type;
-	}
-}
-
-
-
 public class SmartObject : Node
 {
-
 	public Dictionary<itemType, Action> itemActionMap = new Dictionary<itemType, Action>();
 	bool playerInside = false;
 
@@ -45,7 +32,7 @@ public class SmartObject : Node
 	{
 		if (@event is InputEventMouseButton btn && btn.ButtonIndex == (int)ButtonList.Left && btn.IsPressed() && playerInside)
 		{
-			Item item = new Item(itemType.PowerCell);
+			Item item = new Gun();
 			interact(item);
 			GD.Print("Clicked");
 		}
