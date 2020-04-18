@@ -12,8 +12,6 @@ public class Ladder : Node
 	{
 		var characterMovement = (CharacterMovement)((Node)body).GetParent();
 
-		GD.Print(((Node)body).Name + " Entered");
-
 		if (characterMovement != null)
 		{
 			characterMovement.CanClimb = true;
@@ -22,8 +20,6 @@ public class Ladder : Node
 	public void OnBodyExited(object body)
 	{
 		var characterMovement = (CharacterMovement)((Node)body).GetParent();
-
-		GD.Print(((Node)body).Name + " Exited");
 
 		if (characterMovement != null)
 		{

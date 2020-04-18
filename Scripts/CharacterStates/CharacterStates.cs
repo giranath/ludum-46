@@ -10,6 +10,8 @@ public abstract class CharacterStates
 
     protected string Descend { get; set; } = "descend";
 
+    protected string Jump { get; set; } = "jump";
+
     protected Vector2 Gravity { get; set; } = Vector2.Down * 400;
 
     public abstract void _Process(float delta);

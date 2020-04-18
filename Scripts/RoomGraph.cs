@@ -232,7 +232,7 @@ public class RoomGraph : Node
 	{
 		GD.Print("READY FROM GRAPH");
 
-        // Need to setup correctly
+		// Need to setup correctly
 		ExponentialRoomPropertyProvider provider = new ExponentialRoomPropertyProvider();
 		provider.Decay = 0.2f;
 		provider.Momentum = 0.1f;

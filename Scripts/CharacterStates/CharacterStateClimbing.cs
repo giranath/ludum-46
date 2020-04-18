@@ -16,25 +16,31 @@ public class CharacterStateClimbing : CharacterStates
 
         if (Input.IsActionPressed(Ascend) && characterMovement.CanClimb)
         {
-            body.MoveAndCollide(Vector2.Up * Speed * delta);
+            characterMovement.Velocity.y = -Speed;
+            body.MoveAndSlide(characterMovement.Velocity, Vector2.Up);
             return this;
         }
 
         if (Input.IsActionPressed(Descend) && characterMovement.CanClimb)
         {
-            body.MoveAndCollide(Vector2.Down * Speed * delta);
+            characterMovement.Velocity.y = Speed;
+            body.MoveAndSlide(characterMovement.Velocity, Vector2.Up);
             return this;
         }
 
         if (Input.IsActionPressed(MoveLeft) && characterMovement.CanClimb)
         {
-            body.MoveAndCollide(Vector2.Left * Speed * delta);
+            characterMovement.Velocity.y = 0;
+            characterMovement.Velocity.x = -Speed;
+            body.MoveAndSlide(characterMovement.Velocity, Vector2.Up);
             return this;
         }
 
         if (Input.IsActionPressed(MoveRight) && characterMovement.CanClimb)
         {
-            body.MoveAndCollide(Vector2.Right * Speed * delta);
+            characterMovement.Velocity.y = 0;
+            characterMovement.Velocity.x = Speed;
+            body.MoveAndSlide(characterMovement.Velocity, Vector2.Up);
             return this;
         }
 

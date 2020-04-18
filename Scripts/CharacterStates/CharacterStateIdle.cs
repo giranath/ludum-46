@@ -2,6 +2,8 @@ using Godot;
 
 public class CharacterStateIdle : CharacterStates
 {
+    private readonly float JumpForce = 250f;
+
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
@@ -10,6 +12,20 @@ public class CharacterStateIdle : CharacterStates
     public override CharacterStates HandleInput(CharacterMovement characterMovement, float delta)
     {
         var body = characterMovement.GetNode<KinematicBody2D>(characterMovement.Body);
+
+        if (Input.IsActionPressed(Jump) && body.IsOnFloor())
+        {
+            characterMovement.Velocity.y = -JumpForce;
+        }
+        else if (!body.IsOnFloor())
+        {
+            characterMovement.Velocity += Gravity * delta;
+        }
+        else
+        {
+            characterMovement.Velocity.y = 0;
+        }
+
 
         if (Input.IsActionPressed(MoveLeft) || Input.IsActionPressed(MoveRight))
         {
@@ -20,18 +36,7 @@ public class CharacterStateIdle : CharacterStates
         {
             return new CharacterStateClimbing();
         }
-
-        if (!body.IsOnFloor())
-        {
-            characterMovement.Velocity += Gravity * delta;
-        }
-        else
-        {
-            characterMovement.Velocity.y = 0;
-        }
-
-
-        body.MoveAndSlide(characterMovement.Velocity);
+        body.MoveAndSlide(characterMovement.Velocity, Vector2.Up);
         return this;
     }
 }
