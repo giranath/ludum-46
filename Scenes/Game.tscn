@@ -5,28 +5,23 @@
 [ext_resource path="res://Scenes/PlayerCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/RoomAnnoncerUI.vs" type="Script" id=4]
 [ext_resource path="res://Scenes/Manager/FuelManager.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Inventory/FuelCell.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Curves/SpeedFromFuelCurve.tres" type="Curve" id=6]
 
 [node name="Game" type="Node2D"]
 
-[node name="FuelCell" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2225.39, 1816.31 )
-z_index = 14
+[node name="Station" parent="." instance=ExtResource( 1 )]
+position = Vector2( 156.314, 10.8707 )
+fuelToSpeedCurve = ExtResource( 6 )
 
 [node name="Character" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2753.65, 1874.31 )
+position = Vector2( 363.54, 234.159 )
 scale = Vector2( 5, 5 )
 z_index = 1
 RunSpeed = 800.0
 ClimbingSpeed = 800.0
 JumpForce = 400.0
 
-[node name="Station" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2533.97, 1686.09 )
-centralRoom = NodePath("")
-
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
-position = Vector2( 2549.62, 536.844 )
 playerPath = NodePath("../Character")
 
 [node name="UI" type="Node" parent="."]
@@ -36,7 +31,6 @@ script = ExtResource( 4 )
 fuelReduction = 1.2
 
 [node name="Background" type="Node2D" parent="."]
-position = Vector2( 432.723, 373.996 )
 
 [node name="Star-Background" type="Sprite" parent="Background"]
 position = Vector2( 6569.37, -664.622 )
@@ -44,6 +38,6 @@ scale = Vector2( 2.75, 2.75 )
 offset = Vector2( -439.572, 95.6365 )
 
 [node name="Star-Background2" type="Sprite" parent="Background"]
-position = Vector2( 1466.4, -652.739 )
+position = Vector2( 1467.4, -652.739 )
 scale = Vector2( 2.75, 2.75 )
 offset = Vector2( -439.572, 95.6365 )

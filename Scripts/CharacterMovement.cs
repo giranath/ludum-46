@@ -4,7 +4,8 @@ using System;
 public class CharacterMovement : KinematicBody2D
 {
 	private CharacterStates CharacterState { get; set; } = new CharacterStateIdle();
-			
+	private Inventory inventory;
+
 	[Export]
 	public float RunSpeed;
 	
@@ -27,6 +28,8 @@ public class CharacterMovement : KinematicBody2D
 	{
         GameState gamestate = GetNode<GameState>("/root/GameState");
         gamestate.player = this;
+
+		inventory = GetNode<Inventory>("./Inventory");
     }
 
 	public bool CanClimb()
@@ -54,5 +57,9 @@ public class CharacterMovement : KinematicBody2D
 	public void HandleAnimation()
 	{
 
+	}
+
+	public Item GetItemInHand(Inventory.Hand hand) {
+		return inventory.GetItemInHand(hand);
 	}
 }

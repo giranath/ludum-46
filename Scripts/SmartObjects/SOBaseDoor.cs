@@ -21,6 +21,12 @@ public class SOBaseDoor : SmartObject
 	[Signal]
 	delegate void OnStateChanged(DoorState newState);
 
+    [Signal]
+    delegate void LockedStateChanged(bool newLockedState);
+
+    [Signal]
+    delegate void InteractionFailed();
+
 	private void TryToggleDoor(Item item)
 	{
 		// The door is not locked, we can toggle it
@@ -31,21 +37,24 @@ public class SOBaseDoor : SmartObject
 		// The door is locked
 		else
 		{
-
+            EmitSignal(nameof(InteractionFailed));
 		}
 	}
 
 	private void TryToggleLock(Item item)
 	{
+        AccessCard card = item as AccessCard;
+
 		// If the door is lockable
-		if(requiredKey != -1)
+		if(requiredKey != -1 && card.key == requiredKey)
 		{
-			// TODO: Get key associated with item
+            locked = !locked;
+            EmitSignal(nameof(LockedStateChanged), locked);
 		}
 		// The door is not lockable
 		else
 		{
-			// TODO: Notify UI that interaction failed
+            EmitSignal(nameof(InteractionFailed));
 		}
 	}
 
@@ -53,7 +62,7 @@ public class SOBaseDoor : SmartObject
 	public override void _Ready()
 	{
         base._Ready();
-        
+
 		EmitSignal(nameof(OnStateChanged), currentState);
 
 		itemActionMap.Add(itemType.None, TryToggleDoor);

@@ -4,7 +4,7 @@ using System;
 public class AccessCard : Item
 {
     [Export]
-    int key;
+    public int key;
 
     public AccessCard() {
         Type = itemType.AccessCard;
