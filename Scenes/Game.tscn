@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Station.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/PlayerCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/RoomAnnoncerUI.vs" type="Script" id=4]
 [ext_resource path="res://Scenes/Manager/FuelManager.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/BackgroundSlide.cs" type="Script" id=6]
-[ext_resource path="res://Images/Star-Background.png" type="Texture" id=7]
 
 [node name="Game" type="Node2D"]
 
@@ -31,19 +29,13 @@ script = ExtResource( 4 )
 fuelReduction = 1.2
 
 [node name="Background" type="Node2D" parent="."]
-script = ExtResource( 6 )
-backgroundPart1 = NodePath("Star-Background")
-backgroundPart2 = NodePath("Star-Background2")
-slidingSpeed = -1000.0
 
 [node name="Star-Background" type="Sprite" parent="Background"]
 position = Vector2( 6569.37, -664.622 )
 scale = Vector2( 2.75, 2.75 )
-texture = ExtResource( 7 )
 offset = Vector2( -439.572, 95.6365 )
 
 [node name="Star-Background2" type="Sprite" parent="Background"]
 position = Vector2( 1467.4, -652.739 )
 scale = Vector2( 2.75, 2.75 )
-texture = ExtResource( 7 )
 offset = Vector2( -439.572, 95.6365 )

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Rooms/BigRoom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/SmartObjects/EngineRefueler.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/SmartObjects/SOTerminal.tscn" type="PackedScene" id=3]
 
 [node name="RoomEngine" instance=ExtResource( 1 )]
 roomName = "Engine Room"
@@ -11,3 +12,6 @@ visible = true
 
 [node name="Node2D" parent="." index="2" instance=ExtResource( 2 )]
 position = Vector2( -500.124, 196.301 )
+
+[node name="Node2D2" parent="." index="3" instance=ExtResource( 3 )]
+position = Vector2( -369.491, 195.008 )
