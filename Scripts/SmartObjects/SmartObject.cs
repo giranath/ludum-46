@@ -4,23 +4,28 @@ using System.Collections.Generic;
 
 public enum itemType
 {
+	None,
 	PowerCell,
 	FireExtinguisher,
-	Pistol
+	Pistol,
+	AccessCard
 }
 
 public class SmartObject : Node
 {
-	public Dictionary<itemType, Action> itemActionMap = new Dictionary<itemType, Action>();
+
+	public Dictionary<itemType, Action<Item>> itemActionMap = new Dictionary<itemType, Action<Item>>();
 	bool playerInside = false;
 
 	public virtual void interact(Item item)
 	{
-		Action itemAction;
-		if (itemActionMap.TryGetValue(item.type, out itemAction))
+		itemType typeToTest = item != null ? item.type : itemType.None;
+
+		Action<Item> itemAction;
+		if (itemActionMap.TryGetValue(typeToTest, out itemAction))
 		{
-			GD.Print("Used item:" + (int)item.type);
-			itemAction();
+			GD.Print("Used item:" + (int)typeToTest);
+			itemAction(item);
 		}
 		else
 		{
@@ -32,8 +37,8 @@ public class SmartObject : Node
 	{
 		if (@event is InputEventMouseButton btn && btn.ButtonIndex == (int)ButtonList.Left && btn.IsPressed() && playerInside)
 		{
-			Item item = new Gun();
-			interact(item);
+			Item item = new Item(itemType.PowerCell);
+			interact(null);
 			GD.Print("Clicked");
 		}
 	}

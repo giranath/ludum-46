@@ -4,7 +4,7 @@ using System;
 public class PowerCoreSmartObject : SmartObject
 {
 	
-	public void refuel()
+	public void refuel(Item item)
 	{
 		GameState gamestate = GetNode<GameState>("/root/GameState");
 		gamestate.fuel += 25.0f;

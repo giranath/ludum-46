@@ -3,7 +3,7 @@ using System;
 
 public class SOTerminal : SmartObject
 {
-    public void ShowTime()
+    public void ShowTime(Item item)
     {
         GD.Print("wow refuel");
     }
