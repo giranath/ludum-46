@@ -24,11 +24,27 @@ b = Vector2( -1644.56, 263.989 )
 script = ExtResource( 1 )
 centralRoom = NodePath("Rooms/Floor 1/Rooms/RoomCockpit")
 
-[node name="Rooms" type="Node" parent="."]
+[node name="Rooms" type="Node2D" parent="."]
 
-[node name="Floor 1" type="Node" parent="Rooms"]
+[node name="Floor 1" type="Node2D" parent="Rooms"]
 
-[node name="Rooms" type="Node" parent="Rooms/Floor 1"]
+[node name="Collisions" type="Node2D" parent="Rooms/Floor 1"]
+
+[node name="Floors" type="Node2D" parent="Rooms/Floor 1/Collisions"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rooms/Floor 1/Collisions/Floors"]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 1/Collisions/Floors/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Rooms/Floor 1/Collisions/Floors"]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 1/Collisions/Floors/StaticBody2D2"]
+shape = SubResource( 2 )
+
+[node name="Rooms" type="Node2D" parent="Rooms/Floor 1"]
 
 [node name="RoomCockpit" parent="Rooms/Floor 1/Rooms" instance=ExtResource( 5 )]
 position = Vector2( 1417.49, -509.749 )
@@ -49,32 +65,27 @@ connectedRightRoom = NodePath("../RoomLocker")
 position = Vector2( -889.768, -509.092 )
 connectedRightRoom = NodePath("../RoomClinic")
 
-[node name="Collisions" type="Node" parent="Rooms/Floor 1"]
+[node name="Floor 2" type="Node2D" parent="Rooms"]
 
-[node name="Floors" type="Node" parent="Rooms/Floor 1/Collisions"]
+[node name="Collisions" type="Node2D" parent="Rooms/Floor 2"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Rooms/Floor 1/Collisions/Floors"]
+[node name="Floors" type="Node2D" parent="Rooms/Floor 2/Collisions"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rooms/Floor 2/Collisions/Floors"]
+position = Vector2( 3.17334, 6.34668 )
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 1/Collisions/Floors/StaticBody2D"]
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 2/Collisions/Floors/StaticBody2D"]
+shape = SubResource( 3 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Rooms/Floor 1/Collisions/Floors"]
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 1/Collisions/Floors/StaticBody2D2"]
-shape = SubResource( 2 )
-
-[node name="Floor 2" type="Node" parent="Rooms"]
-
-[node name="Rooms" type="Node" parent="Rooms/Floor 2"]
+[node name="Rooms" type="Node2D" parent="Rooms/Floor 2"]
 
 [node name="RoomEngine" parent="Rooms/Floor 2/Rooms" instance=ExtResource( 6 )]
 position = Vector2( -1135.61, 8.12054 )
 connectedRightRoom = NodePath("../RoomLocker3")
 
 [node name="RoomWorkshop" parent="Rooms/Floor 2/Rooms" instance=ExtResource( 4 )]
-position = Vector2( 406.627, 8.14856 )
+position = Vector2( 401.156, 3.93979 )
 connectedLeftRoom = NodePath("../RoomLocker3")
 connectedTopRoom = NodePath("../../../Floor 1/Rooms/RoomLocker")
 
@@ -83,17 +94,7 @@ position = Vector2( -365.221, 6.7782 )
 connectedLeftRoom = NodePath("../RoomEngine")
 connectedRightRoom = NodePath("../RoomWorkshop")
 
-[node name="Collisions" type="Node" parent="Rooms/Floor 2"]
-
-[node name="Floors" type="Node" parent="Rooms/Floor 2/Collisions"]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Rooms/Floor 2/Collisions/Floors"]
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 2/Collisions/Floors/StaticBody2D"]
-shape = SubResource( 3 )
-
-[node name="Ladders" type="Node" parent="."]
+[node name="Ladders" type="Node2D" parent="."]
 
 [node name="Ladder" parent="Ladders" instance=ExtResource( 8 )]
 position = Vector2( 617.087, -58.0167 )

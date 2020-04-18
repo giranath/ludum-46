@@ -24,3 +24,9 @@ collision_mask = 4
 
 [node name="DoorShape" type="CollisionShape2D" parent="Body/PhysicBody" index="0"]
 shape = SubResource( 1 )
+
+[node name="PlayerShape" parent="PlayerArea" index="0"]
+position = Vector2( 0, 0 )
+
+[node name="ClickArea" parent="." index="3"]
+position = Vector2( 0, 0 )
