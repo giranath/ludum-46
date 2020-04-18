@@ -53,11 +53,24 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="new_script.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\PowerCoreSmartObject.cs" />
     <Compile Include="Scripts\SmartObject.cs" />
     <Compile Include="Scripts\SmartObjectTester.cs" />
+    <Compile Include="Scripts\CharacterMovement.cs" />
+    <Compile Include="Scripts\CharacterStates\CharacterStateClimbing.cs" />
+    <Compile Include="Scripts\CharacterStates\CharacterStateClimbingIdle.cs" />
+    <Compile Include="Scripts\CharacterStates\CharacterStateIdle.cs" />
+    <Compile Include="Scripts\CharacterStates\CharacterStateMoving.cs" />
+    <Compile Include="Scripts\CharacterStates\CharacterStates.cs" />
+    <Compile Include="Scripts\DisasterManager.cs" />
+    <Compile Include="Scripts\Disasters\ConsoleWriterDisaster.cs" />
+    <Compile Include="Scripts\Disasters\Disaster.cs" />
+    <Compile Include="Scripts\Ladder.cs" />
+    <Compile Include="Scripts\Developers\GraphPropertyInitializer.cs" />
+    <Compile Include="Scripts\Room.cs" />
+    <Compile Include="Scripts\RoomGraph.cs" />
+    <Compile Include="Scripts\TimedRepeater.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
