@@ -8,6 +8,9 @@ public class RoomGraph : Node
 	[Export]
 	public NodePath centralRoom;
 
+	[Signal]
+	delegate void PlayerChangedRoom(Room enteringRoom);
+
 	enum RoomConnectionState
 	{
 		Opened,
@@ -251,6 +254,16 @@ public class RoomGraph : Node
 			GD.PushError("No central room defined");
 		}
 
+
+		foreach(RoomNode node in nodes)
+		{
+			node.room.Connect("PlayerEntered", this, "OnEnterRoom");
+		}
+	}
+
+	private void OnEnterRoom(Room enteredRoom)
+	{
+		EmitSignal(nameof(PlayerChangedRoom), enteredRoom);
 	}
 
 	public bool TrySetPropertyOfRoom(Room room, int propertyIdx, float value)

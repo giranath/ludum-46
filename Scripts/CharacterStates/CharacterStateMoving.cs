@@ -3,6 +3,9 @@ using System;
 
 public class CharacterStateMoving : CharacterStates
 {
+	private readonly float Speed = 400f;
+    private readonly float JumpForce = 400f;
+
 	public override void _Process(float delta)
 	{
 
