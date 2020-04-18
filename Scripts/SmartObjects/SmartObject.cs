@@ -2,15 +2,6 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public enum itemType
-{
-	None,
-	PowerCell,
-	FireExtinguisher,
-	Pistol,
-	AccessCard
-}
-
 public class SmartObject : Node
 {
 
@@ -19,7 +10,7 @@ public class SmartObject : Node
 
 	public virtual void interact(Item item)
 	{
-		itemType typeToTest = item != null ? item.type : itemType.None;
+		itemType typeToTest = item != null ? item.Type : itemType.None;
 
 		Action<Item> itemAction;
 		if (itemActionMap.TryGetValue(typeToTest, out itemAction))
@@ -37,9 +28,7 @@ public class SmartObject : Node
 	{
 		if (@event is InputEventMouseButton btn && btn.ButtonIndex == (int)ButtonList.Left && btn.IsPressed() && playerInside)
 		{
-			Item item = new Item(itemType.PowerCell);
 			interact(null);
-			GD.Print("Clicked");
 		}
 	}
 	

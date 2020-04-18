@@ -1,9 +1,19 @@
 using Godot;
 using System;
 
+public enum itemType
+{
+	None,
+	PowerCell,
+	FireExtinguisher,
+	Pistol,
+	AccessCard
+}
 
 public abstract class Item : Node2D {
-    public itemType type;
+
+    public itemType Type {get;set;}
+
     public abstract void act();
 
     public void throwItem(Node2D Character) {
