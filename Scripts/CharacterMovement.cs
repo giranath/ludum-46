@@ -25,7 +25,9 @@ public class CharacterMovement : KinematicBody2D
 
 	public override void _Ready()
 	{
-	}
+        GameState gamestate = GetNode<GameState>("/root/GameState");
+        gamestate.player = this;
+    }
 
 	public bool CanClimb()
 	{
