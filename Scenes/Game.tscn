@@ -9,6 +9,6 @@
 position = Vector2( 156.314, 10.8707 )
 
 [node name="Character" parent="." instance=ExtResource( 2 )]
-position = Vector2( -156.896, 222.764 )
+position = Vector2( 363.54, 234.159 )
 scale = Vector2( 5, 5 )
 z_index = 1

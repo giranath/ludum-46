@@ -54,11 +54,13 @@ connectedRightRoom = NodePath("../RoomClinic")
 [node name="Floors" type="Node" parent="Rooms/Floor 1/Collisions"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Rooms/Floor 1/Collisions/Floors"]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 1/Collisions/Floors/StaticBody2D"]
 shape = SubResource( 1 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Rooms/Floor 1/Collisions/Floors"]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 1/Collisions/Floors/StaticBody2D2"]
 shape = SubResource( 2 )
@@ -86,6 +88,7 @@ connectedRightRoom = NodePath("../RoomWorkshop")
 [node name="Floors" type="Node" parent="Rooms/Floor 2/Collisions"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Rooms/Floor 2/Collisions/Floors"]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 2/Collisions/Floors/StaticBody2D"]
 shape = SubResource( 3 )

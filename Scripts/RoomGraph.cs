@@ -197,8 +197,6 @@ public class RoomGraph : Node
 
 	private void AddRoomToGraph(Room room)
 	{
-		GD.Print("AddRoomToGraph", room.Name);
-
 		// This graph takes ownership of the room
 		room.SetOwningGraph(this);
 
@@ -230,8 +228,6 @@ public class RoomGraph : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		GD.Print("READY FROM GRAPH");
-
 		// Need to setup correctly
 		ExponentialRoomPropertyProvider provider = new ExponentialRoomPropertyProvider();
 		provider.Decay = 0.2f;
@@ -264,7 +260,6 @@ public class RoomGraph : Node
 		if(node != null)
 		{
 			IRoomPropertyProvider provider = propertyProviders[propertyIdx];
-			GD.Print("Setting property of room");
 			node.propertyLayers[propertyIdx] = Mathf.Clamp(value, provider.GetRoomPropertyMinValue(), provider.GetRoomPropertyMaxValue());
 
 			return true;
@@ -345,8 +340,6 @@ public class RoomGraph : Node
 
 	public void PropagateRoomProperties(float delta)
 	{
-		GD.Print("PropagateRoomProperties");
-
 		// Propagate every properties independently
 		for (int propertyIdx = 0; propertyIdx < propertyProviders.Count; ++propertyIdx)
 		{
@@ -373,7 +366,6 @@ public class RoomGraph : Node
 				float resultingProperty = propertyProvider.ProcessRoomPropertyFromNeighbors(delta, nodes[nodeIndex].propertyLayers[propertyIdx], neighborsProperties, neighborsConnected, neighborsRooms);
 
 				newProperties[nodeIndex] = Mathf.Clamp(resultingProperty, propertyProvider.GetRoomPropertyMinValue(), propertyProvider.GetRoomPropertyMaxValue());
-				GD.Print("Node ", nodeIndex, " new influence is ", newProperties[nodeIndex], " for ", propertyIdx);
 			}
 
 			// Copy backbuffer into graph
