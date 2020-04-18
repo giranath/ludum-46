@@ -8,11 +8,15 @@ public class SmartObject : Node
 	public Dictionary<itemType, Action<Item>> itemActionMap = new Dictionary<itemType, Action<Item>>();
 	bool playerInside = false;
 
+	private GameState gameState;
+
 	public override void _Ready() {
 		base._Ready();
 		Area2D clickArea = GetNode<Area2D>("./ClickArea");
 
 		clickArea.Connect("input_event", this, "OnClickSmartObject");
+
+		gameState = GetNode<GameState>("/root/GameState");
 	}
 
 	public virtual void interact(Item item)
@@ -33,9 +37,16 @@ public class SmartObject : Node
 
 	protected virtual void OnClickSmartObject(object viewport, object @event, int shape_idx)
 	{
-		if (@event is InputEventMouseButton btn && btn.ButtonIndex == (int)ButtonList.Left && btn.IsPressed() && playerInside)
+		if (@event is InputEventMouseButton btn)
 		{
-			interact(null);
+			if(btn.ButtonIndex == (int)ButtonList.Left && btn.IsPressed() && playerInside)
+			{
+				interact(gameState.player.GetItemInHand(Inventory.Hand.Left));
+			}
+			else if(btn.ButtonIndex == (int)ButtonList.Right && btn.IsPressed() && playerInside)
+			{
+				interact(gameState.player.GetItemInHand(Inventory.Hand.Right));
+			}
 		}
 	}
 	

@@ -8,9 +8,28 @@ public class Inventory : Node {
     public NodePath groundItem;
     private Hand handUsed = Hand.Right;
 
-    enum Hand {
+    public enum Hand {
         Right,
         Left
+    }
+
+    public Node2D GetHandNode(Hand hand) {
+        if(hand == Hand.Left) {
+            return GetNode<Node2D>(left);
+        }
+        else {
+            return GetNode<Node2D>(right);
+        }
+    }
+
+    public Item GetItemInHand(Hand hand) {
+        Node2D handNode = GetHandNode(hand);
+
+        if(handNode != null && handNode.GetChildCount() > 0) {
+            return handNode.GetChild<Item>(0);
+        }
+
+        return null;
     }
 
     public override void _Process(float delta) {
