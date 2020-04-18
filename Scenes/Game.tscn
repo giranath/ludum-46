@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Station.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/PlayerCamera.tscn" type="PackedScene" id=3]
 
 [node name="Game" type="Node2D"]
 
@@ -12,3 +13,6 @@ position = Vector2( 156.314, 10.8707 )
 position = Vector2( 363.54, 234.159 )
 scale = Vector2( 5, 5 )
 z_index = 1
+
+[node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
+playerPath = NodePath("../Character")

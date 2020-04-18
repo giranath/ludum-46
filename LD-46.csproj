@@ -68,6 +68,7 @@
     <Compile Include="Scripts\Disasters\Disaster.cs" />
     <Compile Include="Scripts\Ladder.cs" />
     <Compile Include="Scripts\Developers\GraphPropertyInitializer.cs" />
+    <Compile Include="Scripts\PlayerCamera.cs" />
     <Compile Include="Scripts\Room.cs" />
     <Compile Include="Scripts\RoomGraph.cs" />
     <Compile Include="Scripts\TimedRepeater.cs" />
