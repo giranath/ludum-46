@@ -34,12 +34,17 @@
         <e p="Inventory.cs" t="Include" />
         <e p="Item.cs" t="Include" />
         <e p="Ladder.cs" t="Include" />
+        <e p="Manager" t="Include">
+          <e p="FuelManager.cs" t="Include" />
+        </e>
         <e p="PlayerCamera.cs" t="Include" />
         <e p="Room.cs" t="Include" />
         <e p="RoomGraph.cs" t="Include" />
         <e p="SmartObjects" t="Include">
+          <e p="DoorBody.cs" t="Include" />
           <e p="PowerCoreSmartObject.cs" t="Include" />
           <e p="SmartObject.cs" t="Include" />
+          <e p="SOBaseDoor.cs" t="Include" />
           <e p="SOTerminal.cs" t="Include" />
         </e>
         <e p="TimedRepeater.cs" t="Include" />

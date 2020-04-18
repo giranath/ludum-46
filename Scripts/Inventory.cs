@@ -23,8 +23,10 @@ public class Inventory : Node {
         }
 
         if (Input.IsActionJustPressed("grabItem")) {
+        GD.Print(groundItem != null);
             if (handUsed == Hand.Right) {
                 if (GetNode(right).GetChildren().Count == 0 && groundItem != null) {
+                GD.Print("Grab");
                     Node2D groundObject = (Node2D) GetNode(groundItem);
                     groundObject.GetParent().RemoveChild(groundObject);
                     GetNode(right).AddChild(groundObject);
