@@ -9,11 +9,11 @@
 [ext_resource path="res://Scenes/Ladder.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SegmentShape2D" id=1]
-a = Vector2( 492.08, -260.945 )
+a = Vector2( 568.85, -262.8 )
 b = Vector2( -1146.08, -258.674 )
 
 [sub_resource type="SegmentShape2D" id=2]
-a = Vector2( 685.206, -263.218 )
+a = Vector2( 664.8, -260.9 )
 b = Vector2( 1930.3, -258.674 )
 
 [sub_resource type="SegmentShape2D" id=3]
