@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/PressStart2P-16.tres" type="DynamicFont" id=1]
+[ext_resource path="res://StyleBoxes/ButtonUp.tres" type="StyleBox" id=2]
+[ext_resource path="res://StyleBoxes/ButtonDown.tres" type="StyleBox" id=3]
+
+[node name="TitleScreen" type="Node2D"]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_top = -1.0
+margin_right = 1024.0
+margin_bottom = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 464.0
+margin_top = 42.0
+margin_right = 560.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 1 )
+text = "Patate"
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+margin_top = 500.0
+margin_right = 1024.0
+margin_bottom = 615.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CenterContainer2"]
+margin_left = 448.0
+margin_top = 40.0
+margin_right = 575.175
+margin_bottom = 74.7502
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 2 )
+custom_styles/disabled = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "Play"

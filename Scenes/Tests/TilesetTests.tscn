@@ -33,5 +33,5 @@ position = Vector2( 392, 221 )
 [node name="Ladder2" parent="Platforms" instance=ExtResource( 4 )]
 position = Vector2( 776, 156 )
 
-[node name="Ladder3" parent="Platforms" instance=ExtResource( 4 )]
-position = Vector2( 697, 223 )
+[node name="Ladder3" parent="Platforms/Ladder2" instance=ExtResource( 4 )]
+position = Vector2( -79, 67 )
