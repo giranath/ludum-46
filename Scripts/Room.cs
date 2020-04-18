@@ -27,11 +27,14 @@ public class Room : Node2D
 	[Export]
 	public NodePath coveredAreaPath;
 
-	[Signal]
-	delegate void PlayerEntered();
+	[Export]
+	public String roomName;
 
 	[Signal]
-	delegate void PlayerLeft();
+	delegate void PlayerEntered(Room enteredRoom);
+
+	[Signal]
+	delegate void PlayerLeft(Room leftRoom);
 
 	private RoomGraph owningGraph;
 
@@ -66,12 +69,12 @@ public class Room : Node2D
 	}
 	private void OnBodyEnterRoom(Node body)
 	{
-		EmitSignal(nameof(PlayerEntered));
+		EmitSignal(nameof(PlayerEntered), this);
 	}
 
 	private void OnBodyExitRoom(Node body)
 	{
-		EmitSignal(nameof(PlayerLeft));
+		EmitSignal(nameof(PlayerLeft), this);
 	}
 
 	public void SetConnectionStateToRoom(RoomDirection direction, bool newConnectionState)

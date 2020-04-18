@@ -4,6 +4,7 @@
 [ext_resource path="res://Scenes/SmartObjectScene.tscn" type="PackedScene" id=2]
 
 [node name="RoomEngine" instance=ExtResource( 1 )]
+roomName = "Engine Room"
 
 [node name="Node2D" parent="." index="2" instance=ExtResource( 2 )]
 position = Vector2( -496.341, 186.853 )
