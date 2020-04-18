@@ -2,10 +2,7 @@ using Godot;
 
 public class CharacterStateIdle : CharacterStates
 {
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(float delta)
-	{
-	}
+    private readonly float JumpForce = 400f;
 
 	public override CharacterStates HandleInput(CharacterMovement characterMovement, float delta)
 	{
