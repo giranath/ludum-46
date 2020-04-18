@@ -54,7 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scripts\SmartObjects\SOFournaise.cs" />
     <Compile Include="Scripts\SmartObjects\SOTerminal.cs" />
     <Compile Include="Scripts\GameState.cs" />
     <Compile Include="Scripts\PowerCoreSmartObject.cs" />
