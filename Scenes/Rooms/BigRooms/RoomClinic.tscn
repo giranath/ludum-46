@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Rooms/BigRoom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/SmartObjects/DoorSmartObject.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/ItemGenerator/FuelCellCatalyst.tscn" type="PackedScene" id=3]
 
 [node name="RoomClinic" instance=ExtResource( 1 )]
 roomName = "Medical Clinic"
@@ -9,3 +10,6 @@ roomName = "Medical Clinic"
 [node name="DoorSmartObject" parent="." index="2" instance=ExtResource( 2 )]
 position = Vector2( 497.153, 190.876 )
 currentState = 1
+
+[node name="FuelCellCatalyst" parent="." index="3" instance=ExtResource( 3 )]
+position = Vector2( -126.991, 188.422 )

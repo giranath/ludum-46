@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/ItemGenerator/FuelCellGenerator.cs" type="Script" id=1]
+[ext_resource path="res://Models/Textures/FuelCellCatalyst.png" type="Texture" id=2]
+[ext_resource path="res://Models/Textures/CatalystParticle.png" type="Texture" id=3]
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.5
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 42.94
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 178.0
+angle_random = 1.0
+scale_random = 0.43
+
+[node name="FuelCellCatalyst" type="Node2D"]
+script = ExtResource( 1 )
+SpawnRate = 5
+DropLocationPath = NodePath("DropLocation")
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( -1.97102, -46.6129 )
+amount = 30
+lifetime = 2.0
+speed_scale = 0.5
+explosiveness = 0.12
+randomness = 0.77
+process_material = SubResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="DropLocation" type="Node2D" parent="."]
+position = Vector2( -0.798756, 63.9385 )
