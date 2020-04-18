@@ -1,11 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Rooms/BigRoom.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/SmartObjects/SmartObjectScene.tscn" type="PackedScene" id=2]
-
+[ext_resource path="res://Scenes/SmartObjects/EngineRefueler.tscn" type="PackedScene" id=2]
 
 [node name="RoomEngine" instance=ExtResource( 1 )]
 roomName = "Engine Room"
 
+[node name="CollisionShape2D" parent="RoomCoverArea" index="0"]
+visible = true
+
 [node name="Node2D" parent="." index="2" instance=ExtResource( 2 )]
-position = Vector2( -496.341, 186.853 )
+position = Vector2( -500.124, 196.301 )
