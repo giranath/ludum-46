@@ -8,6 +8,13 @@ public class SmartObject : Node
 	public Dictionary<itemType, Action<Item>> itemActionMap = new Dictionary<itemType, Action<Item>>();
 	bool playerInside = false;
 
+	public override void _Ready() {
+		base._Ready();
+		Area2D clickArea = GetNode<Area2D>("./ClickArea");
+
+		clickArea.Connect("input_event", this, "OnClickSmartObject");
+	}
+
 	public virtual void interact(Item item)
 	{
 		itemType typeToTest = item != null ? item.Type : itemType.None;
