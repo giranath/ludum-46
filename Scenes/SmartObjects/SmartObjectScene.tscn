@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/SmartObjects/SmartObject.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/testArea.cs" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 77.0586, 73.1044 )
@@ -19,8 +20,11 @@ shape = SubResource( 1 )
 
 [node name="ClickArea" type="Area2D" parent="."]
 position = Vector2( 32, 32 )
+script = ExtResource( 2 )
 
 [node name="ClickSphape" type="CollisionShape2D" parent="ClickArea"]
 shape = SubResource( 2 )
 [connection signal="body_entered" from="PlayerArea" to="." method="SmartObjectBodyEntered"]
 [connection signal="body_exited" from="PlayerArea" to="." method="SmartObjectBodyExited"]
+[connection signal="AreaClicked" from="ClickArea" to="." method="OnClick"]
+[connection signal="input_event" from="ClickArea" to="ClickArea" method="_on_ClickArea_input_event"]

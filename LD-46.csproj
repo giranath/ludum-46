@@ -82,6 +82,7 @@
     <Compile Include="Scripts\RoomGraph.cs" />
     <Compile Include="Scripts\SmartObjects\SOTerminal.cs" />
     <Compile Include="Scripts\Station.cs" />
+    <Compile Include="Scripts\testArea.cs" />
     <Compile Include="Scripts\TimedRepeater.cs" />
     <Compile Include="Scripts\UI\UIManager.cs" />
     <Compile Include="Scripts\UI\DialogUI.cs" />
