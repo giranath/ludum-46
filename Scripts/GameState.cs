@@ -27,8 +27,6 @@ public class GameState : Node
 	}
 
 	public override void _Process(float delta) {
-		GD.Print("Traveled ", traveledDistance, " meters");
-
 		if(traveledDistance >= requiredTravelDistance && !destinationReached) {
 			EmitSignal(nameof(ReachedDestination));
 			destinationReached = true;

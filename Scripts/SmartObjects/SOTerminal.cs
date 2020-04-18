@@ -12,9 +12,9 @@ public class SOTerminal : SmartObject
 		if(gameState == null)
 		{
 			gameState = GetNode<GameState>("/root/GameState");
-            uiManager = gameState.uiManager;
+			uiManager = gameState.uiManager;
 
-            GD.Print(gameState.Name);
+			GD.Print(gameState.Name);
 		}
 
 		uiManager.DialogUI.SetText(5, $"Only 5 minutes left you are almost there!");

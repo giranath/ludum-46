@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/SmartObjects/SmartObjectScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/SmartObjects/SOTerminal.cs" type="Script" id=2]
+[ext_resource path="res://Images/Terminal.png" type="Texture" id=3]
 
 [node name="Node2D" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="PlayerShape" parent="PlayerArea" index="0"]
+position = Vector2( 0, 0 )
+
+[node name="ClickArea" parent="." index="1"]
+position = Vector2( 0, 0 )
+
+[node name="Sprite" type="Sprite" parent="." index="2"]
+texture = ExtResource( 3 )
