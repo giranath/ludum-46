@@ -13,7 +13,6 @@
         <e p="AssemblyInfo.cs" t="Include" />
       </e>
       <e p="Scripts" t="Include">
-        <e p="BackgroundSlide.cs" t="Include" />
         <e p="CharacterMovement.cs" t="Include" />
         <e p="CharacterStates" t="Include">
           <e p="CharacterStateClimbing.cs" t="Include" />
@@ -30,6 +29,7 @@
           <e p="ConsoleWriterDisaster.cs" t="Include" />
           <e p="Disaster.cs" t="Include" />
         </e>
+        <e p="FuelCell.cs" t="Include" />
         <e p="GameState.cs" t="Include" />
         <e p="Gun.cs" t="Include" />
         <e p="Inventory.cs" t="Include" />
@@ -49,6 +49,10 @@
           <e p="SOTerminal.cs" t="Include" />
         </e>
         <e p="TimedRepeater.cs" t="Include" />
+        <e p="UI" t="Include">
+          <e p="DialogUI.cs" t="Include" />
+          <e p="UIManager.cs" t="Include" />
+        </e>
       </e>
     </e>
   </component>

@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Station.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/PlayerCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/RoomAnnoncerUI.vs" type="Script" id=4]
 [ext_resource path="res://Scenes/Manager/FuelManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Inventory/FuelCell.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node2D"]
-position = Vector2( -3.09088, 6.18176 )
+
+[node name="FuelCell" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2225.39, 1816.31 )
+z_index = 14
 
 [node name="Character" parent="." instance=ExtResource( 2 )]
 position = Vector2( 2753.65, 1874.31 )
@@ -19,6 +23,7 @@ JumpForce = 400.0
 
 [node name="Station" parent="." instance=ExtResource( 1 )]
 position = Vector2( 2533.97, 1686.09 )
+centralRoom = NodePath("")
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2549.62, 536.844 )
