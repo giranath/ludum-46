@@ -25,6 +25,7 @@ public class SmartObject : Node
 {
 
 	public Dictionary<itemType, Action> itemActionMap = new Dictionary<itemType, Action>();
+	bool playerInside = false;
 
 	public virtual void interact(Item item)
 	{
@@ -42,11 +43,36 @@ public class SmartObject : Node
 
 	protected virtual void OnClickSmartObject(object viewport, object @event, int shape_idx)
 	{
-		if (@event is InputEventMouseButton btn && btn.ButtonIndex == (int)ButtonList.Left && btn.IsPressed())
+		if (@event is InputEventMouseButton btn && btn.ButtonIndex == (int)ButtonList.Left && btn.IsPressed() && playerInside)
 		{
 			Item item = new Item(itemType.PowerCell);
 			interact(item);
 			GD.Print("Clicked");
 		}
 	}
+	
+	private void SmartObjectBodyEntered(object body)
+	{
+		var characterMovement = ((Node)body) as CharacterMovement;
+
+		if (characterMovement != null)
+		{
+			playerInside = true;
+		}
+	}
+
+
+	private void SmartObjectBodyExited(object body)
+	{
+		var characterMovement = ((Node)body) as CharacterMovement;
+
+		if (characterMovement != null)
+		{
+			playerInside = false;
+		}
+	}
+
 }
+
+
+
