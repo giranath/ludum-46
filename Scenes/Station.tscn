@@ -32,22 +32,22 @@ centralRoom = NodePath("Rooms/Floor 1/Rooms/RoomCockpit")
 
 [node name="RoomCockpit" parent="Rooms/Floor 1/Rooms" instance=ExtResource( 5 )]
 position = Vector2( 1417.49, -509.749 )
-connectedLeftRoom = NodePath("../Rooms/RoomLocker")
+connectedLeftRoom = NodePath("../RoomLocker")
 
 [node name="RoomLocker" parent="Rooms/Floor 1/Rooms" instance=ExtResource( 3 )]
 position = Vector2( 649.354, -510.852 )
-connectedLeftRoom = NodePath("../Rooms/RoomClinic")
-connectedRightRoom = NodePath("../Rooms/RoomCockpit")
-connectedBottomRoom = NodePath("../../Floor2/RoomWorkshop")
+connectedLeftRoom = NodePath("../RoomClinic")
+connectedRightRoom = NodePath("../RoomCockpit")
+connectedBottomRoom = NodePath("../../../Floor 2/Rooms/RoomWorkshop")
 
 [node name="RoomClinic" parent="Rooms/Floor 1/Rooms" instance=ExtResource( 2 )]
 position = Vector2( -119.997, -510.354 )
-connectedLeftRoom = NodePath("../Rooms/RoomLocker2")
-connectedRightRoom = NodePath("../Rooms/RoomLocker")
+connectedLeftRoom = NodePath("../RoomLocker2")
+connectedRightRoom = NodePath("../RoomLocker")
 
 [node name="RoomLocker2" parent="Rooms/Floor 1/Rooms" instance=ExtResource( 3 )]
 position = Vector2( -889.768, -509.092 )
-coveredAreaPath = NodePath("../Floor1/RoomLocker/RoomCoverArea")
+connectedRightRoom = NodePath("../RoomClinic")
 
 [node name="Collisions" type="Node" parent="Rooms/Floor 1"]
 
@@ -69,18 +69,17 @@ shape = SubResource( 2 )
 
 [node name="RoomEngine" parent="Rooms/Floor 2/Rooms" instance=ExtResource( 6 )]
 position = Vector2( -1135.61, 8.12054 )
-connectedRightRoom = NodePath("../Rooms/RoomLocker3")
+connectedRightRoom = NodePath("../RoomLocker3")
 
 [node name="RoomWorkshop" parent="Rooms/Floor 2/Rooms" instance=ExtResource( 4 )]
 position = Vector2( 406.627, 8.14856 )
-connectedLeftRoom = NodePath("../Rooms/RoomLocker3")
-connectedTopRoom = NodePath("../../Floor1/Rooms/RoomLocker")
+connectedLeftRoom = NodePath("../RoomLocker3")
+connectedTopRoom = NodePath("../../../Floor 1/Rooms/RoomLocker")
 
 [node name="RoomLocker3" parent="Rooms/Floor 2/Rooms" instance=ExtResource( 3 )]
 position = Vector2( -365.221, 6.7782 )
-connectedLeftRoom = NodePath("../Rooms/RoomEngine")
-connectedRightRoom = NodePath("../Rooms/RoomWorkshop")
-coveredAreaPath = NodePath("../Floor1/RoomLocker/RoomCoverArea")
+connectedLeftRoom = NodePath("../RoomEngine")
+connectedRightRoom = NodePath("../RoomWorkshop")
 
 [node name="Collisions" type="Node" parent="Rooms/Floor 2"]
 
