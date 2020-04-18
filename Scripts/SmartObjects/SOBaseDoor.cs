@@ -52,6 +52,8 @@ public class SOBaseDoor : SmartObject
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        base._Ready();
+        
 		EmitSignal(nameof(OnStateChanged), currentState);
 
 		itemActionMap.Add(itemType.None, TryToggleDoor);

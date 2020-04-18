@@ -6,11 +6,6 @@ public class BackgroundSlide : Node {
     [Export] public NodePath backgroundPart1;
     [Export] public NodePath backgroundPart2;
     [Export] public float slidingSpeed;
-
-    public override void _Ready()
-    {
-        
-    }
     
     public override void _Process(float delta) {
         ((Sprite) GetNode(backgroundPart1)).MoveLocalX(delta * slidingSpeed);

@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/door_1.png-b404b8cca390986401e7f3f425974454.stex"
+path="res://.import/FuelCell.png-f93e0953dc7073168a4469f3a3a541b2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Models/door_1.png"
-dest_files=[ "res://.import/door_1.png-b404b8cca390986401e7f3f425974454.stex" ]
+source_file="res://Images/FuelCell.png"
+dest_files=[ "res://.import/FuelCell.png-f93e0953dc7073168a4469f3a3a541b2.stex" ]
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
