@@ -55,6 +55,13 @@
   <ItemGroup>
     <Compile Include="new_script.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\CharacterMovement.cs" />
+    <Compile Include="Scripts\CharacterStates\CharacterStateClimbing.cs" />
+    <Compile Include="Scripts\CharacterStates\CharacterStateClimbingIdle.cs" />
+    <Compile Include="Scripts\CharacterStates\CharacterStateIdle.cs" />
+    <Compile Include="Scripts\CharacterStates\CharacterStateMoving.cs" />
+    <Compile Include="Scripts\CharacterStates\CharacterStates.cs" />
+    <Compile Include="Scripts\Ladder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
