@@ -19,7 +19,7 @@ scale_random = 0.43
 
 [node name="FuelCellCatalyst" type="Node2D"]
 script = ExtResource( 1 )
-SpawnRate = 5
+SpawnRate = 45
 DropLocationPath = NodePath("DropLocation")
 
 [node name="Particles2D" type="Particles2D" parent="."]
