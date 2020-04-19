@@ -61,6 +61,7 @@
     <Compile Include="Scripts\EndGameDetector.cs" />
     <Compile Include="Scripts\FuelCell.cs" />
     <Compile Include="Scripts\AccessCard.cs" />
+    <Compile Include="Scripts\Game.cs" />
     <Compile Include="Scripts\ItemGenerator\FuelCellGenerator.cs" />
     <Compile Include="Scripts\Items\FireHydrant.cs" />
     <Compile Include="Scripts\Items\Syringe.cs" />
