@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/SmartObjects/SmartObjectScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/SmartObjects/SOBaseDoor.cs" type="Script" id=2]
 [ext_resource path="res://Models/door_1.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/SmartObjects/DoorBody.cs" type="Script" id=4]
+[ext_resource path="res://Images/Keypad.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14.4305, 64.4361 )
 
 [node name="DoorSmartObject" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="PlayerShape" parent="PlayerArea" index="0"]
+position = Vector2( 0, 0 )
 
 [node name="Body" type="Node2D" parent="." index="1"]
 script = ExtResource( 4 )
@@ -25,8 +29,13 @@ collision_mask = 4
 [node name="DoorShape" type="CollisionShape2D" parent="Body/PhysicBody" index="0"]
 shape = SubResource( 1 )
 
-[node name="PlayerShape" parent="PlayerArea" index="0"]
+[node name="ClickArea" parent="." index="2"]
 position = Vector2( 0, 0 )
 
-[node name="ClickArea" parent="." index="3"]
-position = Vector2( 0, 0 )
+[node name="Keypad" type="Sprite" parent="." index="3"]
+position = Vector2( -44.8214, 6.94213 )
+texture = ExtResource( 5 )
+
+[node name="Keypad2" type="Sprite" parent="." index="4"]
+position = Vector2( 51.5917, 7.26566 )
+texture = ExtResource( 5 )
