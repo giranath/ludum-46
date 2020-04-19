@@ -25,22 +25,34 @@ centralRoom = NodePath("Rooms/RoomCryo")
 [node name="Ship2" type="Node2D" parent="."]
 
 [node name="White" type="Polygon2D" parent="Ship2"]
-position = Vector2( 1.84167, -0.789116 )
+position = Vector2( 1.84167, -2.08147 )
 color = Color( 0.690196, 0.690196, 0.690196, 1 )
 polygon = PoolVector2Array( -20.7341, 3.62991, 11.0316, -20.8053, 797.121, -26.1215, 912.753, -144.474, 910.032, -515.856, 827.851, -626.721, 55.1575, -626.722, 2.66187, -662.777, -44.9513, -745.76, -44.9906, -817.747, -13.6627, -885.878, 13.5449, -933.492, 60.5991, -966.815, 1568.45, -967.5, 1631.03, -1030.08, 1631.03, -1224.61, 2888.82, -1225.28, 3006.37, -1186.52, 3049.9, -1132.1, 3049.9, -1091.29, 3000.93, -1038.24, 2911.14, -987.905, 2796.87, -989.265, 2753.34, -987.905, 2754.7, -915.805, 2727.44, -887.805, 2560.17, -886.342, 2560.17, -842.344, 2586.51, -813.252, 2870.33, -812.416, 2926.11, -787.929, 2950.6, -759.361, 2947.87, -612.44, 3000.93, -568.908, 3433.53, -564.828, 3572.29, -528.097, 3679.76, -495.448, 3785.87, -442.394, 3806.27, -390.7, 3788.59, -339.005, 3690.64, -272.347, 3576.37, -228.815, 3455.29, -174.4, 3141.05, -178.481, 3067.59, -124.066, 3060.78, -8.4342, 3034.94, 52.7827, 2954.67, 101.756, 2817.28, 101.756, 2641.79, 101.756, 2573.77, 130.324, 2557.45, 201.064, 2564.25, 492.184, 2508.07, 564.8, 2399.64, 590.131, 1577.33, 594.148, 1410.35, 543.648, 1117.62, 324.229, 6.95905, 318.844, -22.3632, 279.748 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Window" type="Polygon2D" parent="Ship2"]
 position = Vector2( 0.340576, 0 )
 color = Color( 0.101961, 0.0980392, 0.0980392, 1 )
 polygon = PoolVector2Array( 3591.91, -492.652, 3390.98, -443.193, 3390.98, -334.631, 3604.76, -267.823, 3690.35, -272.179, 3788.48, -337.971, 3808.53, -389.747, 3785.57, -442.25, 3678.25, -494.968 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Polygon2D" type="Polygon2D" parent="Ship2"]
 color = Color( 0.482353, 0.101961, 0.101961, 1 )
 polygon = PoolVector2Array( 2564.92, 491.621, 912.558, -144.653, 797.466, -26.1483, 2400.34, 589.876, 2509.22, 564.395 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Polygon2D2" type="Polygon2D" parent="Ship2"]
 color = Color( 0.101961, 0.0980392, 0.0980392, 1 )
 polygon = PoolVector2Array( 34.5861, -948.09, 13.5044, -933.069, -14.1652, -885.108, -45.535, -818.956, -45.7876, -745.443, 2.17307, -662.434, 28.5251, -645.041 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Ship" type="Sprite" parent="."]
 visible = false
@@ -55,13 +67,18 @@ __meta__ = {
 position = Vector2( 0, 1.36035 )
 texture = ExtResource( 17 )
 polygon = PoolVector2Array( 52.4742, -936.392, 1300.95, -938.676, 1299, -879.36, 1410, -880.36, 1411, -692.36, 1650.1, -690.052, 1647.71, -1197.08, 2728.74, -1194.69, 2728.74, -910.084, 1712.29, -905.3, 1714.68, -690.051, 2343.68, -687.659, 2348.47, -594.385, 2348.47, -594.385, 2408.26, -591.993, 2410.65, -556.118, 3369.71, -553.727, 3367.31, -266.728, 2396.3, -261.945, 2398.69, 474.686, 1640.54, 474.686, 1640.54, -104.095, 1284.18, -99.3121, 1286.57, -6.03735, 1028.27, -6.03735, 1023.49, 292.92, 4.64166, 285.745, 4.64166, 3.52948, 942.172, 5.92108, 939.781, -309.778, 1212.43, -309.778, 1212.43, -656.569, 52.4751, -656.569 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Rooms" type="Node2D" parent="."]
 
 [node name="RoomLocker" parent="Rooms" instance=ExtResource( 3 )]
-position = Vector2( 1024.1, -288 )
+position = Vector2( 1022.81, -288 )
 connectedLeftRoom = NodePath("../RoomEngine")
 connectedRightRoom = NodePath("../RoomPowerGenerator")
+connectedTopRoom = NodePath("../RoomCryo")
+connectedBottomRoom = NodePath("../RoomLocker3")
 
 [node name="RoomClinic" parent="Rooms" instance=ExtResource( 2 )]
 position = Vector2( 47.1025, -944.24 )
@@ -75,32 +92,32 @@ position = Vector2( 1707.97, -1195.41 )
 connectedBottomRoom = NodePath("../RoomCryo")
 
 [node name="RoomHardware" parent="Rooms" instance=ExtResource( 10 )]
-position = Vector2( 1891.56, -101.496 )
+position = Vector2( 1891.56, -100.33 )
 connectedLeftRoom = NodePath("../RoomLocker2")
-connectedTopRoom = NodePath("../RoomCryo")
+connectedTopRoom = NodePath("../RoomPowerGenerator")
 connectedBottomRoom = NodePath("")
 
 [node name="RoomPowerGenerator" parent="Rooms" instance=ExtResource( 11 )]
 position = Vector2( 1281, -390.389 )
 connectedLeftRoom = NodePath("../RoomLocker")
-connectedTopRoom = NodePath("../RoomCryo")
 connectedBottomRoom = NodePath("../RoomHardware")
 roomName = "Power"
 
 [node name="RoomLocker3" parent="Rooms" instance=ExtResource( 3 )]
 position = Vector2( 1071, -944 )
 connectedLeftRoom = NodePath("../RoomClinic")
-connectedBottomRoom = NodePath("../RoomCryo")
+connectedRightRoom = NodePath("../RoomCryo")
+connectedBottomRoom = NodePath("../RoomLocker")
 
 [node name="RoomCryo" parent="Rooms" instance=ExtResource( 12 )]
-position = Vector2( 1327, -682.995 )
+position = Vector2( 1329.96, -684.287 )
 connectedLeftRoom = NodePath("../RoomLocker3")
 connectedRightRoom = NodePath("../RoomHallway")
 connectedTopRoom = NodePath("../RoomWorkshop")
-connectedBottomRoom = NodePath("../RoomPowerGenerator")
+connectedBottomRoom = NodePath("../RoomLocker")
 
 [node name="RoomHallway" parent="Rooms" instance=ExtResource( 9 )]
-position = Vector2( 2350.93, -553 )
+position = Vector2( 2353.26, -553 )
 connectedLeftRoom = NodePath("../RoomCryo")
 connectedRightRoom = NodePath("../RoomCockpit")
 
@@ -389,39 +406,44 @@ scale = Vector2( 2.03998, 1 )
 
 [node name="DoorWorkshop" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 1744, -981.798 )
-
-[node name="DoorWorkshop2" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 1299.2, -730.875 )
+roomPath = NodePath("../../Rooms/RoomWorkshop")
+blockedDirection = 3
 
 [node name="DoorWorkshop3" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 1055.1, -730.498 )
-
-[node name="DoorWorkshop4" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 1050.56, -78.0366 )
+roomPath = NodePath("../../Rooms/RoomClinic")
+blockedDirection = 1
 
 [node name="DoorWorkshop5" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 937.507, 212.866 )
+position = Vector2( 1052.98, -71.7238 )
+roomPath = NodePath("../../Rooms/RoomEngine")
+blockedDirection = 1
 
 [node name="DoorWorkshop6" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 1921.12, 405.748 )
+roomPath = NodePath("../../Rooms/RoomOxygenRefinery")
 
 [node name="DoorWorkshop7" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 1918.16, 117.694 )
+roomPath = NodePath("../../Rooms/RoomHardware")
 
 [node name="DoorWorkshop8" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 2269.79, -176.918 )
+roomPath = NodePath("../../Rooms/RoomPowerGenerator")
+blockedDirection = 3
 
 [node name="DoorWorkshop9" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 1341.83, -176.918 )
-
-[node name="DoorWorkshop10" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 1402.84, -474.283 )
+roomPath = NodePath("../../Rooms/RoomPowerGenerator")
 
 [node name="DoorWorkshop11" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 2319.79, -470.021 )
+roomPath = NodePath("../../Rooms/RoomCryo")
+blockedDirection = 1
 
 [node name="DoorWorkshop12" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 2830.64, -334.251 )
+roomPath = NodePath("../../Rooms/RoomCockpit")
 
 [node name="Ladders" type="Node2D" parent="."]
 
