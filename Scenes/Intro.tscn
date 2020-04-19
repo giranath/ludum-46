@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Fonts/PressStart2P-16.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Images/Star-Background.png" type="Texture" id=2]
-[ext_resource path="res://Images/KeyboardKey.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/UI/KeyboardKey.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/UI/MouseLeft.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/UI/MouseRight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://StyleBoxes/ButtonDown.tres" type="StyleBox" id=6]
+[ext_resource path="res://StyleBoxes/ButtonUp.tres" type="StyleBox" id=7]
+[ext_resource path="res://Scripts/UI/PlayGame.cs" type="Script" id=8]
+[ext_resource path="res://Scenes/Game.tscn" type="PackedScene" id=9]
 
 [node name="Intro" type="Control"]
 anchor_right = 1.0
@@ -12,7 +18,7 @@ __meta__ = {
 }
 
 [node name="Star-Background" type="Sprite" parent="."]
-position = Vector2( 403.553, 346.335 )
+position = Vector2( 952, 576 )
 texture = ExtResource( 2 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -25,47 +31,72 @@ custom_fonts/normal_font = ExtResource( 1 )
 text = "John,
 
 If you hear this message that means that I failed.
-Hopefully you were awoken and you can continue our endeavor. Keep this piece of !#^$ of a ship floating so we can colonize Nekrak.
-                                            - John"
+Hopefully you were awoken and you can continue our endeavor. 
+Keep this piece of !#^$ of a ship floating so we can colonize Nekrak.
+                                                             
+															  - John"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
-anchor_left = 0.1
-anchor_top = 0.1
+[node name="Control" type="CenterContainer" parent="."]
+anchor_left = 0.8
+anchor_top = 0.8
 anchor_right = 0.9
 anchor_bottom = 0.9
-margin_left = 177.6
-margin_top = 188.0
-margin_right = 177.6
-margin_bottom = 188.0
-rect_pivot_offset = Vector2( 57.6, 76 )
-custom_fonts/normal_font = ExtResource( 1 )
-text = "Climb"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="KeyboardKey" type="Sprite" parent="."]
-position = Vector2( 152, 264 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 3 )
+[node name="Button" type="Button" parent="Control"]
+margin_top = 3.0
+margin_right = 200.0
+margin_bottom = 103.0
+rect_min_size = Vector2( 200, 100 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 1 )
+text = "Play"
+script = ExtResource( 8 )
+Intro = NodePath("../..")
+ground = ExtResource( 9 )
 
-[node name="KeyboardKey3" type="Sprite" parent="."]
-position = Vector2( 152, 352 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 3 )
+[node name="KeyboardKeyA" parent="." instance=ExtResource( 3 )]
+position = Vector2( 224, 352 )
+Key = "A"
 
-[node name="KeyboardKey4" type="Sprite" parent="."]
-position = Vector2( 232, 352 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 3 )
+[node name="KeyboardKeyD" parent="." instance=ExtResource( 3 )]
+position = Vector2( 296, 352 )
+Key = "D"
+Description = "to move"
 
-[node name="KeyboardKey2" type="Sprite" parent="."]
-position = Vector2( 232, 264 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="KeyboardKeyW" parent="." instance=ExtResource( 3 )]
+position = Vector2( 224, 448 )
+Key = "W"
+
+[node name="KeyboardKeyS" parent="." instance=ExtResource( 3 )]
+position = Vector2( 296, 448 )
+Key = "S"
+Description = "to climb"
+
+[node name="KeyboardKeyQ" parent="." instance=ExtResource( 3 )]
+position = Vector2( 224, 544 )
+Key = "Q"
+
+[node name="KeyboardKeyE" parent="." instance=ExtResource( 3 )]
+position = Vector2( 296, 544 )
+Key = "E"
+Description = "to pickup objects"
+
+[node name="KeyboardKeySpace" parent="." instance=ExtResource( 3 )]
+position = Vector2( 256, 640 )
+Key = "_"
+Description = "to jump"
+
+[node name="Node2D" parent="KeyboardKeySpace" instance=ExtResource( 4 )]
+position = Vector2( 512, -288 )
+
+[node name="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 768, 432 )
+[connection signal="pressed" from="Control/Button" to="Control/Button" method="Pressed"]

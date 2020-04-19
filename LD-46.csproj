@@ -88,6 +88,8 @@
     <Compile Include="Scripts\Station.cs" />
     <Compile Include="Scripts\testArea.cs" />
     <Compile Include="Scripts\TimedRepeater.cs" />
+    <Compile Include="Scripts\UI\KeyboardKey.cs" />
+    <Compile Include="Scripts\UI\PlayGame.cs" />
     <Compile Include="Scripts\UI\UIManager.cs" />
     <Compile Include="Scripts\UI\DialogUI.cs" />
   </ItemGroup>
