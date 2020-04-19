@@ -69,7 +69,7 @@ public class DisasterManager : Node
 		} while (!disaster.IsAvailable());
 
 
-		gameState.uiManager.DialogUI.SetText(5, "A disaster happened in the ship");
+		gameState.uiManager.DialogUI.SetText(5, "A disaster happened in the ship", Colors.Red);
 		disaster.Process();
 
 		TimedRepeater = new TimedRepeater(rand.RandfRange(DisasterCooldownMin, DisasterCooldownMax), 1, LaunchDisaster);

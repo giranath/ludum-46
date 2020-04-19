@@ -14,14 +14,14 @@ public class DialogUI : Node
 
 	private List<Message> messageQueue = new List<Message>();
 	
-    private class Message
-    {
-        public String message;
+	private class Message
+	{
+		public String message;
 
-        public float time;
+		public float time;
 
-        public Color color;
-    }
+		public Color color;
+	}
 
 	public override void _Ready()
 	{
@@ -39,30 +39,32 @@ public class DialogUI : Node
 			{
 				var message = messageQueue.First();
 
-				SetText(message.time, message.message, message.color);
+				ShowMessage(message);
 				messageQueue.Remove(message);
 			}
 		}
 	}
 
+	private void ShowMessage(Message message)
+	{
+		if (TimedRepeater == null)
+		{
+			DialogLabel.Text = message.message;
+			DialogLabel.AddColorOverride("font_color", message.color);
+			TimedRepeater = new TimedRepeater(message.time, 1, TimerExpired);
+		}
+	}
+
 	public void SetText(float timeShown, string text, Color color)
 	{
-		if (TimedRepeater == null && messageQueue.Count == 0)
-		{
-			DialogLabel.Text = text;
-			TimedRepeater = new TimedRepeater(timeShown, 1, TimerExpired);
-		}
-		else
-		{
-			if(!messageQueue.Any(x => x.message.Equals(text)))
+		if(!messageQueue.Any(x => x.message.Equals(text)))
+		{ 
+			messageQueue.Add(new Message 
 			{ 
-				messageQueue.Add(new Message 
-                { 
-                    message = text,
-                    color = color,
-                    time = timeShown
-                });
-			}
+				message = text,
+				color = color,
+				time = timeShown
+			});
 		}
 	}
 
