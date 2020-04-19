@@ -30,7 +30,7 @@ playerPath = NodePath("../Character")
 script = ExtResource( 4 )
 
 [node name="FuelManager" parent="." instance=ExtResource( 5 )]
-fuelReduction = 10.0
+fuelReduction = 1.5
 
 [node name="Background" type="Node2D" parent="."]
 script = ExtResource( 7 )
