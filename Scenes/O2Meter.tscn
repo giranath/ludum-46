@@ -10,12 +10,21 @@ badColor = Color( 0.796078, 0.00784314, 0.00784314, 1 )
 
 [node name="FrontPanel" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-
-[node name="ProgressColor" type="ColorRect" parent="."]
-margin_left = 1.0
-margin_top = -15.0
-margin_right = 5.0
-margin_bottom = 15.0
 __meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ProgressRoot" type="Node2D" parent="."]
+position = Vector2( 3, 15 )
+rotation = 3.14159
+
+[node name="ProgressColor" type="ColorRect" parent="ProgressRoot"]
+margin_left = -2.0
+margin_right = 2.0
+margin_bottom = 30.0
+grow_vertical = 2
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
