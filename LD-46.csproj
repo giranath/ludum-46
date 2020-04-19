@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\SmartObjects\Button.cs" />
     <Compile Include="Scripts\BackgroundSlide.cs" />
     <Compile Include="Scripts\FuelCell.cs" />
     <Compile Include="Scripts\AccessCard.cs" />

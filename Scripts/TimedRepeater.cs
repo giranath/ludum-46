@@ -2,59 +2,72 @@ using System;
 
 public class TimedRepeater
 {
-    public Action<int> OnCooldown;
+	public Action<int> OnCooldown;
 
-    private float Cooldown;
+	private float Cooldown;
 
-    private float Current;
+	private float Current;
 
-    private int Count = 0;
+	private int Count = 0;
 
-    private int Repeatition;
+	private int Repeatition;
 
-    private Action endAction;
+	private Action endAction;
 
-    public TimedRepeater(float cooldown, int repeat = 0, Action<int> onCooldown = null)
-    {
-        if (onCooldown != null)
-        {
-            OnCooldown += onCooldown;
-        }
+	private bool done = false;
 
-        Cooldown = cooldown;
-        Repeatition = repeat;
-        Current = Cooldown;
-    }
+	public TimedRepeater(float cooldown, int repeat = 0, Action<int> onCooldown = null)
+	{
+		if (onCooldown != null)
+		{
+			OnCooldown += onCooldown;
+		}
 
-    public void _Process(float delta)
-    {
-        Current -= delta;
+		Cooldown = cooldown;
+		Repeatition = repeat;
+		Current = Cooldown;
+	}
 
-        if (ShouldRepeat() && Current <= 0)
-        {
-            Count += 1;
-            OnCooldown.Invoke(Count);
-            Current = Cooldown;
-        }
-    }
+	public void _Process(float delta)
+	{
+		Current -= delta;
 
-    private bool ShouldRepeat()
-    {
-        if(Repeatition == 0)
-        {
-            return true;
-        }
+		if (IsActive())
+		{
+			Count += 1;
+			OnCooldown.Invoke(Count);
+			Current = Cooldown;
 
-        if(Count <= Repeatition)
-        {
-            return true;
-        }
+			done = IsDone();
+			if(done)
+			{
+				endAction?.Invoke();
+			}
+		}
+	}
 
-        return false;
-    }
+	private bool IsActive()
+	{
+		if(!done && (Repeatition == 0 || Count <= Repeatition) && Current <= 0)
+		{
+			return true;
+		}
 
-    public void BindEnded(Action endedAction)
-    {
-        endAction = endedAction;
-    }
+		return false;
+	}
+
+	private bool IsDone()
+	{
+		if ((Repeatition != 0 && Count == Repeatition))
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	public void BindEnded(Action endedAction)
+	{
+		endAction = endedAction;
+	}
 }
