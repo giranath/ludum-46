@@ -5,6 +5,7 @@
 [ext_resource path="res://Images/Terminal.png" type="Texture" id=3]
 
 [node name="Node2D" instance=ExtResource( 1 )]
+scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
 
 [node name="PlayerShape" parent="PlayerArea" index="0"]

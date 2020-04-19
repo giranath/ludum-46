@@ -14,4 +14,4 @@ visible = true
 position = Vector2( -500.124, 196.301 )
 
 [node name="Node2D2" parent="." index="3" instance=ExtResource( 3 )]
-position = Vector2( -369.491, 195.008 )
+position = Vector2( 445.976, 195.285 )
