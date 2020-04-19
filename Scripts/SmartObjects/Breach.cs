@@ -1,10 +1,20 @@
 using Godot;
 using System;
 
-public class Breach : SmartObject
+public class Breach : SmartObject, Destroyable
 {
     private Sprite breachSprite;
     private Sprite repairedSprite;
+
+    [Export]
+    NodePath roomPath;
+
+    [Export]
+    float OxygenWithdrawableValue;
+
+    private Room room;
+
+    private TimedRepeater oxygenWithdrawalRepeater;
 
     [Signal]
     public delegate void OnInteractionInvalid();
@@ -37,6 +47,20 @@ public class Breach : SmartObject
         repairedSprite = GetNode<Sprite>("./RepairSprite");
 
         itemActionMap.Add(itemType.DuckTape, TryRepair);
+
+        room = GetNode<Room>(roomPath);
+
+        oxygenWithdrawalRepeater = new TimedRepeater(1.0f, 0, WithdrawOxygenFromRoom);
+        
+        gameState.destroyables.Add(this);
+    }
+
+    private void WithdrawOxygenFromRoom(int count)
+    {
+        if(currentState == State.Active)
+        {
+            room.Graph.TryAddPropertyOfRoom(room, "oxygen", -OxygenWithdrawableValue);
+        }
     }
 
     private void ChangeState(State newState)
@@ -58,5 +82,15 @@ public class Breach : SmartObject
                 repairedSprite.Visible = true;
                 break;
         }
+    }
+
+     public void Destroy()
+     {
+         ChangeState(State.Active);
+     }
+
+    public void Repair(Item value)
+    {
+        // DO nothing
     }
 }

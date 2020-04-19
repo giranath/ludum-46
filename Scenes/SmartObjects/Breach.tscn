@@ -13,6 +13,7 @@ extents = Vector2( 31.3631, 32.0737 )
 
 [node name="Breach" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
+OxygenWithdrawableValue = 10.0
 
 [node name="PlayerShape" parent="PlayerArea" index="0"]
 position = Vector2( 0, 0 )
