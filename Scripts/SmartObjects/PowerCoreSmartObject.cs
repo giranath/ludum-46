@@ -14,11 +14,11 @@ public class PowerCoreSmartObject : SmartObject, Destroyable
 			GD.Print("wow refuel");
 			item.QueueFree();
 		}
-        else
-        { 
-		    gameState.uiManager.DialogUI.SetText(3, "I wouldn't touch this too much. Maybe you need a power cell?", Colors.White);
-        }
-    }
+		else
+		{ 
+			gameState.uiManager.DialogUI.SetText(3, "I wouldn't touch this too much. Maybe you need a power cell?", Colors.White);
+		}
+	}
 
 	public void Repair(Item value)
 	{

@@ -37,6 +37,7 @@ public class CharacterStateIdle : CharacterStates
 		{
 			return new CharacterStateClimbing();
 		}
+
 		body.MoveAndSlide(characterMovement.Velocity, Vector2.Up);
 		return this;
 	}

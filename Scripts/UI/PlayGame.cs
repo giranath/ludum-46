@@ -21,6 +21,3 @@ public class PlayGame : Node
 		treeRoot.AddChild(newGround);
 	}
 }
-
-
-

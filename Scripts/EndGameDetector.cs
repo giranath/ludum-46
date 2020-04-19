@@ -51,6 +51,8 @@ public class EndGameDetector : Node2D
             if(losingTimeAcc == 0.0f)
             {
                 EmitSignal(nameof(StartLosing));
+                 GameState gameState = GetNode<GameState>("/root/GameState");
+                 gameState.uiManager.DialogUI.SetText(2.0f, "Cryogenic Chambers have not enough oxygen to keep people alive", new Color(1.0f, 0.0f, 0.0f, 1.0f));
             }
 
             losingTimeAcc += delta;

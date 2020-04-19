@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/CharacterMovement.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/Inventory.cs" type="Script" id=2]
 [ext_resource path="res://Audio/pick.wav" type="AudioStream" id=3]
 [ext_resource path="res://Audio/drop.wav" type="AudioStream" id=4]
 [ext_resource path="res://Scripts/CharacterAudio.vs" type="Script" id=5]
+[ext_resource path="res://Images/blood.png" type="Texture" id=6]
 
 [sub_resource type="MeshTexture" id=1]
 
@@ -20,10 +21,21 @@
 radius = 83.7127
 height = 438.747
 
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 2
+emission_box_extents = Vector3( 20, 50, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 0.15
+initial_velocity_random = 0.55
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
 [node name="Character" type="KinematicBody2D"]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 1 )
+BloodParticlesPath = NodePath("Blood")
 RunSpeed = 120.0
 ClimbingSpeed = 60.0
 JumpForce = 120.0
@@ -120,5 +132,12 @@ stream = ExtResource( 3 )
 
 [node name="DropAudio" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource( 4 )
+
+[node name="Blood" type="Particles2D" parent="."]
+position = Vector2( -1.19748, -95.7981 )
+emitting = false
+amount = 25
+process_material = SubResource( 7 )
+texture = ExtResource( 6 )
 [connection signal="ItemDropped" from="Inventory" to="Audio" method="_on_Inventory_ItemDropped"]
 [connection signal="ItemPicked" from="Inventory" to="Audio" method="_on_Inventory_ItemPicked"]
