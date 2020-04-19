@@ -65,7 +65,7 @@ public class RoomGraph : Node
 			foreach(float neighbor in neighborsProperties)
 			{
 				// Decay neighbor influence based on distance
-				float influence = neighbor * Mathf.Exp(-Decay);
+				float influence = neighbor * Mathf.Exp(-Decay * delta);
 
 				maxInfluence = Mathf.Max(influence, maxInfluence);
 				minInfluence = Mathf.Min(influence, minInfluence);
@@ -73,7 +73,7 @@ public class RoomGraph : Node
 
 			// TODO: How to add minInfluence
 
-			return Mathf.Lerp(current, maxInfluence, Momentum);
+			return Mathf.Lerp(current, maxInfluence, Momentum * delta);
 		}
 	}
 
@@ -233,12 +233,13 @@ public class RoomGraph : Node
 	{
 		// Need to setup correctly
 		ExponentialRoomPropertyProvider provider = new ExponentialRoomPropertyProvider();
-		provider.Decay = 0.2f;
-		provider.Momentum = 0.1f;
+		provider.Decay = 0.6f;
+		provider.Momentum = 0.4f;
 
-		RegisterNewRoomProperty("test", provider);
+		RegisterNewRoomProperty("oxygen", provider);
 
 		Room centralRoomNode = GetNode<Room>(centralRoom);
+
 
 		if(centralRoomNode != null)
 		{
@@ -254,11 +255,12 @@ public class RoomGraph : Node
 			GD.PushError("No central room defined");
 		}
 
-
 		foreach(RoomNode node in nodes)
 		{
 			node.room.Connect("PlayerEntered", this, "OnEnterRoom");
 		}
+
+        TrySetPropertyOfRoom(centralRoomNode, "oxygen", 100.0f);
 	}
 
 	private void OnEnterRoom(Room enteredRoom)
