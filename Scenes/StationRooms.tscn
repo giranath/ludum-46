@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/RoomGraph.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Rooms/BigRooms/RoomClinic.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Images/metal-wall-tiny.png" type="Texture" id=17]
 [ext_resource path="res://Scenes/SmartObjects/Breach.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Scenes/EndGameDetector.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/SmartObjects/SOFire.tscn" type="PackedScene" id=20]
 
 [node name="Station" type="Node2D"]
 script = ExtResource( 1 )
@@ -522,3 +523,85 @@ roomPath = NodePath("../Rooms/RoomWorkshop")
 [node name="EndGameDetector" parent="." instance=ExtResource( 19 )]
 position = Vector2( 1751.25, -484.486 )
 roomPath = NodePath("../Rooms/RoomCryo")
+
+[node name="Fire" type="Node2D" parent="."]
+
+[node name="Fire0" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 968.885, 275.204 )
+RoomPath = NodePath("../../Rooms/RoomEngine")
+
+[node name="Fire1" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 144.163, 256.681 )
+RoomPath = NodePath("../../Rooms/RoomEngine")
+
+[node name="Fire2" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 2625.03, -938.74 )
+RoomPath = NodePath("../../Rooms/RoomWorkshop")
+
+[node name="Fire3" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 474.225, -697.186 )
+RoomPath = NodePath("../../Rooms/RoomClinic")
+
+[node name="Fire4" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 2177.26, -139.976 )
+RoomPath = NodePath("../../Rooms/RoomPowerGenerator")
+
+[node name="Fire5" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 926.584, -702.221 )
+RoomPath = NodePath("../../Rooms/RoomClinic")
+
+[node name="Fire6" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 2444.69, -941.71 )
+RoomPath = NodePath("../../Rooms/RoomWorkshop")
+
+[node name="Fire7" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 2007.62, -946.989 )
+RoomPath = NodePath("../../Rooms/RoomWorkshop")
+
+[node name="Fire8" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 1473.55, -432.823 )
+RoomPath = NodePath("../../Rooms/RoomCryo")
+
+[node name="Fire9" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 1171.9, -35.407 )
+RoomPath = NodePath("../../Rooms/RoomLocker")
+
+[node name="Fire10" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 1640.89, -123.917 )
+RoomPath = NodePath("../../Rooms/RoomPowerGenerator")
+
+[node name="Fire11" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 2103.39, -415.268 )
+RoomPath = NodePath("../../Rooms/RoomCryo")
+
+[node name="Fire12" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 1840.6, -409.994 )
+RoomPath = NodePath("../../Rooms/RoomCryo")
+
+[node name="Fire13" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 3285.91, -282.794 )
+RoomPath = NodePath("../../Rooms/RoomCockpit")
+
+[node name="Fire14" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 2651.41, -292.055 )
+RoomPath = NodePath("../../Rooms/RoomHallway")
+
+[node name="Fire15" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 2330.65, 460.361 )
+RoomPath = NodePath("../../Rooms/RoomOxygenRefinery")
+
+[node name="Fire16" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 2174.32, 432.215 )
+RoomPath = NodePath("../../Rooms/RoomOxygenRefinery")
+
+[node name="Fire17" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 1754.84, 136.701 )
+RoomPath = NodePath("../../Rooms/RoomLocker2")
+
+[node name="Fire18" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 1806.66, 434.65 )
+RoomPath = NodePath("../../Rooms/RoomLocker4")
+
+[node name="Fire19" parent="Fire" instance=ExtResource( 20 )]
+position = Vector2( 2266.14, 157.758 )
+RoomPath = NodePath("../../Rooms/RoomHardware")

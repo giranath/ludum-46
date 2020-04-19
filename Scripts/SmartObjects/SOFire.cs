@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class SOFire : SmartObject
+public class SOFire : SmartObject, Destroyable
 {
 	[Export]
 	public NodePath RoomPath;
@@ -15,11 +15,6 @@ public class SOFire : SmartObject
 	[Export]
 	public float oxygenConsumption;
 
-	[Export]
-	public NodePath ParticlesPath;
-
-	private TimedRepeater DestroyCooldown;
-
 	private TimedRepeater OxygenEater;
 	
 	private Particles2D particles;
@@ -28,53 +23,19 @@ public class SOFire : SmartObject
 
 	private int fisted = 10;
 
-	public void PutOut(Item item)
-	{
-		if (item == null)
-		{
-			fisted -= 1;
-			gameState.player.Damage(1);
-
-			if (fisted == 0)
-			{
-				fisted = 10;
-				
-				DestroyCooldown = new TimedRepeater(destroyTime, 1, Elapsed);
-
-				particles.Emitting = false;
-			}
-		}
-		else
-		{
-			DestroyCooldown = new TimedRepeater(destroyTime, 1, Elapsed);
-
-			particles.Emitting = false;
-		}        
-	}
-
-	private void Elapsed(int count)
-	{
-	}
-
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		base._Ready();
-		itemActionMap.Add(itemType.FireExtinguisher, PutOut);
-		itemActionMap.Add(itemType.None, PutOut);
-		particles = GetNode<Particles2D>(ParticlesPath);
+
+		particles = GetNode<Particles2D>("./Particles2D");
 		Room = GetNode<Room>(RoomPath);
 
-		OxygenEater = new TimedRepeater(OxygenCosumptionTime, 0, ConsumeOxygen);
+		gameState.destroyables.Add(this);
 	}
 
 	public override void _Process(float delta)
 	{
-		if (DestroyCooldown != null)
-		{
-			DestroyCooldown._Process(delta);
-		}
-
 		if (OxygenEater != null)
 		{
 			OxygenEater._Process(delta);
@@ -88,6 +49,10 @@ public class SOFire : SmartObject
 			return;
 		}
 
+		if(playerInside)
+		{
+			gameState.player.Damage(1);
+		}
 
 		float currentRoomOxygen = 0.0f;
 		if (Room != null)
@@ -97,11 +62,16 @@ public class SOFire : SmartObject
 
 		float oxygenChange = -oxygenConsumption;
 
-		bool CanConsume = currentRoomOxygen > 0.0f;
+		bool CanConsume = currentRoomOxygen > 0.0001f;
 		if (CanConsume)
 		{
 			float consumedOxygen = Mathf.Min(currentRoomOxygen, oxygenConsumption);
 			oxygenChange = -consumedOxygen;
+		}
+		else
+		{
+			FireHydrant extinguisheritem = new FireHydrant();
+			Repair(extinguisheritem);
 		}
 
 		if (Room != null)
@@ -109,4 +79,37 @@ public class SOFire : SmartObject
 			Room.Graph.TryAddPropertyOfRoom(Room, "oxygen", -oxygenConsumption);
 		}
 	}
+
+	public void Destroy()
+	{
+		particles.Emitting = true;
+		itemActionMap.Add(itemType.FireExtinguisher, Repair);
+		itemActionMap.Add(itemType.None, Repair);
+		OxygenEater = new TimedRepeater(OxygenCosumptionTime, 0, ConsumeOxygen);
+	}
+
+	public void Repair(Item item)
+	{
+		if (item == null)
+		{
+			fisted -= 1;
+			gameState.player.Damage(1);
+
+			if (fisted == 0)
+			{
+				fisted = 10;
+
+				particles.Emitting = false;
+				OxygenEater = null;
+				itemActionMap.Clear();
+			}
+		}
+		else
+		{
+			particles.Emitting = false;
+			OxygenEater = null;
+			itemActionMap.Clear();
+		}
+	}
 }
+

@@ -8,7 +8,7 @@ coveredAreaPath = NodePath("../RoomOxygenRefinery/RoomCoverArea")
 roomName = "Oxygen Refinery"
 
 [node name="Node2D" parent="." index="3" instance=ExtResource( 2 )]
-position = Vector2( 457.211, 178.569 )
+position = Vector2( 423.691, 177.871 )
 scale = Vector2( -1, 1 )
 RoomPath = NodePath("..")
 buttonPath = NodePath("../../RoomOxygenRefinery/Node2D/Sprite/Sprite")

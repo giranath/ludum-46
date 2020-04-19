@@ -3,7 +3,7 @@ using System;
 
 public class FireHydrant : Item
 {
-	FireHydrant()
+	public FireHydrant()
 	{
 		Type = itemType.FireExtinguisher;
 	}
