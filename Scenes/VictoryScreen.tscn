@@ -1,15 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Models/victory.png" type="Texture" id=1]
 [ext_resource path="res://Images/Star-Background.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/PressStart2P-16.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/Game.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/UI/PlayGame.cs" type="Script" id=5]
+[ext_resource path="res://StyleBoxes/ButtonUp.tres" type="StyleBox" id=6]
+[ext_resource path="res://StyleBoxes/ButtonDown.tres" type="StyleBox" id=7]
 
 [node name="VictoryScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+Intro = NodePath(".")
+ground = ExtResource( 4 )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -43,3 +50,23 @@ Nekrak will be our new home
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.8
+anchor_top = 0.8
+anchor_right = 0.9
+anchor_bottom = 0.9
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+margin_right = 200.0
+margin_bottom = 100.0
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/normal = ExtResource( 6 )
+text = "Play Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Control/Button" to="." method="Pressed"]
