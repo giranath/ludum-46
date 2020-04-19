@@ -7,9 +7,6 @@
 coveredAreaPath = NodePath("../RoomOxygenRefinery/RoomCoverArea")
 roomName = "Oxygen Refinery"
 
-[node name="Platforms" parent="." index="1"]
-tile_data = PoolIntArray( 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0 )
-
 [node name="Node2D" parent="." index="3" instance=ExtResource( 2 )]
 position = Vector2( 457.211, 178.569 )
 scale = Vector2( -1, 1 )
