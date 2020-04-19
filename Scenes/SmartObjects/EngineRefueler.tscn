@@ -11,6 +11,7 @@ extents = Vector2( 60, 80 )
 
 [node name="Node2D" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+brokenLightPath = NodePath("BrokenLight")
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 position = Vector2( -0.00567627, -18.704 )

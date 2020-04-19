@@ -9,11 +9,11 @@ public class UIManager : CanvasLayer
 	[Export]
 	public NodePath ZonePromptUIPath;
 
-    [Export]
-    public Color HighlightColor;
+	[Export]
+	public Color HighlightColor;
 
-    [Export]
-    public Color UnhilightColor;
+	[Export]
+	public Color UnhilightColor;
 
 	public DialogUI DialogUI;
 
@@ -21,8 +21,8 @@ public class UIManager : CanvasLayer
 
 	public TimedRepeater bla;
 
-    private TextureRect leftHandIcon;
-    private TextureRect rightHandIcon;
+	private TextureRect leftHandIcon;
+	private TextureRect rightHandIcon;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -33,38 +33,38 @@ public class UIManager : CanvasLayer
 		var gameState = GetNode<GameState>("/root/GameState");
 		gameState.uiManager = this;
 
-        gameState.player.GetInventory().Connect("OnHandSelected", this, "OnHandSelected");
-        gameState.station.GetRooms().Connect("PlayerChangedRoom", this, "OnRoomChanged");
+		gameState.player.GetInventory().Connect("OnHandSelected", this, "OnHandSelected");
+		gameState.station.GetRooms().Connect("PlayerChangedRoom", this, "OnRoomChanged");
 
-        leftHandIcon = GetNode<TextureRect>("InventoryHBox/LeftItemIcon");
-        rightHandIcon = GetNode<TextureRect>("InventoryHBox/RightItemIcon");
+		leftHandIcon = GetNode<TextureRect>("LeftHand/LeftItemIcon");
+		rightHandIcon = GetNode<TextureRect>("RightHand/RightItemIcon");
 
-        rightHandIcon.Modulate = HighlightColor;
-        leftHandIcon.Modulate = UnhilightColor;
-    }
+		rightHandIcon.Modulate = HighlightColor;
+		leftHandIcon.Modulate = UnhilightColor;
+	}
 
 	public override void _Process(float delta)
 	{
 	}
 
-    public void OnRoomChanged(Room newRoom)
-    {
-        ZonePromptUI.SetText(1.0f, newRoom.roomName);
-    }
+	public void OnRoomChanged(Room newRoom)
+	{
+		ZonePromptUI.SetText(1.0f, newRoom.roomName, Colors.White);
+	}
 
-    public void OnHandSelected(Inventory.Hand hand)
-    {
-        leftHandIcon.Modulate = UnhilightColor;
-        rightHandIcon.Modulate = UnhilightColor;
+	public void OnHandSelected(Inventory.Hand hand)
+	{
+		leftHandIcon.Modulate = UnhilightColor;
+		rightHandIcon.Modulate = UnhilightColor;
 
-        switch (hand)
-        {
-            case Inventory.Hand.Left:
-                leftHandIcon.Modulate = HighlightColor;
-                break;
-            case Inventory.Hand.Right:
-                rightHandIcon.Modulate = HighlightColor;
-                break;
-        }
-    }
+		switch (hand)
+		{
+			case Inventory.Hand.Left:
+				leftHandIcon.Modulate = HighlightColor;
+				break;
+			case Inventory.Hand.Right:
+				rightHandIcon.Modulate = HighlightColor;
+				break;
+		}
+	}
 }

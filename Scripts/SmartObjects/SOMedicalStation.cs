@@ -54,15 +54,15 @@ public class SOMedicalStation : SmartObject
 				StationCooldown = new TimedRepeater(cooldown, 1, CooldownElapsed);
 				ParticlesSwitcher = new TimedRepeater(1, 1, ParticleSwitch);
 				CooldownSprite.Visible = true;
-			}
+                Particles.Emitting = true;
+            }
 
-			gamestate.uiManager.DialogUI.SetText(2, $"{CurrentHealth}");
-			Particles.Emitting = true;
+			gamestate.uiManager.DialogUI.SetText(2, $"{CurrentHealth}", Colors.White);
 
 		}
 		else
 		{
-			gamestate.uiManager.DialogUI.SetText(2, $"You cannot reuse the station so soon. {CurrentHealth}");
+			gamestate.uiManager.DialogUI.SetText(2, $"You cannot reuse the station so soon. {CurrentHealth}", Colors.White);
 		}
 	}
 

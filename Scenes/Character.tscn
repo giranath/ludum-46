@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/CharacterMovement.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/Inventory.cs" type="Script" id=2]
+[ext_resource path="res://Audio/pick.wav" type="AudioStream" id=3]
+[ext_resource path="res://Audio/drop.wav" type="AudioStream" id=4]
+[ext_resource path="res://Scripts/CharacterAudio.vs" type="Script" id=5]
 
 [sub_resource type="MeshTexture" id=1]
 
@@ -108,3 +111,14 @@ shape = SubResource( 6 )
 script = ExtResource( 2 )
 right = NodePath("../Polygons/Right")
 left = NodePath("../Polygons/Left")
+
+[node name="Audio" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="PickAudio" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource( 3 )
+
+[node name="DropAudio" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource( 4 )
+[connection signal="ItemDropped" from="Inventory" to="Audio" method="_on_Inventory_ItemDropped"]
+[connection signal="ItemPicked" from="Inventory" to="Audio" method="_on_Inventory_ItemPicked"]

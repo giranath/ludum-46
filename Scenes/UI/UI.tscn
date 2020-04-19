@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/UI/UIManager.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/DialogUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/UI/ZonePromptUI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Models/left_hand.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/UI/MouseLeft.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/UI/MouseRight.tscn" type="PackedScene" id=6]
 
 [node name="UIManager" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -37,9 +39,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeftItemIcon" type="TextureRect" parent="InventoryHBox"]
-anchor_right = 0.5
-margin_right = 32.0
+[node name="LeftHand" type="CenterContainer" parent="."]
+anchor_top = 0.85
+anchor_right = 0.7
+anchor_bottom = 0.85
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftItemIcon" type="TextureRect" parent="LeftHand"]
+margin_left = 656.0
+margin_right = 688.0
 margin_bottom = 32.0
 grow_horizontal = 0
 rect_min_size = Vector2( 32, 32 )
@@ -47,10 +57,42 @@ texture = ExtResource( 4 )
 expand = true
 stretch_mode = 4
 
-[node name="RightItemIcon" type="TextureRect" parent="InventoryHBox"]
-anchor_left = 0.5
+[node name="RightHand" type="CenterContainer" parent="."]
+anchor_left = 0.3
+anchor_top = 0.85
 anchor_right = 1.0
+anchor_bottom = 0.85
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightItemIcon" type="TextureRect" parent="RightHand"]
+margin_left = 656.0
+margin_right = 688.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 4 )
 stretch_mode = 4
 flip_h = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+anchor_left = 0.8
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" parent="CenterContainer2" instance=ExtResource( 5 )]
+
+[node name="CenterContainer3" type="CenterContainer" parent="."]
+anchor_left = 0.8
+anchor_top = 0.96
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" parent="CenterContainer3" instance=ExtResource( 6 )]
