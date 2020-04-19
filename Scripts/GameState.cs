@@ -9,7 +9,11 @@ public class GameState : Node
 
 	public Station station;
 
-	public float fuel { get; set; } = 75;
+    private float _fuel = 75;
+    public float Fuel { 
+        get { return _fuel; } 
+        set { this._fuel = Mathf.Clamp(value, 0.0f, maxFuel); } 
+    }
 
 	public float maxFuel = 125;
 
@@ -18,6 +22,8 @@ public class GameState : Node
 	public float requiredTravelDistance = 6000.0f;
 
 	private bool destinationReached = false;
+
+    public float currentShipSpeed = 0.0f;
 
 	[Signal]
 	public delegate void ReachedDestination();

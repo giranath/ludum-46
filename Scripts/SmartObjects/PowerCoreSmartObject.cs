@@ -7,7 +7,7 @@ public class PowerCoreSmartObject : SmartObject
 	public void refuel(Item item)
 	{
 		GameState gamestate = GetNode<GameState>("/root/GameState");
-		gamestate.fuel += 25.0f;
+		gamestate.Fuel += 25.0f;
 
 		GD.Print("wow refuel");
 		item.QueueFree();

@@ -19,7 +19,7 @@ public class O2Meter : Node2D
     public override void _Ready()
     {
         owningRoom = GetNode<Room>(owningRoomPath);
-        progressRect = GetNode<ColorRect>("./ProgressColor");
+        progressRect = GetNode<ColorRect>("./ProgressRoot/ProgressColor");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,5 +33,7 @@ public class O2Meter : Node2D
 
         Color currentColor = badColor.LinearInterpolate(goodColor, oxygenValue / 100.0f);
         progressRect.Color = currentColor;
+
+        progressRect.RectSize = new Vector2(4.0f, Mathf.Lerp(1, 30, oxygenValue / 100.0f));
     }
 }

@@ -14,6 +14,7 @@
 [node name="Station" parent="." instance=ExtResource( 1 )]
 position = Vector2( 156.314, 10.8707 )
 fuelToSpeedCurve = ExtResource( 6 )
+maxSpeed = 600.0
 
 [node name="Character" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1157.05, 295.78 )
