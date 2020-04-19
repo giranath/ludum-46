@@ -14,9 +14,10 @@
 [node name="Station" parent="." instance=ExtResource( 1 )]
 position = Vector2( 156.314, 10.8707 )
 fuelToSpeedCurve = ExtResource( 6 )
+maxSpeed = 10.0
 
 [node name="Character" parent="." instance=ExtResource( 2 )]
-position = Vector2( 318.445, 152.32 )
+position = Vector2( 1157.05, 295.78 )
 z_index = 1
 RunSpeed = 800.0
 ClimbingSpeed = 800.0
@@ -29,23 +30,23 @@ playerPath = NodePath("../Character")
 script = ExtResource( 4 )
 
 [node name="FuelManager" parent="." instance=ExtResource( 5 )]
-fuelReduction = 1.2
+fuelReduction = 1.5
 
 [node name="Background" type="Node2D" parent="."]
 script = ExtResource( 7 )
 backgroundPart1 = NodePath("Star-Background")
 backgroundPart2 = NodePath("Star-Background2")
-slidingSpeed = -1000.0
+slidingSpeed = -800.0
 
 [node name="Star-Background" type="Sprite" parent="Background"]
-position = Vector2( 6569.37, -664.622 )
+position = Vector2( 9600, 0 )
 scale = Vector2( 2.75, 2.75 )
 z_index = -12
 texture = ExtResource( 8 )
 offset = Vector2( -439.572, 95.6365 )
 
 [node name="Star-Background2" type="Sprite" parent="Background"]
-position = Vector2( 1467.4, -652.739 )
+position = Vector2( 3939.88, 0 )
 scale = Vector2( 2.75, 2.75 )
 z_index = -12
 texture = ExtResource( 8 )

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Rooms/BigRoom.tscn" type="PackedScene" id=1]
+
+[node name="RoomCryo" instance=ExtResource( 1 )]
+coveredAreaPath = NodePath("../RoomCryo/RoomCoverArea")
+roomName = "Cryogenic Chambers"

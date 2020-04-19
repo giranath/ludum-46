@@ -44,7 +44,7 @@ public class Room : Node2D
 		owningGraph = graph;
 	}
 
-    public RoomGraph Graph { get { return owningGraph; } }
+	public RoomGraph Graph { get { return owningGraph; } }
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
