@@ -39,6 +39,8 @@ public class GameState : Node
 	[Signal]
 	public delegate void ReachedDestination();
 
+    private RandomNumberGenerator rng = new RandomNumberGenerator();
+
 	public float GetDistanceToTravel() {
 		return Mathf.Clamp(requiredTravelDistance - traveledDistance, 0.0f, requiredTravelDistance);
 	}
@@ -63,5 +65,10 @@ public class GameState : Node
 
 		Node defeatSceneNode = defeatScene.Instance();
 		treeRoot.AddChild(defeatSceneNode);
+    }
+
+    public float RandomFloat()
+    {
+        return rng.Randf();
     }
 }
