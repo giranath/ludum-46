@@ -6,7 +6,7 @@ public class SmartObject : Node
 {
 	public Dictionary<itemType, Action<Item>> itemActionMap = new Dictionary<itemType, Action<Item>>();
 	
-	bool playerInside = false;
+	public bool playerInside = false;
 
 	public GameState gameState;
 
@@ -21,7 +21,6 @@ public class SmartObject : Node
 	public override void _Ready() {		
 
 		gameState = GetNode<GameState>("/root/GameState");
-
 		if(brokenLightPath != null)
 		{
 			brokenLight = GetNode<Sprite>(brokenLightPath);

@@ -29,15 +29,15 @@ color_ramp = SubResource( 2 )
 [sub_resource type="CircleShape2D" id=4]
 radius = 65.0
 
-[node name="Node2D" instance=ExtResource( 2 )]
+[node name="Fire" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
 brokenLightPath = null
 destroyTime = 1.0
 OxygenCosumptionTime = 2.0
 oxygenConsumption = 5.0
-ParticlesPath = NodePath("Particles2D")
 
 [node name="Particles2D" type="Particles2D" parent="." index="1"]
+emitting = false
 amount = 25
 process_material = SubResource( 3 )
 texture = ExtResource( 1 )
