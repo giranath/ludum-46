@@ -19,7 +19,6 @@ public class SmartObject : Node
 	float rotationSpeed = 0.5f;
 
 	public override void _Ready() {		
-		Area2D clickArea = GetNode<Area2D>("./ClickArea");
 
 		gameState = GetNode<GameState>("/root/GameState");
 
@@ -71,7 +70,7 @@ public class SmartObject : Node
 		}
 	}
 	
-	private void OnClick()
+	public virtual void OnClick()
 	{
 		
 		if(playerInside)
