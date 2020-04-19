@@ -8,7 +8,7 @@
 [ext_resource path="res://Models/door_2.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/testArea.cs" type="Script" id=7]
 [ext_resource path="res://Scripts/SmartObjects/DoorSounds.vs" type="Script" id=8]
-[ext_resource path="res://Audio/unlock_door.wav" type="AudioStream" id=9]
+[ext_resource path="res://Audio/interaction_succeed.wav" type="AudioStream" id=9]
 [ext_resource path="res://Audio/door_locked.wav" type="AudioStream" id=10]
 [ext_resource path="res://Audio/lock_door.wav" type="AudioStream" id=11]
 
@@ -65,11 +65,15 @@ script = ExtResource( 8 )
 stream = ExtResource( 10 )
 
 [node name="Unlock" type="AudioStreamPlayer2D" parent="Sounds" index="1"]
-stream = ExtResource( 9 )
+stream = ExtResource( 10 )
 
 [node name="Lock" type="AudioStreamPlayer2D" parent="Sounds" index="2"]
 stream = ExtResource( 11 )
+
+[node name="Activated" type="AudioStreamPlayer2D" parent="Sounds" index="3"]
+stream = ExtResource( 9 )
 [connection signal="InteractionFailed" from="." to="Sounds" method="_on_DoorSmartObject_InteractionFailed"]
 [connection signal="LockedStateChanged" from="." to="Sounds" method="_on_DoorSmartObject_LockedStateChanged"]
+[connection signal="OnStateChanged" from="." to="Sounds" method="_on_DoorSmartObject_OnStateChanged"]
 [connection signal="AreaClicked" from="Area2D" to="." method="OnClick"]
 [connection signal="input_event" from="Area2D" to="Area2D" method="ClickArea"]
