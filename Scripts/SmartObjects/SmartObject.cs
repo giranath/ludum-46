@@ -23,7 +23,10 @@ public class SmartObject : Node
 
 		gameState = GetNode<GameState>("/root/GameState");
 
-		brokenLight = GetNode<Sprite>(brokenLightPath);
+		if(brokenLightPath != null)
+		{
+			brokenLight = GetNode<Sprite>(brokenLightPath);
+		}
 	}
 
 	public override void _Process(float delta)

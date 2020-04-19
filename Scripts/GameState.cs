@@ -26,7 +26,7 @@ public class GameState : Node
 
     public float currentShipSpeed = 0.0f;
 
-    public Array<Destroyable> destroyables;
+    public Array<Destroyable> destroyables = new Array<Destroyable>();
 
 	[Signal]
 	public delegate void ReachedDestination();
