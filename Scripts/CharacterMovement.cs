@@ -72,7 +72,7 @@ public class CharacterMovement : KinematicBody2D
 		}
 	}
 
-	private void Damage(float damage)
+	public void Damage(float damage)
 	{
 		GD.Print("Damage : " + damage.ToString());
 		health = Mathf.Clamp(health - damage, 0.0f, maxHealth);

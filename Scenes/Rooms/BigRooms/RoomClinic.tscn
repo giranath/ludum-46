@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Rooms/BigRoom.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/SmartObjects/SOMedicalStation.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Inventory/Syringe.tscn" type="PackedScene" id=3]
 
 [node name="RoomClinic" instance=ExtResource( 1 )]
+position = Vector2( 1, 0 )
 roomName = "Medical Clinic"
+
+[node name="SOMedicalStation" parent="." index="3" instance=ExtResource( 2 )]
+position = Vector2( 93.0054, 214.542 )
+cooldown = 100.0
+
+[node name="Syringe" parent="SOMedicalStation" index="4" instance=ExtResource( 3 )]
+position = Vector2( 343.301, 32.4151 )
