@@ -14,6 +14,8 @@ public class DisasterManager : Node
 
 	private TimedRepeater TimedRepeater;
 
+	RandomNumberGenerator rand = new RandomNumberGenerator();
+
 	public override void _Ready()
 	{
 		if(DisastersPath.Count == 0)
@@ -22,6 +24,7 @@ public class DisasterManager : Node
 		}
 		else
 		{
+			GD.Print("Nb disaster : " + DisastersPath.Count.ToString());
 			Disasters = new List<Disaster>(DisastersPath.Count);
 
 			foreach (var path in DisastersPath)
@@ -48,10 +51,8 @@ public class DisasterManager : Node
 
 	public void LaunchDisaster(int count)
 	{
-		var rand = new RandomNumberGenerator();
 
 		Disaster disaster = null;
-
 		do
 		{
 			var i = rand.RandiRange(0, Disasters.Count - 1);

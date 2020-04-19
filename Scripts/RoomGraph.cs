@@ -44,7 +44,7 @@ public class RoomGraph : Node
 
 		public float GetRoomPropertyInitialValue()
 		{
-			return 0.0f;
+			return 100.0f;
 		}
 
 		public float GetRoomPropertyMaxValue()
@@ -122,6 +122,8 @@ public class RoomGraph : Node
 	private List<RoomNode> nodes = new List<RoomNode>();
 	private List<IRoomPropertyProvider> propertyProviders = new List<IRoomPropertyProvider>();
 	private List<string> propertyNames = new List<string>();
+
+    private TimedRepeater propagateRoomPropertiesRepeater;
 
 	private RoomNode FindRoom(Room roomToSearch)
 	{
@@ -272,8 +274,8 @@ public class RoomGraph : Node
 			node.room.Connect("PlayerEntered", this, "OnEnterRoom");
 		}
 
-		TrySetPropertyOfRoom(centralRoomNode, "oxygen", 100.0f);
-	}
+        propagateRoomPropertiesRepeater = new TimedRepeater(0.1f, 0, OnPropagateRoomProperties);
+    }
 
 	private void OnEnterRoom(Room enteredRoom)
 	{
@@ -431,9 +433,33 @@ public class RoomGraph : Node
 		}
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(float delta)
+    void OnPropagateRoomProperties(int repeatIndex)
+    {
+        int roomIndex = repeatIndex % nodes.Count;
+
+        RoomNode roomToPropagate = nodes[roomIndex];
+
+        float currentOxygen = roomToPropagate.propertyLayers[0];
+
+        for(int i = 0; i < roomToPropagate.connectedRooms.Count; ++i)
+        {
+            if (roomToPropagate.connectedRooms[i].state == RoomConnectionState.Opened)
+            {
+                float otherOxygen = roomToPropagate.connectedRooms[i].otherNode.propertyLayers[0];
+
+                if (otherOxygen < currentOxygen)
+                {
+                    float oxygenDiff = currentOxygen - otherOxygen;
+                    roomToPropagate.propertyLayers[0] -= oxygenDiff / 2.0f;
+                    roomToPropagate.connectedRooms[i].otherNode.propertyLayers[0] += oxygenDiff / 2.0f;
+                }
+            }
+        }
+    }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(float delta)
 	{
-		PropagateRoomProperties(delta);
-	}
+        propagateRoomPropertiesRepeater._Process(delta);
+    }
 }

@@ -5,6 +5,9 @@ public class SOBroken : Disaster
 {
 
 	GameState gameState;
+
+	RandomNumberGenerator rand = new RandomNumberGenerator();
+
 	public override bool IsAvailable()
 	{
 		return gameState.destroyables.Count != 0;
@@ -12,9 +15,9 @@ public class SOBroken : Disaster
 
 	public override void Process()
 	{
-		var rand = new RandomNumberGenerator();
+		
 		int index = rand.RandiRange(0, gameState.destroyables.Count - 1);
-
+        
 		gameState.destroyables[index].Destroy();
 	}
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/RoomGraph.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Rooms/BigRooms/RoomClinic.tscn" type="PackedScene" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://Scenes/Rooms/MediumRooms/RoomOxygenRefinery.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Rooms/SmallRooms/RoomLockerWithRightHole.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Images/metal-wall-tiny.png" type="Texture" id=17]
+[ext_resource path="res://Scenes/SmartObjects/Breach.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/EndGameDetector.tscn" type="PackedScene" id=19]
 
 [node name="Station" type="Node2D"]
 script = ExtResource( 1 )
@@ -486,3 +488,31 @@ scale = Vector2( 3, 3 )
 [node name="Ladder12" parent="Ladders" instance=ExtResource( 8 )]
 position = Vector2( 1853.04, 206.12 )
 scale = Vector2( 3, 3 )
+
+[node name="Breach" parent="." instance=ExtResource( 18 )]
+position = Vector2( 2094.79, -489.579 )
+roomPath = NodePath("../Rooms/RoomCryo")
+
+[node name="Breach2" parent="." instance=ExtResource( 18 )]
+position = Vector2( 2488.47, -359.053 )
+roomPath = NodePath("../Rooms/RoomHallway")
+
+[node name="Breach3" parent="." instance=ExtResource( 18 )]
+position = Vector2( 2065.31, 332.526 )
+roomPath = NodePath("../Rooms/RoomOxygenRefinery")
+
+[node name="Breach5" parent="." instance=ExtResource( 18 )]
+position = Vector2( 816.894, -744.315 )
+roomPath = NodePath("../Rooms/RoomClinic")
+
+[node name="Breach4" parent="." instance=ExtResource( 18 )]
+position = Vector2( 759, 160.947 )
+roomPath = NodePath("../Rooms/RoomEngine")
+
+[node name="Breach6" parent="." instance=ExtResource( 18 )]
+position = Vector2( 2001.06, -1020.02 )
+roomPath = NodePath("../Rooms/RoomWorkshop")
+
+[node name="EndGameDetector" parent="." instance=ExtResource( 19 )]
+position = Vector2( 1751.25, -484.486 )
+roomPath = NodePath("../Rooms/RoomCryo")

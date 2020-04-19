@@ -16,14 +16,17 @@ public class SmartObject : Node
 	Sprite brokenLight;
 
 	[Export]
-	float rotationSpeed = 0.1f;
+	float rotationSpeed = 0.5f;
 
 	public override void _Ready() {		
 		Area2D clickArea = GetNode<Area2D>("./ClickArea");
 
 		gameState = GetNode<GameState>("/root/GameState");
 
-		brokenLight = GetNode<Sprite>(brokenLightPath);
+		if(brokenLightPath != null)
+		{
+			brokenLight = GetNode<Sprite>(brokenLightPath);
+		}
 	}
 
 	public override void _Process(float delta)
