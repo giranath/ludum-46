@@ -54,7 +54,7 @@ __meta__ = {
 [node name="BackgroundWall" type="Polygon2D" parent="."]
 position = Vector2( 0, 1.36035 )
 texture = ExtResource( 17 )
-polygon = PoolVector2Array( 52.4742, -936.392, 1300.95, -938.676, 1299.9, -820.781, 1408.55, -819.201, 1413.33, -685.268, 1650.1, -690.052, 1647.71, -1197.08, 2728.74, -1194.69, 2728.74, -910.084, 1712.29, -905.3, 1714.68, -690.051, 2343.68, -687.659, 2348.47, -594.385, 2348.47, -594.385, 2408.26, -591.993, 2410.65, -556.118, 3369.71, -553.727, 3367.31, -266.728, 2396.3, -261.945, 2398.69, 474.686, 1640.54, 474.686, 1640.54, -104.095, 1284.18, -99.3121, 1286.57, -6.03735, 1028.27, -6.03735, 1023.49, 292.92, 4.64166, 285.745, 4.64166, 3.52948, 942.172, 5.92108, 939.781, -309.778, 1212.43, -309.778, 1212.43, -656.569, 52.4751, -656.569 )
+polygon = PoolVector2Array( 52.4742, -936.392, 1300.95, -938.676, 1299, -879.36, 1410, -880.36, 1411, -692.36, 1650.1, -690.052, 1647.71, -1197.08, 2728.74, -1194.69, 2728.74, -910.084, 1712.29, -905.3, 1714.68, -690.051, 2343.68, -687.659, 2348.47, -594.385, 2348.47, -594.385, 2408.26, -591.993, 2410.65, -556.118, 3369.71, -553.727, 3367.31, -266.728, 2396.3, -261.945, 2398.69, 474.686, 1640.54, 474.686, 1640.54, -104.095, 1284.18, -99.3121, 1286.57, -6.03735, 1028.27, -6.03735, 1023.49, 292.92, 4.64166, 285.745, 4.64166, 3.52948, 942.172, 5.92108, 939.781, -309.778, 1212.43, -309.778, 1212.43, -656.569, 52.4751, -656.569 )
 
 [node name="Rooms" type="Node2D" parent="."]
 
@@ -122,86 +122,6 @@ connectedBottomRoom = NodePath("../RoomLocker4")
 position = Vector2( 1641.18, 186.843 )
 connectedRightRoom = NodePath("../RoomOxygenRefinery")
 connectedTopRoom = NodePath("../RoomLocker2")
-
-[node name="Doors" type="Node2D" parent="."]
-
-[node name="DoorWorkshop" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 1744, -981.798 )
-
-[node name="DoorWorkshop2" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 1299.2, -730.875 )
-
-[node name="DoorWorkshop3" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 1055.1, -730.498 )
-
-[node name="DoorWorkshop4" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 1050.56, -78.0366 )
-
-[node name="DoorWorkshop5" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 937.507, 212.866 )
-
-[node name="DoorWorkshop6" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 1910.12, 405.748 )
-
-[node name="DoorWorkshop7" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 1918.16, 117.694 )
-
-[node name="DoorWorkshop8" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 2269.79, -176.918 )
-
-[node name="DoorWorkshop9" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 1341.83, -176.918 )
-
-[node name="DoorWorkshop10" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 1401.84, -470.283 )
-
-[node name="DoorWorkshop11" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 2319.79, -470.021 )
-
-[node name="DoorWorkshop12" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 2830.64, -334.251 )
-
-[node name="Ladders" type="Node2D" parent="."]
-
-[node name="Ladder" parent="Ladders" instance=ExtResource( 8 )]
-position = Vector2( 986.314, 5.27858 )
-scale = Vector2( 3, 3 )
-
-[node name="Ladder2" parent="Ladders" instance=ExtResource( 8 )]
-position = Vector2( 1256.84, -109.079 )
-scale = Vector2( 3, 3 )
-
-[node name="Ladder3" parent="Ladders" instance=ExtResource( 8 )]
-position = Vector2( 1300.55, -390.425 )
-scale = Vector2( 3, 3 )
-
-[node name="Ladder4" parent="Ladders" instance=ExtResource( 8 )]
-position = Vector2( 1351.32, -658.539 )
-scale = Vector2( 3, 3 )
-
-[node name="Ladder5" parent="Ladders" instance=ExtResource( 8 )]
-position = Vector2( 1684, -908.912 )
-scale = Vector2( 3, 3 )
-
-[node name="Ladder6" parent="Ladders" instance=ExtResource( 8 )]
-position = Vector2( 1684, -717.796 )
-scale = Vector2( 3, 3 )
-
-[node name="Ladder7" parent="Ladders" instance=ExtResource( 8 )]
-position = Vector2( 1684, -612.796 )
-scale = Vector2( 3, 3 )
-
-[node name="Ladder10" parent="Ladders" instance=ExtResource( 8 )]
-position = Vector2( 2324.62, -101.936 )
-scale = Vector2( 3, 3 )
-
-[node name="Ladder11" parent="Ladders" instance=ExtResource( 8 )]
-position = Vector2( 2375.04, -394.624 )
-scale = Vector2( 3, 3 )
-
-[node name="Ladder12" parent="Ladders" instance=ExtResource( 8 )]
-position = Vector2( 1873.04, 206.12 )
-scale = Vector2( 3, 3 )
 
 [node name="Collissions" type="Node2D" parent="."]
 
@@ -285,13 +205,18 @@ position = Vector2( 1075.32, -309.343 )
 rotation = 6.28318
 scale = Vector2( 4.39999, 1 )
 
+[node name="Wall51" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1238.2, -395.974 )
+rotation = 6.28318
+scale = Vector2( 0.91999, 1 )
+
 [node name="Wall43" parent="Collissions" instance=ExtResource( 14 )]
 position = Vector2( 1156.49, -2.40839 )
 rotation = 6.28318
 scale = Vector2( 4.24, 1 )
 
 [node name="Wall9" parent="Collissions" instance=ExtResource( 14 )]
-position = Vector2( 1356.1, -836.269 )
+position = Vector2( 1355.5, -879.378 )
 rotation = 6.28318
 scale = Vector2( 1.86873, 0.99999 )
 
@@ -396,9 +321,9 @@ rotation = 7.85397
 scale = Vector2( 1.55997, 1 )
 
 [node name="Wall10" parent="Collissions" instance=ExtResource( 14 )]
-position = Vector2( 1411.36, -701.985 )
+position = Vector2( 1411.36, -737.985 )
 rotation = 7.85397
-scale = Vector2( 4.23998, 1 )
+scale = Vector2( 4.59998, 1 )
 
 [node name="Wall24" parent="Collissions" instance=ExtResource( 14 )]
 position = Vector2( 1717.14, -796.227 )
@@ -412,6 +337,21 @@ scale = Vector2( 1.50658, 1 )
 
 [node name="Wall30" parent="Collissions" instance=ExtResource( 14 )]
 position = Vector2( 2829.03, -491.427 )
+rotation = 7.85397
+scale = Vector2( 2.10659, 1 )
+
+[node name="Wall48" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 2267.57, -330.613 )
+rotation = 7.85397
+scale = Vector2( 2.10659, 1 )
+
+[node name="Wall49" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1742.47, -1133.23 )
+rotation = 7.85397
+scale = Vector2( 2.10659, 1 )
+
+[node name="Wall50" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 939.885, 62.8497 )
 rotation = 7.85397
 scale = Vector2( 2.10659, 1 )
 
@@ -439,3 +379,83 @@ scale = Vector2( 2.03998, 1 )
 position = Vector2( 2342.89, -326.549 )
 rotation = 7.85397
 scale = Vector2( 2.03998, 1 )
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="DoorWorkshop" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1744, -981.798 )
+
+[node name="DoorWorkshop2" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1299.2, -730.875 )
+
+[node name="DoorWorkshop3" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1055.1, -730.498 )
+
+[node name="DoorWorkshop4" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1050.56, -78.0366 )
+
+[node name="DoorWorkshop5" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 937.507, 212.866 )
+
+[node name="DoorWorkshop6" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1910.12, 405.748 )
+
+[node name="DoorWorkshop7" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1918.16, 117.694 )
+
+[node name="DoorWorkshop8" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 2269.79, -176.918 )
+
+[node name="DoorWorkshop9" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1341.83, -176.918 )
+
+[node name="DoorWorkshop10" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1402.84, -474.283 )
+
+[node name="DoorWorkshop11" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 2319.79, -470.021 )
+
+[node name="DoorWorkshop12" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 2830.64, -334.251 )
+
+[node name="Ladders" type="Node2D" parent="."]
+
+[node name="Ladder" parent="Ladders" instance=ExtResource( 8 )]
+position = Vector2( 986.314, 5.27858 )
+scale = Vector2( 3, 3 )
+
+[node name="Ladder2" parent="Ladders" instance=ExtResource( 8 )]
+position = Vector2( 1256.84, -109.079 )
+scale = Vector2( 3, 3 )
+
+[node name="Ladder3" parent="Ladders" instance=ExtResource( 8 )]
+position = Vector2( 1300.55, -390.425 )
+scale = Vector2( 3, 3 )
+
+[node name="Ladder4" parent="Ladders" instance=ExtResource( 8 )]
+position = Vector2( 1351.32, -658.539 )
+scale = Vector2( 3, 3 )
+
+[node name="Ladder5" parent="Ladders" instance=ExtResource( 8 )]
+position = Vector2( 1684, -908.912 )
+scale = Vector2( 3, 3 )
+
+[node name="Ladder6" parent="Ladders" instance=ExtResource( 8 )]
+position = Vector2( 1684, -717.796 )
+scale = Vector2( 3, 3 )
+
+[node name="Ladder7" parent="Ladders" instance=ExtResource( 8 )]
+position = Vector2( 1684, -612.796 )
+scale = Vector2( 3, 3 )
+
+[node name="Ladder10" parent="Ladders" instance=ExtResource( 8 )]
+position = Vector2( 2324.62, -101.936 )
+scale = Vector2( 3, 3 )
+
+[node name="Ladder11" parent="Ladders" instance=ExtResource( 8 )]
+position = Vector2( 2375.04, -394.624 )
+scale = Vector2( 3, 3 )
+
+[node name="Ladder12" parent="Ladders" instance=ExtResource( 8 )]
+position = Vector2( 1873.04, 206.12 )
+scale = Vector2( 3, 3 )
