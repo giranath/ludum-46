@@ -13,6 +13,8 @@ public class DisasterManager : Node
 	[Export]
 	public float DisasterCooldownMax = 80.0f;
 
+    [Signal]
+    public delegate void OnDisasterApplied();
 
 	private List<Disaster> Disasters;
 
@@ -71,6 +73,7 @@ public class DisasterManager : Node
 
 		gameState.uiManager.DialogUI.SetText(5, "A disaster happened in the ship", Colors.Red);
 		disaster.Process();
+        EmitSignal(nameof(OnDisasterApplied));
 
 		TimedRepeater = new TimedRepeater(rand.RandfRange(DisasterCooldownMin, DisasterCooldownMax), 1, LaunchDisaster);
 	}

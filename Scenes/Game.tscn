@@ -67,3 +67,4 @@ __meta__ = {
 [node name="AccessCard" parent="." instance=ExtResource( 11 )]
 position = Vector2( 3050.27, -266.266 )
 key = 1
+[connection signal="OnDisasterApplied" from="DisasterManager" to="PlayerCamera" method="OnDisaster"]
