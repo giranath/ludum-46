@@ -13,5 +13,6 @@ position = Vector2( 38.7108, -26.4165 )
 texture = ExtResource( 2 )
 
 [node name="BrokenLight" type="Sprite" parent="." index="3"]
+visible = false
 position = Vector2( 38.2104, -66.407 )
 texture = ExtResource( 4 )

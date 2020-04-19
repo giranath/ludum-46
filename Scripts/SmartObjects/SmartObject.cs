@@ -16,7 +16,7 @@ public class SmartObject : Node
 	Sprite brokenLight;
 
 	[Export]
-	float rotationSpeed = 0.1f;
+	float rotationSpeed = 0.5f;
 
 	public override void _Ready() {		
 		Area2D clickArea = GetNode<Area2D>("./ClickArea");
