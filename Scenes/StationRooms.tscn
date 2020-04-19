@@ -316,9 +316,9 @@ rotation = 6.28318
 scale = Vector2( 14.8, 1 )
 
 [node name="Wall3" parent="Collissions" instance=ExtResource( 14 )]
-position = Vector2( 1299.93, -883.32 )
+position = Vector2( 1300.93, -898.32 )
 rotation = 7.85397
-scale = Vector2( 1.63997, 1 )
+scale = Vector2( 1.43997, 1 )
 
 [node name="Wall47" parent="Collissions" instance=ExtResource( 14 )]
 position = Vector2( 1055.27, -884.32 )
