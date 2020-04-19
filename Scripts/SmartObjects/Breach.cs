@@ -46,7 +46,7 @@ public class Breach : SmartObject, Destroyable
         breachSprite = GetNode<Sprite>("./BreachSprite");
         repairedSprite = GetNode<Sprite>("./RepairSprite");
 
-        itemActionMap.Add(itemType.DuckTape, TryRepair);
+        itemActionMap.Add(itemType.ToolBox, TryRepair);
 
         room = GetNode<Room>(roomPath);
 
