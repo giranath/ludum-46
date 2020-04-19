@@ -16,6 +16,9 @@ public class CharacterMovement : KinematicBody2D
 	public delegate void HealthChaged(float healthValue);
 
 	[Export]
+	public NodePath BloodParticlesPath;
+
+	[Export]
 	public float oxygenTimerDuration = 1.0f;
 
 	[Export]
@@ -44,7 +47,11 @@ public class CharacterMovement : KinematicBody2D
 
 	public Vector2 Velocity;
 
-    public Room CurrentRoom { get; set; }
+	public Room CurrentRoom { get; set; }
+
+	private Particles2D BloodParticles;
+
+	private TimedRepeater BloodParticlesTimed;
 
 	private bool FloatCompare(float a, float b, float epsilon = 0.00001f )
 	{
@@ -59,26 +66,26 @@ public class CharacterMovement : KinematicBody2D
 		}
 		else
 		{
-            float currentRoomOxygen = 0.0f;
-            if (CurrentRoom != null)
-            {
-                CurrentRoom.Graph.TryGetRoomProperty(CurrentRoom, "oxygen", out currentRoomOxygen);
-            }
+			float currentRoomOxygen = 0.0f;
+			if (CurrentRoom != null)
+			{
+				CurrentRoom.Graph.TryGetRoomProperty(CurrentRoom, "oxygen", out currentRoomOxygen);
+			}
 
-            float oxygenChange = -oxygenConsumption;
+			float oxygenChange = -oxygenConsumption;
 
 			//Todo try consuming room oxygen
 			bool CanConsume = currentRoomOxygen > 0.0f;
 			if (CanConsume)
 			{
-                float consumedOxygen = Mathf.Min(currentRoomOxygen, oxygenConsumption);
+				float consumedOxygen = Mathf.Min(currentRoomOxygen, oxygenConsumption);
 				oxygenChange = -consumedOxygen;
 			}
 			oxygen = Mathf.Clamp(oxygen + oxygenConsumption, 0.0f, maxOxygen);
-            if(CurrentRoom != null)
-            {
-                CurrentRoom.Graph.TryAddPropertyOfRoom(CurrentRoom, "oxygen", -oxygenConsumption);
-            }
+			if(CurrentRoom != null)
+			{
+				CurrentRoom.Graph.TryAddPropertyOfRoom(CurrentRoom, "oxygen", -oxygenConsumption);
+			}
 
 			EmitSignal(nameof(OxygenChanged), oxygen);
 		}
@@ -95,8 +102,18 @@ public class CharacterMovement : KinematicBody2D
 		{
 			Dead();
 		}
+
+		if (damage > 0)
+		{
+			BloodParticlesTimed = new TimedRepeater(1, 1, StopBloodParticles);
+			BloodParticles.Emitting = true;
+		}
 	}
 
+	public void StopBloodParticles(int count)
+	{
+		BloodParticles.Emitting = false;
+	}
 
 	private void Dead()
 	{
@@ -122,7 +139,7 @@ public class CharacterMovement : KinematicBody2D
 		inventory = GetNode<Inventory>("./Inventory");
 
 		oxygenTimer = new TimedRepeater(oxygenTimerDuration, 0, ConsumeOxygen);
-
+		BloodParticles = GetNode<Particles2D>(BloodParticlesPath);
 	}
 
 	public bool CanClimb()
@@ -138,6 +155,11 @@ public class CharacterMovement : KinematicBody2D
 	public override void _Process(float delta)
 	{
 		oxygenTimer._Process(delta);
+
+		if(BloodParticlesTimed != null)
+		{
+			BloodParticlesTimed._Process(delta);
+		}
 
 		HandleAnimation();
 	}

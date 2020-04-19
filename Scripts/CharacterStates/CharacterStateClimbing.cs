@@ -43,8 +43,10 @@ public class CharacterStateClimbing : CharacterStates
 		}
 
 		if(!characterMovement.CanClimb())
-		{
-			return new CharacterStateIdle();
+        {
+            characterMovement.Velocity.y = 0;
+            body.MoveAndSlide(characterMovement.Velocity, Vector2.Up);
+            return new CharacterStateIdle();
 		}
 
 		return new CharacterStateClimbingIdle();
