@@ -6,7 +6,8 @@
 
 [node name="DisasterManager" type="Node2D"]
 script = ExtResource( 2 )
-DisastersPath = [ NodePath("SOBrokenDisaster"), NodePath("ConsoleWriterDisaster") ]
+DisastersPath = [ NodePath("ConsoleWriterDisaster"), NodePath("SOBrokenDisaster") ]
+DisasterCooldown = 2.0
 
 [node name="ConsoleWriterDisaster" type="Node" parent="."]
 script = ExtResource( 1 )

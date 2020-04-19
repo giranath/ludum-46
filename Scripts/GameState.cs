@@ -4,6 +4,14 @@ using System.Collections.Generic;
 
 public class GameState : Node
 {
+	[Export]
+	public PackedScene victoryScene;
+
+	[Export]
+	public PackedScene defeatScene;
+
+	public NodePath gameRootNode;
+
 	public UIManager uiManager;
 
 	public CharacterMovement player;
@@ -39,6 +47,21 @@ public class GameState : Node
 		if(traveledDistance >= requiredTravelDistance && !destinationReached) {
 			EmitSignal(nameof(ReachedDestination));
 			destinationReached = true;
+
+			var treeRoot = GetTree().Root;
+			treeRoot.RemoveChild(GetNode(gameRootNode));
+
+			Node victorySceneNode = victoryScene.Instance();
+			treeRoot.AddChild(victorySceneNode);
 		}
 	}
+
+    public void OnMissionLost()
+    {
+		var treeRoot = GetTree().Root;
+		treeRoot.RemoveChild(GetNode(gameRootNode));
+
+		Node defeatSceneNode = defeatScene.Instance();
+		treeRoot.AddChild(defeatSceneNode);
+    }
 }

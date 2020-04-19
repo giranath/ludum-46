@@ -58,9 +58,12 @@
     <Compile Include="Scripts\BackgroundSlide.cs" />
     <Compile Include="Scripts\Destroyable.cs" />
     <Compile Include="Scripts\Disasters\SOBroken.cs" />
+    <Compile Include="Scripts\EndGameDetector.cs" />
     <Compile Include="Scripts\FuelCell.cs" />
     <Compile Include="Scripts\AccessCard.cs" />
+    <Compile Include="Scripts\Game.cs" />
     <Compile Include="Scripts\ItemGenerator\FuelCellGenerator.cs" />
+    <Compile Include="Scripts\Items\FireHydrant.cs" />
     <Compile Include="Scripts\Items\Syringe.cs" />
     <Compile Include="Scripts\Items\ToolBox.cs" />
     <Compile Include="Scripts\Manager\FuelManager.cs" />
@@ -89,6 +92,7 @@
     <Compile Include="Scripts\PlayerCamera.cs" />
     <Compile Include="Scripts\Room.cs" />
     <Compile Include="Scripts\RoomGraph.cs" />
+    <Compile Include="Scripts\SmartObjects\SOFire.cs" />
     <Compile Include="Scripts\SmartObjects\SOMedicalStation.cs" />
     <Compile Include="Scripts\SmartObjects\SOOxygenRefinery.cs" />
     <Compile Include="Scripts\SmartObjects\SOTerminal.cs" />

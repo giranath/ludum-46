@@ -7,11 +7,15 @@ public class PowerCoreSmartObject : SmartObject, Destroyable
 
 	public void refuel(Item item)
 	{
-		gameState.Fuel += 25.0f;
+		if(item != null)
+		{
+			gameState.Fuel += 25.0f;
+	
+			GD.Print("wow refuel");
+			item.QueueFree();
+		}
 
-		GD.Print("wow refuel");
-		item.QueueFree();
-
+		gameState.uiManager.DialogUI.SetText(3, "I wouldn't touch this too much. Maybe you need a power cell?");
 	}
 
 	public void Repair(Item value)
@@ -34,6 +38,7 @@ public class PowerCoreSmartObject : SmartObject, Destroyable
 	{
 		base._Ready();
 		itemActionMap.Add(itemType.PowerCell, refuel);
+		itemActionMap.Add(itemType.None, refuel);
 		gameState.destroyables.Add(this);
 	}
 }

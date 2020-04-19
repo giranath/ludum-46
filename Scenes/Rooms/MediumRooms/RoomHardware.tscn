@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Rooms/MediumRoom.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Inventory/FireHydrant.tscn" type="PackedScene" id=2]
 
 [node name="RoomHardware" instance=ExtResource( 1 )]
 coveredAreaPath = NodePath("../RoomHardware/RoomCoverArea")
 roomName = "Hardware Storage"
 
+[node name="FireHydrant" parent="." index="3" instance=ExtResource( 2 )]
+position = Vector2( 249.451, 239.922 )
