@@ -12,13 +12,13 @@ public class SOBaseDoor : SmartObject
 	[Export]
 	public DoorState currentState;
 
-    [Export]
-    public NodePath roomPath;
+	[Export]
+	public NodePath roomPath;
 
-    [Export]
-    RoomDirection blockedDirection;
+	[Export]
+	RoomDirection blockedDirection;
 
-    private Room room;
+	private Room room;
 
 	[Export]
 	public bool locked;
@@ -71,12 +71,14 @@ public class SOBaseDoor : SmartObject
 	{
 		base._Ready();
 
+		EmitSignal(nameof(LockedStateChanged), locked);
 		EmitSignal(nameof(OnStateChanged), currentState);
+
 
 		itemActionMap.Add(itemType.None, TryToggleDoor);
 		itemActionMap.Add(itemType.AccessCard, TryToggleLock);
 
-        room = GetNode<Room>(roomPath);
+		room = GetNode<Room>(roomPath);
 	}
 
 	public void Open()
@@ -85,10 +87,10 @@ public class SOBaseDoor : SmartObject
 		{
 			currentState = DoorState.Opened;
 
-            if(!room.Graph.TrySetConnectionStatusBetweenRooms(room, room.GetRoomInDirection(blockedDirection), true))
-            {
-                GD.Print("Cannot set connection status between rooms");
-            }
+			if(!room.Graph.TrySetConnectionStatusBetweenRooms(room, room.GetRoomInDirection(blockedDirection), true))
+			{
+				GD.Print("Cannot set connection status between rooms");
+			}
 
 			EmitSignal(nameof(OnStateChanged), currentState);
 		}
@@ -99,11 +101,11 @@ public class SOBaseDoor : SmartObject
 		if(currentState == DoorState.Opened)
 		{
 			currentState = DoorState.Closed;
-            if (!room.Graph.TrySetConnectionStatusBetweenRooms(room, room.GetRoomInDirection(blockedDirection), false))
-            {
-                GD.Print("Cannot set connection status between rooms");
-            }
-            EmitSignal(nameof(OnStateChanged), currentState);
+			if (!room.Graph.TrySetConnectionStatusBetweenRooms(room, room.GetRoomInDirection(blockedDirection), false))
+			{
+				GD.Print("Cannot set connection status between rooms");
+			}
+			EmitSignal(nameof(OnStateChanged), currentState);
 		}
 	}
 

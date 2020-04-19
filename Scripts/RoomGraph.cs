@@ -62,30 +62,30 @@ public class RoomGraph : Node
 			float maxInfluence = float.MinValue;
 			float minInfluence = float.MaxValue;
 
-            bool atLeastOne = false;
-            for(int i = 0; i < neighborsProperties.Length; ++i)
-            {
-                float neighbor = neighborsProperties[i];
+			bool atLeastOne = false;
+			for(int i = 0; i < neighborsProperties.Length; ++i)
+			{
+				float neighbor = neighborsProperties[i];
 
-                if(opened[i])
-                {
-                    // Decay neighbor influence based on distance
-                    float influence = neighbor * Mathf.Exp(-Decay * delta);
+				if(opened[i])
+				{
+					// Decay neighbor influence based on distance
+					float influence = neighbor * Mathf.Exp(-Decay * delta);
 
-                    maxInfluence = Mathf.Max(influence, maxInfluence);
-                    minInfluence = Mathf.Min(influence, minInfluence);
-                    atLeastOne = true;
-                }
+					maxInfluence = Mathf.Max(influence, maxInfluence);
+					minInfluence = Mathf.Min(influence, minInfluence);
+					atLeastOne = true;
+				}
 			}
 
-            if (atLeastOne)
-            {
-                return Mathf.Lerp(current, maxInfluence, Momentum * delta);
-            }
-            else
-            {
-                return current;
-            }
+			if (atLeastOne)
+			{
+				return Mathf.Lerp(current, maxInfluence, Momentum * delta);
+			}
+			else
+			{
+				return current;
+			}
 		}
 	}
 
@@ -123,7 +123,7 @@ public class RoomGraph : Node
 	private List<IRoomPropertyProvider> propertyProviders = new List<IRoomPropertyProvider>();
 	private List<string> propertyNames = new List<string>();
 
-    private TimedRepeater propagateRoomPropertiesRepeater;
+	private TimedRepeater propagateRoomPropertiesRepeater;
 
 	private RoomNode FindRoom(Room roomToSearch)
 	{
@@ -274,8 +274,8 @@ public class RoomGraph : Node
 			node.room.Connect("PlayerEntered", this, "OnEnterRoom");
 		}
 
-        propagateRoomPropertiesRepeater = new TimedRepeater(0.1f, 0, OnPropagateRoomProperties);
-    }
+		propagateRoomPropertiesRepeater = new TimedRepeater(0.1f, 0, OnPropagateRoomProperties);
+	}
 
 	private void OnEnterRoom(Room enteredRoom)
 	{
@@ -433,33 +433,33 @@ public class RoomGraph : Node
 		}
 	}
 
-    void OnPropagateRoomProperties(int repeatIndex)
-    {
-        int roomIndex = repeatIndex % nodes.Count;
-
-        RoomNode roomToPropagate = nodes[roomIndex];
-
-        float currentOxygen = roomToPropagate.propertyLayers[0];
-
-        for(int i = 0; i < roomToPropagate.connectedRooms.Count; ++i)
-        {
-            if (roomToPropagate.connectedRooms[i].state == RoomConnectionState.Opened)
-            {
-                float otherOxygen = roomToPropagate.connectedRooms[i].otherNode.propertyLayers[0];
-
-                if (otherOxygen < currentOxygen)
-                {
-                    float oxygenDiff = currentOxygen - otherOxygen;
-                    roomToPropagate.propertyLayers[0] -= oxygenDiff / 2.0f;
-                    roomToPropagate.connectedRooms[i].otherNode.propertyLayers[0] += oxygenDiff / 2.0f;
-                }
-            }
-        }
-    }
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(float delta)
+	void OnPropagateRoomProperties(int repeatIndex)
 	{
-        propagateRoomPropertiesRepeater._Process(delta);
-    }
+		int roomIndex = repeatIndex % nodes.Count;
+
+		RoomNode roomToPropagate = nodes[roomIndex];
+
+		float currentOxygen = roomToPropagate.propertyLayers[0];
+
+		for(int i = 0; i < roomToPropagate.connectedRooms.Count; ++i)
+		{
+			if (roomToPropagate.connectedRooms[i].state == RoomConnectionState.Opened)
+			{
+				float otherOxygen = roomToPropagate.connectedRooms[i].otherNode.propertyLayers[0];
+
+				if (otherOxygen < currentOxygen)
+				{
+					float oxygenDiff = currentOxygen - otherOxygen;
+					roomToPropagate.propertyLayers[0] -= oxygenDiff / 2.0f;
+					roomToPropagate.connectedRooms[i].otherNode.propertyLayers[0] += oxygenDiff / 2.0f;
+				}
+			}
+		}
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(float delta)
+	{
+		propagateRoomPropertiesRepeater._Process(delta);
+	}
 }
