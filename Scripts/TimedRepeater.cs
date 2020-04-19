@@ -12,6 +12,8 @@ public class TimedRepeater
 
     private int Repeatition;
 
+    private Action endAction;
+
     public TimedRepeater(float cooldown, int repeat = 0, Action<int> onCooldown = null)
     {
         if (onCooldown != null)
@@ -49,5 +51,10 @@ public class TimedRepeater
         }
 
         return false;
+    }
+
+    public void BindEnded(Action endedAction)
+    {
+        endAction = endedAction;
     }
 }
