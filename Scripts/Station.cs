@@ -36,9 +36,9 @@ public class Station : Node2D
 	public override void _Process(float delta) {
 		if(!PropulsorBroken)
 		{
-            gameState.currentShipSpeed = GetSpeedAtFuel(gameState.Fuel, gameState.maxFuel);
+			gameState.currentShipSpeed = GetSpeedAtFuel(gameState.Fuel, gameState.maxFuel);
 
-            gameState.traveledDistance += gameState.currentShipSpeed * delta;
+			gameState.traveledDistance += gameState.currentShipSpeed * delta;
 		}
 	}
 }

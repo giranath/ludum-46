@@ -260,7 +260,7 @@ public class RoomGraph : Node
 			node.room.Connect("PlayerEntered", this, "OnEnterRoom");
 		}
 
-        TrySetPropertyOfRoom(centralRoomNode, "oxygen", 100.0f);
+		TrySetPropertyOfRoom(centralRoomNode, "oxygen", 100.0f);
 	}
 
 	private void OnEnterRoom(Room enteredRoom)
