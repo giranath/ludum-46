@@ -36,15 +36,15 @@ public class BackgroundSlide : Node {
 
         previousCruiseSpeed = lerpCruiseSpeed;
 
-        background1Sprite.MoveLocalX(delta * lerpCruiseSpeed * -1.0f);
-        background2Sprite.MoveLocalX(delta * lerpCruiseSpeed * -1.0f);
+        background1Sprite.MoveLocalX(delta * lerpCruiseSpeed * slidingSpeed);
+        background2Sprite.MoveLocalX(delta * lerpCruiseSpeed * slidingSpeed);
 
-        if (background1Sprite.Position.x < -4000) {
-            background1Sprite.Position = new Vector2(6500, 0);
+        if (background1Sprite.Position.x < -1700) {
+            background1Sprite.Position = new Vector2(9600, 0);
         }
 
-        if (background2Sprite.Position.x < -4000) {
-            background2Sprite.Position = new Vector2(6500, 0);
+        if (background2Sprite.Position.x < -1700) {
+            background2Sprite.Position = new Vector2(9600, 0);
         }
     }
 }
