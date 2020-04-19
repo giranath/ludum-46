@@ -62,18 +62,30 @@ public class RoomGraph : Node
 			float maxInfluence = float.MinValue;
 			float minInfluence = float.MaxValue;
 
-			foreach(float neighbor in neighborsProperties)
-			{
-				// Decay neighbor influence based on distance
-				float influence = neighbor * Mathf.Exp(-Decay * delta);
+            bool atLeastOne = false;
+            for(int i = 0; i < neighborsProperties.Length; ++i)
+            {
+                float neighbor = neighborsProperties[i];
 
-				maxInfluence = Mathf.Max(influence, maxInfluence);
-				minInfluence = Mathf.Min(influence, minInfluence);
+                if(opened[i])
+                {
+                    // Decay neighbor influence based on distance
+                    float influence = neighbor * Mathf.Exp(-Decay * delta);
+
+                    maxInfluence = Mathf.Max(influence, maxInfluence);
+                    minInfluence = Mathf.Min(influence, minInfluence);
+                    atLeastOne = true;
+                }
 			}
 
-			// TODO: How to add minInfluence
-
-			return Mathf.Lerp(current, maxInfluence, Momentum * delta);
+            if (atLeastOne)
+            {
+                return Mathf.Lerp(current, maxInfluence, Momentum * delta);
+            }
+            else
+            {
+                return current;
+            }
 		}
 	}
 
