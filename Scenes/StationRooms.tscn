@@ -25,7 +25,7 @@ centralRoom = NodePath("Rooms/RoomCryo")
 [node name="Ship2" type="Node2D" parent="."]
 
 [node name="White" type="Polygon2D" parent="Ship2"]
-position = Vector2( -0.26355, 0.263527 )
+position = Vector2( 1.84167, -0.789116 )
 color = Color( 0.690196, 0.690196, 0.690196, 1 )
 polygon = PoolVector2Array( -20.7341, 3.62991, 11.0316, -20.8053, 797.121, -26.1215, 912.753, -144.474, 910.032, -515.856, 827.851, -626.721, 55.1575, -626.722, 2.66187, -662.777, -44.9513, -745.76, -44.9906, -817.747, -13.6627, -885.878, 13.5449, -933.492, 60.5991, -966.815, 1568.45, -967.5, 1631.03, -1030.08, 1631.03, -1224.61, 2888.82, -1225.28, 3006.37, -1186.52, 3049.9, -1132.1, 3049.9, -1091.29, 3000.93, -1038.24, 2911.14, -987.905, 2796.87, -989.265, 2753.34, -987.905, 2754.7, -915.805, 2727.44, -887.805, 2560.17, -886.342, 2560.17, -842.344, 2586.51, -813.252, 2870.33, -812.416, 2926.11, -787.929, 2950.6, -759.361, 2947.87, -612.44, 3000.93, -568.908, 3433.53, -564.828, 3572.29, -528.097, 3679.76, -495.448, 3785.87, -442.394, 3806.27, -390.7, 3788.59, -339.005, 3690.64, -272.347, 3576.37, -228.815, 3455.29, -174.4, 3141.05, -178.481, 3067.59, -124.066, 3060.78, -8.4342, 3034.94, 52.7827, 2954.67, 101.756, 2817.28, 101.756, 2641.79, 101.756, 2573.77, 130.324, 2557.45, 201.064, 2564.25, 492.184, 2508.07, 564.8, 2399.64, 590.131, 1577.33, 594.148, 1410.35, 543.648, 1117.62, 324.229, 6.95905, 318.844, -22.3632, 279.748 )
 
@@ -171,7 +171,7 @@ rotation = 4.71238
 scale = Vector2( 6, 1 )
 
 [node name="Wall31" parent="Collissions" instance=ExtResource( 14 )]
-position = Vector2( 1905.17, 251.546 )
+position = Vector2( 1918.17, 251.546 )
 rotation = 4.71238
 scale = Vector2( 2, 1 )
 
@@ -270,6 +270,11 @@ position = Vector2( 2149.83, 187.954 )
 rotation = 6.28318
 scale = Vector2( 7.8, 1 )
 
+[node name="Wall52" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1730.37, 187.652 )
+rotation = 6.28318
+scale = Vector2( 2.76001, 1 )
+
 [node name="Wall38" parent="Collissions" instance=ExtResource( 14 )]
 position = Vector2( 1952.1, -101.988 )
 rotation = 6.28318
@@ -346,9 +351,9 @@ rotation = 7.85397
 scale = Vector2( 2.10659, 1 )
 
 [node name="Wall49" parent="Collissions" instance=ExtResource( 14 )]
-position = Vector2( 1742.47, -1133.23 )
+position = Vector2( 1742.47, -1140.23 )
 rotation = 7.85397
-scale = Vector2( 2.10659, 1 )
+scale = Vector2( 1.62658, 1 )
 
 [node name="Wall50" parent="Collissions" instance=ExtResource( 14 )]
 position = Vector2( 939.885, 62.8497 )
@@ -366,9 +371,9 @@ rotation = 7.85397
 scale = Vector2( 7.79998, 1 )
 
 [node name="Wall11" parent="Collissions" instance=ExtResource( 14 )]
-position = Vector2( 1341.65, -326.549 )
+position = Vector2( 1341.65, -338.549 )
 rotation = 7.85397
-scale = Vector2( 2.03998, 1 )
+scale = Vector2( 1.63998, 1 )
 
 [node name="Wall44" parent="Collissions" instance=ExtResource( 14 )]
 position = Vector2( 1049.17, -240.845 )
@@ -398,7 +403,7 @@ position = Vector2( 1050.56, -78.0366 )
 position = Vector2( 937.507, 212.866 )
 
 [node name="DoorWorkshop6" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 1910.12, 405.748 )
+position = Vector2( 1921.12, 405.748 )
 
 [node name="DoorWorkshop7" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 1918.16, 117.694 )
@@ -457,5 +462,5 @@ position = Vector2( 2375.04, -394.624 )
 scale = Vector2( 3, 3 )
 
 [node name="Ladder12" parent="Ladders" instance=ExtResource( 8 )]
-position = Vector2( 1873.04, 206.12 )
+position = Vector2( 1853.04, 206.12 )
 scale = Vector2( 3, 3 )

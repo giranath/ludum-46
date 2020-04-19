@@ -3,15 +3,17 @@ using System;
 
 public class DoorBody : Node
 {
-	private Sprite sprite;
+	private Sprite doorClosed;
+	private Sprite doorOpened;
 	private CollisionShape2D collisionShape;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        base._Ready();
-        
-		sprite = GetNode<Sprite>("./Sprite");
+		base._Ready();
+		
+		doorClosed = GetNode<Sprite>("./DoorClosed");
+		doorOpened = GetNode<Sprite>("./DoorOpened");
 		collisionShape = GetNode<CollisionShape2D>("./PhysicBody/DoorShape");
 
 		GetParent().Connect("OnStateChanged", this, "OnDoorStateChanged");
@@ -22,11 +24,13 @@ public class DoorBody : Node
 		switch(newState)
 		{
 			case DoorState.Opened:
-				sprite.Visible = false;
+				doorClosed.Visible = false;
+				doorOpened.Visible = true;
 				collisionShape.Disabled = true;
 			break;
 			case DoorState.Closed:
-				sprite.Visible = true;
+				doorClosed.Visible = true;
+				doorOpened.Visible = false;
 				collisionShape.Disabled = false;
 			break;
 			default:
