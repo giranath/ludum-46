@@ -9,11 +9,17 @@ public class UIManager : CanvasLayer
 	[Export]
 	public NodePath ZonePromptUIPath;
 
+    [Export]
+    public Color HighlightColor;
+
 	public DialogUI DialogUI;
 
 	public DialogUI ZonePromptUI;
 
 	public TimedRepeater bla;
+
+    private TextureRect leftHandIcon;
+    private TextureRect rightHandIcon;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -23,7 +29,14 @@ public class UIManager : CanvasLayer
 		
 		var gameState = GetNode<GameState>("/root/GameState");
 		gameState.uiManager = this;
-	}
+
+        gameState.player.GetInventory().Connect("OnHandSelected", this, "OnHandSelected");
+
+        leftHandIcon = GetNode<TextureRect>("InventoryHBox/IconHBox/LeftItemIcon");
+        rightHandIcon = GetNode<TextureRect>("InventoryHBox/IconHBox/RightItemIcon");
+
+        rightHandIcon.Modulate = HighlightColor;
+    }
 
 	public override void _Process(float delta)
 	{
@@ -32,5 +45,21 @@ public class UIManager : CanvasLayer
     public void OnRoomChanged(Room newRoom)
     {
         ZonePromptUI.SetText(5.0f, newRoom.roomName);
+    }
+
+    public void OnHandSelected(Inventory.Hand hand)
+    {
+        leftHandIcon.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        rightHandIcon.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+        switch(hand)
+        {
+            case Inventory.Hand.Left:
+                leftHandIcon.Modulate = HighlightColor;
+                break;
+            case Inventory.Hand.Right:
+                rightHandIcon.Modulate = HighlightColor;
+                break;
+        }
     }
 }
