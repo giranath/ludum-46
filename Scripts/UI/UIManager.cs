@@ -35,8 +35,8 @@ public class UIManager : CanvasLayer
 
         gameState.player.GetInventory().Connect("OnHandSelected", this, "OnHandSelected");
 
-        leftHandIcon = GetNode<TextureRect>("InventoryHBox/IconHBox/LeftItemIcon");
-        rightHandIcon = GetNode<TextureRect>("InventoryHBox/IconHBox/RightItemIcon");
+        leftHandIcon = GetNode<TextureRect>("InventoryHBox/LeftItemIcon");
+        rightHandIcon = GetNode<TextureRect>("InventoryHBox/RightItemIcon");
 
         rightHandIcon.Modulate = HighlightColor;
         leftHandIcon.Modulate = UnhilightColor;
