@@ -17,7 +17,7 @@ public class SOTerminal : SmartObject
 			GD.Print(gameState.Name);
 		}
 
-		uiManager.DialogUI.SetText(5, String.Format("Arriving at destination in {0} light years", (int)gameState.GetDistanceToTravel()));
+		uiManager.DialogUI.SetText(5, String.Format("Arriving at destination in {0} light years", (int)gameState.GetDistanceToTravel()), Colors.White);
 	}
 
 	public override void _Ready()

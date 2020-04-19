@@ -71,11 +71,11 @@ public class Room : Node2D
 	}
 	private void OnBodyEnterRoom(Node body)
 	{
-        CharacterMovement player = body as CharacterMovement;
-        if(player != null)
-        {
-            player.CurrentRoom = this;
-        }
+		CharacterMovement player = body as CharacterMovement;
+		if(player != null)
+		{
+			player.CurrentRoom = this;
+		}
 
 		EmitSignal(nameof(PlayerEntered), this);
 	}

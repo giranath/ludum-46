@@ -15,7 +15,7 @@ public class PowerCoreSmartObject : SmartObject, Destroyable
 			item.QueueFree();
 		}
 
-		gameState.uiManager.DialogUI.SetText(3, "I wouldn't touch this too much. Maybe you need a power cell?");
+		gameState.uiManager.DialogUI.SetText(3, "I wouldn't touch this too much. Maybe you need a power cell?", Colors.White);
 	}
 
 	public void Repair(Item value)

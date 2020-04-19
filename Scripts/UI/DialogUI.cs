@@ -12,8 +12,17 @@ public class DialogUI : Node
 
 	private TimedRepeater TimedRepeater;
 
-	private Dictionary<string, float> messageQueue = new Dictionary<string, float>();
+	private List<Message> messageQueue = new List<Message>();
 	
+    private class Message
+    {
+        public String message;
+
+        public float time;
+
+        public Color color;
+    }
+
 	public override void _Ready()
 	{
 		DialogLabel = GetNode<Label>(DialogLabelPath);
@@ -30,13 +39,13 @@ public class DialogUI : Node
 			{
 				var message = messageQueue.First();
 
-				SetText(message.Value, message.Key);
-				messageQueue.Remove(message.Key);
+				SetText(message.time, message.message, message.color);
+				messageQueue.Remove(message);
 			}
 		}
 	}
 
-	public void SetText(float timeShown, string text)
+	public void SetText(float timeShown, string text, Color color)
 	{
 		if (TimedRepeater == null && messageQueue.Count == 0)
 		{
@@ -45,9 +54,14 @@ public class DialogUI : Node
 		}
 		else
 		{
-			if(!messageQueue.ContainsKey(text))
+			if(!messageQueue.Any(x => x.message.Equals(text)))
 			{ 
-				messageQueue.Add(text, timeShown);
+				messageQueue.Add(new Message 
+                { 
+                    message = text,
+                    color = color,
+                    time = timeShown
+                });
 			}
 		}
 	}
