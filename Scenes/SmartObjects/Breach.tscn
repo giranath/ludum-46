@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/SmartObjects/SmartObjectScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Models/breach_ducktaped.png" type="Texture" id=2]
+[ext_resource path="res://Models/breach.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/SmartObjects/Breach.cs" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64.1664, 66.8681 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 31.3631, 32.0737 )
+
+[node name="Breach" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+
+[node name="PlayerShape" parent="PlayerArea" index="0"]
+position = Vector2( 0, 0 )
+shape = SubResource( 1 )
+
+[node name="ClickArea" parent="." index="1"]
+position = Vector2( 0, 0 )
+
+[node name="ClickSphape" parent="ClickArea" index="0"]
+shape = SubResource( 2 )
+
+[node name="BreachSprite" type="Sprite" parent="." index="2"]
+visible = false
+texture = ExtResource( 3 )
+
+[node name="RepairSprite" type="Sprite" parent="." index="3"]
+visible = false
+texture = ExtResource( 2 )
