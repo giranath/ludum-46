@@ -408,16 +408,19 @@ scale = Vector2( 2.03998, 1 )
 
 [node name="DoorWorkshop" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 1744, -981.798 )
+currentState = 1
 roomPath = NodePath("../../Rooms/RoomWorkshop")
 blockedDirection = 3
 
 [node name="DoorWorkshop3" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 1055.1, -730.498 )
+currentState = 1
 roomPath = NodePath("../../Rooms/RoomClinic")
 blockedDirection = 1
 
 [node name="DoorWorkshop5" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 1052.98, -71.7238 )
+currentState = 1
 roomPath = NodePath("../../Rooms/RoomEngine")
 blockedDirection = 1
 
@@ -445,7 +448,10 @@ blockedDirection = 1
 
 [node name="DoorWorkshop12" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 2830.64, -334.251 )
+currentState = 1
 roomPath = NodePath("../../Rooms/RoomCockpit")
+locked = true
+requiredKey = 1
 
 [node name="Ladders" type="Node2D" parent="."]
 

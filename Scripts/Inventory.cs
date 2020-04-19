@@ -11,6 +11,12 @@ public class Inventory : Node {
     [Signal]
     public delegate void OnHandSelected(Hand newHand);
 
+    [Signal]
+    public delegate void ItemPicked();
+
+    [Signal]
+    public delegate void ItemDropped();
+
 	public enum Hand {
 		Right,
 		Left
@@ -64,9 +70,11 @@ public class Inventory : Node {
 					GetNode(right).AddChild(groundObject);
 					groundObject.Position = Vector2.Zero;
 					groundItem = null;
-				} else if (GetNode(right).GetChildren().Count != 0) {
+                    EmitSignal(nameof(ItemPicked));
+                } else if (GetNode(right).GetChildren().Count != 0) {
 					Item itemRight = (Item) GetNode(right).GetChild(0);
 					itemRight.throwItem((Node2D) GetParent());
+                    EmitSignal(nameof(ItemDropped));
 				}
 			} else if (handUsed == Hand.Left) {
 				if (GetNode(left).GetChildren().Count == 0 && groundItem != null) {
@@ -75,10 +83,12 @@ public class Inventory : Node {
 					GetNode(left).AddChild(groundObject);
 					groundObject.Position = Vector2.Zero;
 					groundItem = null;
-				} else if (GetNode(left).GetChildren().Count != 0) {
+                    EmitSignal(nameof(ItemPicked));
+                } else if (GetNode(left).GetChildren().Count != 0) {
 					Item itemLeft = (Item) GetNode(left).GetChild(0);
 					itemLeft.throwItem((Node2D) GetParent());
-				}
+                    EmitSignal(nameof(ItemDropped));
+                }
 			}
 		}
 		
