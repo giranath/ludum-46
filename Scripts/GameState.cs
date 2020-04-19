@@ -41,4 +41,9 @@ public class GameState : Node
 			destinationReached = true;
 		}
 	}
+
+    public void OnMissionLost()
+    {
+        GD.Print("Missing lost");
+    }
 }

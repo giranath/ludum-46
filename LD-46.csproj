@@ -58,6 +58,7 @@
     <Compile Include="Scripts\BackgroundSlide.cs" />
     <Compile Include="Scripts\Destroyable.cs" />
     <Compile Include="Scripts\Disasters\SOBroken.cs" />
+    <Compile Include="Scripts\EndGameDetector.cs" />
     <Compile Include="Scripts\FuelCell.cs" />
     <Compile Include="Scripts\AccessCard.cs" />
     <Compile Include="Scripts\ItemGenerator\FuelCellGenerator.cs" />
