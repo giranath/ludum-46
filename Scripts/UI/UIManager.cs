@@ -34,6 +34,7 @@ public class UIManager : CanvasLayer
 		gameState.uiManager = this;
 
         gameState.player.GetInventory().Connect("OnHandSelected", this, "OnHandSelected");
+        gameState.station.GetRooms().Connect("PlayerChangedRoom", this, "OnRoomChanged");
 
         leftHandIcon = GetNode<TextureRect>("InventoryHBox/LeftItemIcon");
         rightHandIcon = GetNode<TextureRect>("InventoryHBox/RightItemIcon");
@@ -48,7 +49,7 @@ public class UIManager : CanvasLayer
 
     public void OnRoomChanged(Room newRoom)
     {
-        ZonePromptUI.SetText(5.0f, newRoom.roomName);
+        ZonePromptUI.SetText(1.0f, newRoom.roomName);
     }
 
     public void OnHandSelected(Inventory.Hand hand)
