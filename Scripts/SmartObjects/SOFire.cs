@@ -32,17 +32,19 @@ public class SOFire : SmartObject
 	{
 		if (item == null)
 		{
-			if (fisted == 0)
+            fisted -= 1;
+
+            if (fisted == 0)
 			{
 				fisted = 10;
-			}
 
-			gameState.player.Damage(1);
+			    gameState.player.Damage(1);
 
-			DestroyCooldown = new TimedRepeater(destroyTime, 1, Elapsed);
+			    DestroyCooldown = new TimedRepeater(destroyTime, 1, Elapsed);
 
-			particles.Emitting = false;
-		}
+			    particles.Emitting = false;
+            }
+        }
 		else
 		{
 			DestroyCooldown = new TimedRepeater(destroyTime, 1, Elapsed);
