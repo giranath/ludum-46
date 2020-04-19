@@ -19,6 +19,11 @@ public class CharacterMovement : KinematicBody2D
 
 	public Vector2 Velocity;
 
+    public Inventory GetInventory()
+    {
+        return inventory;
+    }
+
 	public KinematicBody2D GetBody()
 	{
 		return this;

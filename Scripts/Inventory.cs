@@ -8,6 +8,9 @@ public class Inventory : Node {
 	public NodePath groundItem;
 	private Hand handUsed = Hand.Right;
 
+    [Signal]
+    public delegate void OnHandSelected(Hand newHand);
+
 	public enum Hand {
 		Right,
 		Left
@@ -36,20 +39,26 @@ public class Inventory : Node {
 		return GetItemInHand(handUsed);
 	}
 
-	public override void _Process(float delta) {
+    public override void _Ready()
+    {
+        base._Ready();
+    }
+
+    public override void _Process(float delta) {
 		if (Input.IsActionJustPressed("useItemRight")) {
 			handUsed = Hand.Right;
+            EmitSignal(nameof(OnHandSelected), handUsed);
 		}
 
 		if (Input.IsActionJustPressed("useItemLeft")) {
 			handUsed = Hand.Left;
+            EmitSignal(nameof(OnHandSelected), handUsed);
 		}
 
 		if (Input.IsActionJustPressed("grabItem")) {
 		GD.Print(groundItem != null);
 			if (handUsed == Hand.Right) {
 				if (GetNode(right).GetChildren().Count == 0 && groundItem != null) {
-				GD.Print("Grab");
 					Node2D groundObject = (Node2D) GetNode(groundItem);
 					groundObject.GetParent().RemoveChild(groundObject);
 					GetNode(right).AddChild(groundObject);
