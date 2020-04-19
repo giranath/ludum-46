@@ -10,12 +10,25 @@ public class SmartObject : Node
 
 	public GameState gameState;
 
-	public override void _Ready() {
-		//base._Ready();
-		
+	[Export]
+	NodePath brokenLightPath;
+
+	Sprite brokenLight;
+
+	[Export]
+	float rotationSpeed = 0.1f;
+
+	public override void _Ready() {		
 		Area2D clickArea = GetNode<Area2D>("./ClickArea");
 
 		gameState = GetNode<GameState>("/root/GameState");
+
+		brokenLight = GetNode<Sprite>(brokenLightPath);
+	}
+
+	public override void _Process(float delta)
+	{
+		brokenLight?.Rotate(rotationSpeed * delta);
 	}
 
 	public virtual void interact(Item item)
@@ -62,6 +75,11 @@ public class SmartObject : Node
 		{
 			interact(gameState.player.GetItemInCurrentHand());
 		}
+	}
+
+	protected void ShowBrokenLight(bool show)
+	{
+		brokenLight.Visible = show;
 	}
 }
 

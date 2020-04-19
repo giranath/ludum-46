@@ -1,17 +1,32 @@
 using Godot;
 using System;
 
-public class PowerCoreSmartObject : SmartObject
+public class PowerCoreSmartObject : SmartObject, Destroyable
 {
 	
+
 	public void refuel(Item item)
 	{
-		GameState gamestate = GetNode<GameState>("/root/GameState");
-		gamestate.Fuel += 25.0f;
+		gameState.Fuel += 25.0f;
 
 		GD.Print("wow refuel");
 		item.QueueFree();
 
+	}
+
+	public void Repair(Item value)
+	{
+		ShowBrokenLight(false);
+		itemActionMap.Clear();
+		itemActionMap.Add(itemType.PowerCell, refuel);
+		//item.QueueFree();
+	}
+
+	public void Destroy()
+	{
+		ShowBrokenLight(true);
+		itemActionMap.Clear();
+		itemActionMap.Add(itemType.ToolBox, Repair);
 	}
 
 	// Called when the node enters the scene tree for the first time.
@@ -19,6 +34,6 @@ public class PowerCoreSmartObject : SmartObject
 	{
 		base._Ready();
 		itemActionMap.Add(itemType.PowerCell, refuel);
+		gameState.destroyables.Add(this);
 	}
-	
 }

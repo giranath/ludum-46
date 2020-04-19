@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 
-public class SOOxygenRefinery : SmartObject
+public class SOOxygenRefinery : SmartObject, Destroyable
 {
 	[Export]
 	NodePath RoomPath;
@@ -56,6 +56,7 @@ public class SOOxygenRefinery : SmartObject
 
 	public override void _Process(float delta)
 	{
+		base._Process(delta);
 		if(repeater != null)
 		{
 			repeater._Process(delta);
@@ -82,6 +83,7 @@ public class SOOxygenRefinery : SmartObject
 
 		showParticle(false);
 
+		gameState.destroyables.Add(this);
 	}
 
 	void showParticle(bool show)
@@ -90,5 +92,24 @@ public class SOOxygenRefinery : SmartObject
 		{
 			particle.Emitting = show;
 		}
+	}    
+
+	public void Destroy()
+	{
+		ShowBrokenLight(true);
+		itemActionMap.Clear();
+		itemActionMap.Add(itemType.ToolBox, Repair);
+		repeater = null;
+		showParticle(false);
+		button.TurnOff();
 	}
+
+	public void Repair(Item item)
+	{
+		ShowBrokenLight(false);
+
+		itemActionMap.Clear();
+		itemActionMap.Add(itemType.PowerCell, RefuelOxygen);
+		//item.QueueFree();
+	} 
 }

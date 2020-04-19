@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public class GameState : Node
@@ -24,6 +25,8 @@ public class GameState : Node
 	private bool destinationReached = false;
 
     public float currentShipSpeed = 0.0f;
+
+    public Array<Destroyable> destroyables;
 
 	[Signal]
 	public delegate void ReachedDestination();
