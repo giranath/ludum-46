@@ -64,6 +64,7 @@
     <Compile Include="Scripts\Inventory.cs" />
     <Compile Include="Scripts\Item.cs" />
     <Compile Include="Scripts\O2Meter.cs" />
+    <Compile Include="Scripts\OxygenConsumer.cs" />
     <Compile Include="Scripts\SmartObjects\SmartObject.cs" />
     <Compile Include="Scripts\SmartObjects\DoorBody.cs" />
     <Compile Include="Scripts\SmartObjects\SOBaseDoor.cs" />

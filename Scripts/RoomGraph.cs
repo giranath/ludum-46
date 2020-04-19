@@ -331,7 +331,7 @@ public class RoomGraph : Node
 		{
 			IRoomPropertyProvider provider = propertyProviders[propertyIdx];
 
-			node.propertyLayers[propertyIdx] += Mathf.Clamp(value, provider.GetRoomPropertyMinValue(), provider.GetRoomPropertyMaxValue());
+			node.propertyLayers[propertyIdx] = Mathf.Clamp(node.propertyLayers[propertyIdx] + value, provider.GetRoomPropertyMinValue(), provider.GetRoomPropertyMaxValue());
 
 			return true;
 		}
