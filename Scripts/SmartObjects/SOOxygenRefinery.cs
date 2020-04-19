@@ -1,63 +1,94 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public class SOOxygenRefinery : SmartObject
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
+	[Export]
+	NodePath RoomPath;
 
-    private  bool isOn = false;
+	[Export]
+	int OnCycle = 10;
 
+	[Export]
+	float cycleDuration = 1.0f;
 
-    [Export]
-    NodePath RoomPath;
+	[Export]
+	float cycleOxygenOutput = 1.0f;
 
-    [Export]
-    int OnCycle = 120;
+	private TimedRepeater repeater;
 
-    [Export]
-    float cycleDuration = 1.0f;
+	private Room room;
 
-    private TimedRepeater repeater;
+	[Export]
+	NodePath buttonPath;
 
-    private Room room;
+	Button button;
 
-    void RefuelOxygen(Item item)
-    {
-        GD.Print("Oxygen refinery ON");
-        repeater = new TimedRepeater(cycleDuration, OnCycle, GiveOxygen);
-        repeater.BindEnded(EndOxygenGeneration);
-        item.QueueFree();
-    }
+	[Export]
+	Array<NodePath> particlePaths;
 
-    void GiveOxygen(int count)
-    {
-    }
+	Array<Particles2D> particles = new Array<Particles2D>() ;
 
-    void EndOxygenGeneration()
-    {
-        GD.Print("Oxygen refinery OFF");
-    }
+	void RefuelOxygen(Item item)
+	{
+		GD.Print("Oxygen refinery ON");
 
-    public override void _Process(float delta)
-    {
-        repeater._Process(delta);
-    }
+		button.TurnOn();
+		showParticle(true);
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+		repeater = new TimedRepeater(cycleDuration, OnCycle, GiveOxygen);
+		repeater.BindEnded(EndOxygenGeneration);
+		item.QueueFree();
+	}
+
+	void GiveOxygen(int count)
+	{
+		room.Graph.TryAddPropertyOfRoom(room, "oxygen", cycleOxygenOutput);
+	}
+
+	void EndOxygenGeneration()
+	{
+		GD.Print("Oxygen refinery OFF");
+		button.TurnOff();
+		showParticle(false);
+	}
+
+	public override void _Process(float delta)
+	{
+		if(repeater != null)
+		{
+			repeater._Process(delta);
+		}
+	}
+
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
 	{
 		base._Ready();
 
-        room = GetNode<Room>(RoomPath);
+		room = GetNode<Room>(RoomPath);
 
-        itemActionMap.Add(itemType.PowerCell, RefuelOxygen);
-    }
+		itemActionMap.Add(itemType.PowerCell, RefuelOxygen);
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+		button = GetNode<Button>(buttonPath);
+		button.TurnOff();
+
+		foreach(var path in particlePaths)
+		{
+			var particle = GetNode<Particles2D>(path);
+			particles.Add(particle);
+		}
+
+		showParticle(false);
+
+	}
+
+	void showParticle(bool show)
+	{
+		foreach (var particle in particles)
+		{
+			particle.Emitting = show;
+		}
+	}
 }
