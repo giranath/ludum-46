@@ -12,6 +12,9 @@ public class UIManager : CanvasLayer
     [Export]
     public Color HighlightColor;
 
+    [Export]
+    public Color UnhilightColor;
+
 	public DialogUI DialogUI;
 
 	public DialogUI ZonePromptUI;
@@ -36,6 +39,7 @@ public class UIManager : CanvasLayer
         rightHandIcon = GetNode<TextureRect>("InventoryHBox/IconHBox/RightItemIcon");
 
         rightHandIcon.Modulate = HighlightColor;
+        leftHandIcon.Modulate = UnhilightColor;
     }
 
 	public override void _Process(float delta)
@@ -49,10 +53,10 @@ public class UIManager : CanvasLayer
 
     public void OnHandSelected(Inventory.Hand hand)
     {
-        leftHandIcon.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-        rightHandIcon.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        leftHandIcon.Modulate = UnhilightColor;
+        rightHandIcon.Modulate = UnhilightColor;
 
-        switch(hand)
+        switch (hand)
         {
             case Inventory.Hand.Left:
                 leftHandIcon.Modulate = HighlightColor;

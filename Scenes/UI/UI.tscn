@@ -10,6 +10,7 @@ script = ExtResource( 1 )
 DialogUIPath = NodePath("DialogUI")
 ZonePromptUIPath = NodePath("ZonePromptUI")
 HighlightColor = Color( 0.882353, 0.823529, 0.34902, 1 )
+UnhilightColor = Color( 0.576471, 0.572549, 0.572549, 0.705882 )
 
 [node name="DialogUI" parent="." instance=ExtResource( 2 )]
 mouse_filter = 2
