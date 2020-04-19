@@ -10,6 +10,8 @@ roomName = "Medical Clinic"
 [node name="DoorSmartObject" parent="." index="2" instance=ExtResource( 2 )]
 position = Vector2( 497.153, 190.876 )
 currentState = 1
+locked = true
+requiredKey = 666
 
 [node name="FuelCellCatalyst" parent="." index="3" instance=ExtResource( 3 )]
 position = Vector2( -126.991, 188.422 )

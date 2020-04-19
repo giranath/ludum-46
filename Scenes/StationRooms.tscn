@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/RoomGraph.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Rooms/BigRooms/RoomClinic.tscn" type="PackedScene" id=2]
@@ -15,6 +15,9 @@ b = Vector2( -1146.08, -258.674 )
 [sub_resource type="SegmentShape2D" id=2]
 a = Vector2( 664.8, -260.9 )
 b = Vector2( 1930.3, -258.674 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 907.819, 10 )
 
 [sub_resource type="SegmentShape2D" id=3]
 a = Vector2( 920.668, 259.887 )
@@ -43,6 +46,33 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 1/Collisions/Floors/StaticBody2D2"]
 shape = SubResource( 2 )
+
+[node name="Walls" type="Node2D" parent="Rooms/Floor 1/Collisions"]
+position = Vector2( -1171.91, -578.781 )
+scale = Vector2( 0.0301194, 33.0794 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rooms/Floor 1/Collisions/Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 1/Collisions/Walls/StaticBody2D"]
+shape = SubResource( 4 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Rooms/Floor 1/Collisions/Walls"]
+position = Vector2( -16754.7, 19.8826 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 1/Collisions/Walls/StaticBody2D2"]
+shape = SubResource( 4 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Rooms/Floor 1/Collisions/Walls"]
+position = Vector2( 70115.5, 19.738 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 1/Collisions/Walls/StaticBody2D3"]
+shape = SubResource( 4 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Rooms/Floor 1/Collisions/Walls"]
+position = Vector2( 103784, 4.33803 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 1/Collisions/Walls/StaticBody2D4"]
+shape = SubResource( 4 )
 
 [node name="Rooms" type="Node2D" parent="Rooms/Floor 1"]
 
@@ -76,6 +106,29 @@ position = Vector2( 3.17334, 6.34668 )
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 2/Collisions/Floors/StaticBody2D"]
+shape = SubResource( 3 )
+
+[node name="Floors2" type="Node2D" parent="Rooms/Floor 2/Collisions"]
+position = Vector2( 705.539, -1035.59 )
+scale = Vector2( 1.4, 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rooms/Floor 2/Collisions/Floors2"]
+position = Vector2( 3.17334, 6.34668 )
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 2/Collisions/Floors2/StaticBody2D"]
+shape = SubResource( 3 )
+
+[node name="Floors3" type="Node2D" parent="Rooms/Floor 2/Collisions"]
+position = Vector2( 705.539, -1035.59 )
+scale = Vector2( 1.4, 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rooms/Floor 2/Collisions/Floors3"]
+position = Vector2( -1013.28, 520.553 )
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Floor 2/Collisions/Floors3/StaticBody2D"]
+position = Vector2( -87.1248, 0 )
 shape = SubResource( 3 )
 
 [node name="Rooms" type="Node2D" parent="Rooms/Floor 2"]
