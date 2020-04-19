@@ -22,7 +22,7 @@ public class SOFire : SmartObject
 
 	private TimedRepeater OxygenEater;
 	
-	private Particles2D Particles;
+	private Particles2D particles;
 
 	private Room Room;
 
@@ -41,13 +41,13 @@ public class SOFire : SmartObject
 
 			DestroyCooldown = new TimedRepeater(destroyTime, 1, Elapsed);
 
-			Particles.Emitting = false;
+			particles.Emitting = false;
 		}
 		else
 		{
 			DestroyCooldown = new TimedRepeater(destroyTime, 1, Elapsed);
 
-			Particles.Emitting = false;
+			particles.Emitting = false;
 		}        
 	}
 
@@ -61,7 +61,7 @@ public class SOFire : SmartObject
 		base._Ready();
 		itemActionMap.Add(itemType.FireExtinguisher, PutOut);
 		itemActionMap.Add(itemType.None, PutOut);
-		Particles = GetNode<Particles2D>(ParticlesPath);
+		particles = GetNode<Particles2D>(ParticlesPath);
 		Room = GetNode<Room>(RoomPath);
 
 		OxygenEater = new TimedRepeater(OxygenCosumptionTime, 0, ConsumeOxygen);
@@ -82,7 +82,7 @@ public class SOFire : SmartObject
 
 	private void ConsumeOxygen(int count)
 	{
-		if(!Particles.Emitting)
+		if(!particles.Emitting)
 		{
 			return;
 		}
