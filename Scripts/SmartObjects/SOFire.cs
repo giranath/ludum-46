@@ -23,10 +23,38 @@ public class SOFire : SmartObject, Destroyable
 
 	private int fisted = 10;
 
+	enum State
+	{
+		lit,
+		unlit
+	}
+
+	State currentState = State.unlit;
+
+	void ChangeState(State newState)
+	{
+		currentState = newState;
+
+		switch (currentState)
+		{
+			case State.lit:
+				particles.Emitting = true;
+				OxygenEater = new TimedRepeater(OxygenCosumptionTime, 0, ConsumeOxygen);
+				break;
+			case State.unlit:
+				particles.Emitting = false;
+				OxygenEater = null;
+				break;
+		}
+	}
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		base._Ready();
+
+		itemActionMap.Add(itemType.FireExtinguisher, Repair);
+		itemActionMap.Add(itemType.None, Repair);
 
 		particles = GetNode<Particles2D>("./Particles2D");
 		Room = GetNode<Room>(RoomPath);
@@ -82,33 +110,30 @@ public class SOFire : SmartObject, Destroyable
 
 	public void Destroy()
 	{
-		particles.Emitting = true;
-		itemActionMap.Add(itemType.FireExtinguisher, Repair);
-		itemActionMap.Add(itemType.None, Repair);
-		OxygenEater = new TimedRepeater(OxygenCosumptionTime, 0, ConsumeOxygen);
+		ChangeState(State.lit);
 	}
 
 	public void Repair(Item item)
 	{
-		if (item == null)
+		if(currentState == State.lit)
 		{
-			fisted -= 1;
-			gameState.player.Damage(1);
-
-			if (fisted == 0)
+			if (item == null)
 			{
-				fisted = 10;
+				fisted -= 1;
+				gameState.player.Damage(1);
 
-				particles.Emitting = false;
-				OxygenEater = null;
-				itemActionMap.Clear();
+				if (fisted == 0)
+				{
+					fisted = 10;
+
+					ChangeState(State.unlit);
+					itemActionMap.Clear();
+				}
 			}
-		}
-		else
-		{
-			particles.Emitting = false;
-			OxygenEater = null;
-			itemActionMap.Clear();
+			else
+			{
+				ChangeState(State.unlit);
+			}
 		}
 	}
 }
