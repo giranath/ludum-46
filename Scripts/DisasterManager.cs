@@ -8,7 +8,11 @@ public class DisasterManager : Node
 	public Array<NodePath> DisastersPath;
 
 	[Export]
-	public float DisasterCooldown;
+	public float DisasterCooldownMin = 30.0f;
+
+	[Export]
+	public float DisasterCooldownMax = 80.0f;
+
 
 	private List<Disaster> Disasters;
 
@@ -16,15 +20,20 @@ public class DisasterManager : Node
 
 	RandomNumberGenerator rand = new RandomNumberGenerator();
 
+	public UIManager uiManager = null;
+
+	public GameState gameState = null;
+
 	public override void _Ready()
 	{
-		if(DisastersPath.Count == 0)
+		gameState = GetNode<GameState>("/root/GameState");
+
+		if (DisastersPath.Count == 0)
 		{
 			GD.PrintErr($"{nameof(DisasterManager)} : {this.GetPath()} - Does not have any disaster =(");
 		}
 		else
 		{
-			GD.Print("Nb disaster : " + DisastersPath.Count.ToString());
 			Disasters = new List<Disaster>(DisastersPath.Count);
 
 			foreach (var path in DisastersPath)
@@ -41,7 +50,7 @@ public class DisasterManager : Node
 				}
 			}
 
-			TimedRepeater = new TimedRepeater(DisasterCooldown, 0, LaunchDisaster);
+			TimedRepeater = new TimedRepeater(rand.RandfRange(DisasterCooldownMin, DisasterCooldownMax), 1, LaunchDisaster);
 		}
 	}
 	public override void _Process(float delta)
@@ -59,7 +68,11 @@ public class DisasterManager : Node
 			disaster = Disasters[i];
 		} while (!disaster.IsAvailable());
 
+
+		gameState.uiManager.DialogUI.SetText(5, "A disaster happened in the ship");
 		disaster.Process();
+
+		TimedRepeater = new TimedRepeater(rand.RandfRange(DisasterCooldownMin, DisasterCooldownMax), 1, LaunchDisaster);
 	}
 
 }

@@ -17,7 +17,7 @@ public class SOBroken : Disaster
 	{
 		
 		int index = rand.RandiRange(0, gameState.destroyables.Count - 1);
-        
+		
 		gameState.destroyables[index].Destroy();
 	}
 

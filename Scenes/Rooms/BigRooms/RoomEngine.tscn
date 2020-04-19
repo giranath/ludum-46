@@ -8,6 +8,4 @@ roomName = "Engine Room"
 
 [node name="Node2D" parent="." index="1" instance=ExtResource( 2 )]
 position = Vector2( 19.6676, 219.406 )
-
-[node name="CollisionShape2D" parent="RoomCoverArea" index="0"]
-visible = true
+brokenLightPath = NodePath("BrokenLight")
