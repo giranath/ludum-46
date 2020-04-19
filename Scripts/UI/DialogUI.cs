@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class DialogUI : Node
 {
@@ -9,6 +11,8 @@ public class DialogUI : Node
 	private Label DialogLabel;
 
 	private TimedRepeater TimedRepeater;
+
+	private Dictionary<string, float> messageQueue = new Dictionary<string, float>();
 	
 	public override void _Ready()
 	{
@@ -20,23 +24,37 @@ public class DialogUI : Node
 		{
 			TimedRepeater._Process(delta);
 		}
+		else
+		{
+			if(messageQueue.Count != 0)
+			{
+				var message = messageQueue.First();
+
+				SetText(message.Value, message.Key);
+				messageQueue.Remove(message.Key);
+			}
+		}
 	}
 
 	public void SetText(float timeShown, string text)
-    {
-        GD.Print("1");
-        if (TimedRepeater == null)
-        {
-            GD.Print("2");
-            DialogLabel.Text = text;
+	{
+		if (TimedRepeater == null && messageQueue.Count == 0)
+		{
+			DialogLabel.Text = text;
 			TimedRepeater = new TimedRepeater(timeShown, 1, TimerExpired);
+		}
+		else
+		{
+			if(!messageQueue.ContainsKey(text))
+			{ 
+				messageQueue.Add(text, timeShown);
+			}
 		}
 	}
 
 	public void TimerExpired(int count)
-    {
-        GD.Print("3");
-        DialogLabel.Text = "";
+	{
+		DialogLabel.Text = "";
 		TimedRepeater = null;
 	} 
 }

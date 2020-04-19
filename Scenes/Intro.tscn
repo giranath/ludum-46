@@ -87,7 +87,7 @@ Key = "Q"
 [node name="KeyboardKeyE" parent="." instance=ExtResource( 3 )]
 position = Vector2( 296, 544 )
 Key = "E"
-Description = "to pickup objects"
+Description = "to change your current hand"
 
 [node name="KeyboardKeySpace" parent="." instance=ExtResource( 3 )]
 position = Vector2( 256, 640 )
