@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/SmartObjects/SmartObjectScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Models/Textures/OxygenRefinery.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scripts/SmartObjects/SOOxygenRefinery.cs" type="Script" id=6]
 [ext_resource path="res://Models/Textures/bubble.png" type="Texture" id=7]
 [ext_resource path="res://Models/Textures/CyrenLight.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/testArea.cs" type="Script" id=9]
 
 [sub_resource type="ParticlesMaterial" id=1]
 lifetime_randomness = 0.26
@@ -39,6 +40,9 @@ linear_accel = -60.0
 linear_accel_random = 0.8
 color = Color( 0.70043, 0.736553, 0.89209, 0.705882 )
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 60, 80 )
+
 [node name="Node2D" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
 brokenLightPath = NodePath("BrokenLight")
@@ -47,7 +51,7 @@ cycleOxygenOutput = 5.0
 buttonPath = NodePath("Sprite/Sprite")
 particlePaths = [ NodePath("OxygenParticle"), NodePath("BubbleParticle") ]
 
-[node name="OxygenParticle" type="Particles2D" parent="." index="2"]
+[node name="OxygenParticle" type="Particles2D" parent="." index="1"]
 position = Vector2( 72.6551, -27.6223 )
 emitting = false
 amount = 25
@@ -56,8 +60,8 @@ randomness = 0.35
 process_material = SubResource( 1 )
 texture = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="." index="3"]
-position = Vector2( 31.0007, 24.5268 )
+[node name="Sprite" type="Sprite" parent="." index="2"]
+position = Vector2( -0.382036, -0.0617313 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Sprite" index="0"]
@@ -65,14 +69,21 @@ position = Vector2( -36.9466, 57.7514 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
 
-[node name="BubbleParticle" type="Particles2D" parent="." index="4"]
-position = Vector2( 56.1071, 82.0346 )
+[node name="BubbleParticle" type="Particles2D" parent="." index="3"]
+position = Vector2( 27.9597, 59.7108 )
 emitting = false
 amount = 4
 process_material = SubResource( 2 )
 texture = ExtResource( 7 )
 
-[node name="BrokenLight" type="Sprite" parent="." index="5"]
-visible = false
-position = Vector2( 57.9744, -20.5268 )
+[node name="BrokenLight" type="Sprite" parent="." index="4"]
+position = Vector2( 25.9446, -45.1153 )
 texture = ExtResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="." index="5"]
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource( 3 )
+[connection signal="AreaClicked" from="Area2D" to="." method="OnClick"]
+[connection signal="input_event" from="Area2D" to="Area2D" method="ClickArea"]

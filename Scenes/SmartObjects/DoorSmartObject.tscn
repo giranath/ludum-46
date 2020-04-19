@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/SmartObjects/SmartObjectScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/SmartObjects/SOBaseDoor.cs" type="Script" id=2]
@@ -6,9 +6,13 @@
 [ext_resource path="res://Scripts/SmartObjects/DoorBody.cs" type="Script" id=4]
 [ext_resource path="res://Images/Keypad.png" type="Texture" id=5]
 [ext_resource path="res://Models/door_2.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/testArea.cs" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14.4305, 64.4361 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 40, 100 )
 
 [node name="DoorSmartObject" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -35,13 +39,19 @@ position = Vector2( -0.999989, -25 )
 scale = Vector2( 0.7, 1 )
 texture = ExtResource( 6 )
 
-[node name="ClickArea" parent="." index="2"]
-position = Vector2( 0, 0 )
-
-[node name="Keypad" type="Sprite" parent="." index="3"]
+[node name="Keypad" type="Sprite" parent="." index="2"]
 position = Vector2( -44.8214, 6.94213 )
 texture = ExtResource( 5 )
 
-[node name="Keypad2" type="Sprite" parent="." index="4"]
+[node name="Keypad2" type="Sprite" parent="." index="3"]
 position = Vector2( 51.5917, 7.26566 )
 texture = ExtResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="." index="4"]
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2( 0.513336, -26.1803 )
+shape = SubResource( 2 )
+[connection signal="AreaClicked" from="Area2D" to="." method="OnClick"]
+[connection signal="input_event" from="Area2D" to="Area2D" method="ClickArea"]

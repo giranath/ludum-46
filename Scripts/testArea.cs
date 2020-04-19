@@ -12,7 +12,7 @@ public class testArea : Area2D
 	[Signal]
 	public delegate void AreaClicked();
 	
-	private void _on_ClickArea_input_event(object viewport, object @event, int shape_idx)
+	private void ClickArea(object viewport, object @event, int shape_idx)
 {
 	if (@event is InputEventMouseButton btn)
 		{
@@ -25,6 +25,3 @@ public class testArea : Area2D
 	
 }
 }
-
-
-
