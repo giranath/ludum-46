@@ -43,6 +43,8 @@ public class Breach : SmartObject, Destroyable
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        base._Ready();
+
         breachSprite = GetNode<Sprite>("./BreachSprite");
         repairedSprite = GetNode<Sprite>("./RepairSprite");
 
@@ -56,17 +58,25 @@ public class Breach : SmartObject, Destroyable
         gameState.destroyables.Add(this);
     }
 
+    public override void _Process(float delta)
+    {
+        base._Process(delta);
+
+        oxygenWithdrawalRepeater._Process(delta);
+    }
+
     private void WithdrawOxygenFromRoom(int count)
     {
         if(currentState == State.Active)
         {
+            GD.Print("Withdrawing oxygen from room");
             room.Graph.TryAddPropertyOfRoom(room, "oxygen", -OxygenWithdrawableValue);
         }
     }
 
     private void ChangeState(State newState)
     {
-        currentState = State.Repaired;
+        currentState = newState;
 
         switch(currentState)
         {
@@ -79,7 +89,7 @@ public class Breach : SmartObject, Destroyable
                 repairedSprite.Visible = false;
                 break;
             case State.Repaired:
-                breachSprite.Visible = true;
+                breachSprite.Visible = false;
                 repairedSprite.Visible = true;
                 break;
         }
