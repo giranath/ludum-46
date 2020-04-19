@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CryoDudes.png-79e8adf9a4e7967061c9821fbea7ce53.stex"
+path="res://.import/CryoGlass.png-baa72934bb77aa47f65b2eb51bbb041a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Models/Textures/CryoDudes.png"
-dest_files=[ "res://.import/CryoDudes.png-79e8adf9a4e7967061c9821fbea7ce53.stex" ]
+source_file="res://Models/Textures/CryoGlass.png"
+dest_files=[ "res://.import/CryoGlass.png-baa72934bb77aa47f65b2eb51bbb041a.stex" ]
 
 [params]
 

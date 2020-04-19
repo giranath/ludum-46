@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CryoDudes.png-79e8adf9a4e7967061c9821fbea7ce53.stex"
+path="res://.import/CryoFoetus.png-3c1b8f634de898f943731dd08cfcd6ca.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Models/Textures/CryoDudes.png"
-dest_files=[ "res://.import/CryoDudes.png-79e8adf9a4e7967061c9821fbea7ce53.stex" ]
+source_file="res://Models/Textures/CryoFoetus.png"
+dest_files=[ "res://.import/CryoFoetus.png-3c1b8f634de898f943731dd08cfcd6ca.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
