@@ -44,6 +44,8 @@ public class CharacterMovement : KinematicBody2D
 
 	public Vector2 Velocity;
 
+    public Room CurrentRoom { get; set; }
+
 	private bool FloatCompare(float a, float b, float epsilon = 0.00001f )
 	{
 		return Math.Abs(a - b) <= epsilon;
@@ -57,22 +59,32 @@ public class CharacterMovement : KinematicBody2D
 		}
 		else
 		{
+            float currentRoomOxygen = 0.0f;
+            if (CurrentRoom != null)
+            {
+                CurrentRoom.Graph.TryGetRoomProperty(CurrentRoom, "oxygen", out currentRoomOxygen);
+            }
 
-			float oxygenChange = -oxygenConsumption;
+            float oxygenChange = -oxygenConsumption;
 
 			//Todo try consuming room oxygen
-			bool CanConsume = true;
+			bool CanConsume = currentRoomOxygen > 0.0f;
 			if (CanConsume)
 			{
-				oxygenChange = oxygenConsumption;
+                float consumedOxygen = Mathf.Min(currentRoomOxygen, oxygenConsumption);
+				oxygenChange = -consumedOxygen;
 			}
 			oxygen = Mathf.Clamp(oxygen + oxygenConsumption, 0.0f, maxOxygen);
+            if(CurrentRoom != null)
+            {
+                CurrentRoom.Graph.TryAddPropertyOfRoom(CurrentRoom, "oxygen", -oxygenConsumption);
+            }
 
 			EmitSignal(nameof(OxygenChanged), oxygen);
 		}
 	}
 
-	private void Damage(float damage)
+	public void Damage(float damage)
 	{
 		GD.Print("Damage : " + damage.ToString());
 		health = Mathf.Clamp(health - damage, 0.0f, maxHealth);
@@ -126,6 +138,7 @@ public class CharacterMovement : KinematicBody2D
 	public override void _Process(float delta)
 	{
 		oxygenTimer._Process(delta);
+
 		HandleAnimation();
 	}
 

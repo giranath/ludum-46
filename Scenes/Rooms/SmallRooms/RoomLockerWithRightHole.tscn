@@ -4,6 +4,3 @@
 
 [node name="RoomLocker" instance=ExtResource( 1 )]
 roomName = "Lockers"
-
-[node name="RoomCoverArea" parent="." index="1"]
-visible = false
