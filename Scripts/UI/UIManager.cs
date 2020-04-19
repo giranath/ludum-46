@@ -28,4 +28,9 @@ public class UIManager : CanvasLayer
 	public override void _Process(float delta)
 	{
 	}
+
+    public void OnRoomChanged(Room newRoom)
+    {
+        ZonePromptUI.SetText(5.0f, newRoom.roomName);
+    }
 }

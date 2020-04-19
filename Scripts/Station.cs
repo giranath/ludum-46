@@ -22,6 +22,7 @@ public class Station : Node2D
 		gameState.station = this;
 
         rooms = GetNode<RoomGraph>("./Rooms");
+        rooms.Connect("PlayerChangedRoom", gameState.uiManager, "OnRoomChanged");
 	}
 
     public RoomGraph GetRooms()
