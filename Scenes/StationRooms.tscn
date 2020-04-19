@@ -104,7 +104,7 @@ connectedBottomRoom = NodePath("")
 position = Vector2( 1281, -390.389 )
 connectedLeftRoom = NodePath("../RoomLocker")
 connectedBottomRoom = NodePath("../RoomHardware")
-roomName = "Power"
+roomName = "Staff Room"
 
 [node name="RoomLocker3" parent="Rooms" instance=ExtResource( 3 )]
 position = Vector2( 1071, -944 )
