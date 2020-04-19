@@ -9,7 +9,8 @@ public enum itemType
 	Pistol,
 	AccessCard,
     ToolBox,
-    Syringe
+    Syringe,
+    DuckTape,
 }
 
 public abstract class Item : Node2D {
