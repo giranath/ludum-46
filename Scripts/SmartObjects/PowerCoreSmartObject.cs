@@ -10,6 +10,8 @@ public class PowerCoreSmartObject : SmartObject
 		gamestate.fuel += 25.0f;
 
 		GD.Print("wow refuel");
+		item.QueueFree();
+
 	}
 
 	// Called when the node enters the scene tree for the first time.

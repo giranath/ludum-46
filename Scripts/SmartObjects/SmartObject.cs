@@ -8,7 +8,7 @@ public class SmartObject : Node
 	
 	bool playerInside = false;
 
-	private GameState gameState;
+	public GameState gameState;
 
 	public override void _Ready() {
 		//base._Ready();
