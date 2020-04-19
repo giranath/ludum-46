@@ -51,7 +51,8 @@ public class Breach : SmartObject, Destroyable
         room = GetNode<Room>(roomPath);
 
         oxygenWithdrawalRepeater = new TimedRepeater(1.0f, 0, WithdrawOxygenFromRoom);
-        
+
+        GameState gameState = GetNode<GameState>("/root/GameState");
         gameState.destroyables.Add(this);
     }
 
