@@ -14,8 +14,7 @@ public class FuelManager : Node
 	private void ReduceFuel(int count)
 	{
 		GameState gamestate = GetNode<GameState>("/root/GameState");
-		gamestate.fuel -= fuelReduction;
-		GD.Print("Fuel : " + gamestate.fuel.ToString());
+		gamestate.Fuel -= fuelReduction;
 	}
 
 	public override void _Process(float delta)
