@@ -1,11 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Scenes/Rooms/BigRoom.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Inventory/AccessCard.tscn" type="PackedScene" id=2]
 
 [node name="RoomCockpit" instance=ExtResource( 1 )]
-roomName = "Cockpit"
-
-[node name="AccessCard" parent="." index="2" instance=ExtResource( 2 )]
-position = Vector2( -95.7642, 183.283 )
-key = 666
+roomName = "Power Generator"

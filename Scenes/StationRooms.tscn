@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/RoomGraph.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Rooms/BigRooms/RoomClinic.tscn" type="PackedScene" id=2]
@@ -12,10 +12,11 @@
 [ext_resource path="res://Scenes/Rooms/MediumRooms/RoomHardware.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Rooms/BigRooms/RoomPowerGenerator.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Rooms/BigRooms/RoomCryo.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/SmartObjects/DoorSmartObject.tscn" type="PackedScene" id=13]
 
 [node name="Station" type="Node2D"]
 script = ExtResource( 1 )
-centralRoom = NodePath("Rooms/Rooms/RoomPowerGenerator")
+centralRoom = NodePath("Rooms/RoomCryo")
 
 [node name="Ship" type="Sprite" parent="."]
 position = Vector2( 1509.45, -156.44 )
@@ -27,66 +28,58 @@ __meta__ = {
 
 [node name="Rooms" type="Node2D" parent="."]
 
-[node name="Rooms" type="Node2D" parent="Rooms"]
-
-[node name="RoomPowerGenerator" parent="Rooms/Rooms" instance=ExtResource( 11 )]
+[node name="RoomPowerGenerator" parent="Rooms" instance=ExtResource( 11 )]
 position = Vector2( 1281, -390.389 )
-connectedLeftRoom = NodePath("../../../Rooms/RoomLocker")
+connectedLeftRoom = NodePath("../RoomLocker")
+connectedTopRoom = NodePath("../RoomCryo")
 connectedBottomRoom = NodePath("../RoomHardware")
-coveredAreaPath = NodePath("../../../Rooms/RoomCockpit/RoomCoverArea")
+roomName = "Power"
 
-[node name="RoomLocker" parent="Rooms/Rooms" instance=ExtResource( 3 )]
+[node name="RoomLocker" parent="Rooms" instance=ExtResource( 3 )]
 position = Vector2( 1024.1, -291 )
 connectedLeftRoom = NodePath("../RoomEngine")
 connectedRightRoom = NodePath("../RoomPowerGenerator")
-coveredAreaPath = NodePath("../../../Rooms/RoomLocker/RoomCoverArea")
 
-[node name="RoomClinic" parent="Rooms/Rooms" instance=ExtResource( 2 )]
+[node name="RoomClinic" parent="Rooms" instance=ExtResource( 2 )]
 position = Vector2( 47.1025, -944.24 )
 connectedRightRoom = NodePath("../RoomLocker3")
-coveredAreaPath = NodePath("../../../Rooms/RoomClinic/RoomCoverArea")
 
-[node name="RoomLocker2" parent="Rooms/Rooms" instance=ExtResource( 3 )]
+[node name="RoomLocker2" parent="Rooms" instance=ExtResource( 3 )]
 position = Vector2( 1646.28, 186.678 )
 connectedRightRoom = NodePath("../RoomHardware")
-coveredAreaPath = NodePath("../../../Rooms/RoomLocker2/RoomCoverArea")
 
-[node name="RoomEngine" parent="Rooms/Rooms" instance=ExtResource( 6 )]
+[node name="RoomEngine" parent="Rooms" instance=ExtResource( 6 )]
 connectedRightRoom = NodePath("../RoomLocker")
-coveredAreaPath = NodePath("../../../Rooms/RoomEngine/RoomCoverArea")
 
-[node name="RoomWorkshop" parent="Rooms/Rooms" instance=ExtResource( 4 )]
+[node name="RoomWorkshop" parent="Rooms" instance=ExtResource( 4 )]
 position = Vector2( 1707.97, -1195.41 )
 connectedBottomRoom = NodePath("../RoomCryo")
-coveredAreaPath = NodePath("../../../Rooms/RoomWorkshop/RoomCoverArea")
 
-[node name="RoomLocker3" parent="Rooms/Rooms" instance=ExtResource( 3 )]
+[node name="RoomLocker3" parent="Rooms" instance=ExtResource( 3 )]
 position = Vector2( 1071, -944 )
 connectedLeftRoom = NodePath("../RoomClinic")
 connectedBottomRoom = NodePath("../RoomCryo")
-coveredAreaPath = NodePath("../../../Rooms/RoomLocker3/RoomCoverArea")
 
-[node name="RoomCryo" parent="Rooms/Rooms" instance=ExtResource( 12 )]
-position = Vector2( 1327, -679 )
+[node name="RoomCryo" parent="Rooms" instance=ExtResource( 12 )]
+position = Vector2( 1327, -682.995 )
 connectedLeftRoom = NodePath("../RoomLocker3")
 connectedRightRoom = NodePath("../RoomHallway")
 connectedTopRoom = NodePath("../RoomWorkshop")
 connectedBottomRoom = NodePath("../RoomPowerGenerator")
 
-[node name="RoomHallway" parent="Rooms/Rooms" instance=ExtResource( 9 )]
-position = Vector2( 2350.93, -553.858 )
+[node name="RoomHallway" parent="Rooms" instance=ExtResource( 9 )]
+position = Vector2( 2350.93, -553 )
 connectedLeftRoom = NodePath("../RoomCryo")
 connectedRightRoom = NodePath("../RoomCockpit")
 
-[node name="RoomCockpit" parent="Rooms/Rooms" instance=ExtResource( 5 )]
-position = Vector2( 2863.34, -553.558 )
+[node name="RoomCockpit" parent="Rooms" instance=ExtResource( 5 )]
+position = Vector2( 2863, -553 )
 connectedLeftRoom = NodePath("../RoomHallway")
 
-[node name="RoomHardware" parent="Rooms/Rooms" instance=ExtResource( 10 )]
+[node name="RoomHardware" parent="Rooms" instance=ExtResource( 10 )]
 position = Vector2( 1891.56, -101.496 )
 connectedLeftRoom = NodePath("../RoomLocker2")
 connectedTopRoom = NodePath("../RoomCryo")
-coveredAreaPath = NodePath("../RoomHardware/RoomCoverArea")
 
 [node name="Ladders" type="Node2D" parent="."]
 
@@ -99,7 +92,7 @@ position = Vector2( 1256.84, -109.079 )
 scale = Vector2( 3, 3 )
 
 [node name="Ladder3" parent="Ladders" instance=ExtResource( 8 )]
-position = Vector2( 1300.55, -386.43 )
+position = Vector2( 1300.55, -390.425 )
 scale = Vector2( 3, 3 )
 
 [node name="Ladder4" parent="Ladders" instance=ExtResource( 8 )]
@@ -129,3 +122,41 @@ scale = Vector2( 3, 3 )
 [node name="Ladder12" parent="Ladders" instance=ExtResource( 8 )]
 position = Vector2( 1870.33, 184.46 )
 scale = Vector2( 3, 3 )
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="DoorWorkshop" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1744, -981.798 )
+
+[node name="DoorWorkshop2" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1299.2, -730.875 )
+
+[node name="DoorWorkshop3" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1017.07, -731.177 )
+
+[node name="DoorWorkshop4" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1050.56, -78.0366 )
+
+[node name="DoorWorkshop5" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 937.507, 212.866 )
+
+[node name="DoorWorkshop6" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1827.75, 399.772 )
+
+[node name="DoorWorkshop7" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1918.16, 117.694 )
+
+[node name="DoorWorkshop8" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 2269.79, -176.918 )
+
+[node name="DoorWorkshop9" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1341.83, -176.918 )
+
+[node name="DoorWorkshop10" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 1401.84, -470.283 )
+
+[node name="DoorWorkshop11" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 2319.79, -470.021 )
+
+[node name="DoorWorkshop12" parent="Doors" instance=ExtResource( 13 )]
+position = Vector2( 2830.64, -334.251 )

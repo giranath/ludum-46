@@ -321,35 +321,35 @@ public class RoomGraph : Node
 		return false;
 	}
 
-    public bool TryAddPropertyOfRoom(Room room, Int32 propertyIdx, float value)
-    {
-        RoomNode node = FindRoom(room);
+	public bool TryAddPropertyOfRoom(Room room, Int32 propertyIdx, float value)
+	{
+		RoomNode node = FindRoom(room);
 
-        if (node != null)
-        {
-            IRoomPropertyProvider provider = propertyProviders[propertyIdx];
+		if (node != null)
+		{
+			IRoomPropertyProvider provider = propertyProviders[propertyIdx];
 
-            node.propertyLayers[propertyIdx] += Mathf.Clamp(value, provider.GetRoomPropertyMinValue(), provider.GetRoomPropertyMaxValue());
+			node.propertyLayers[propertyIdx] += Mathf.Clamp(value, provider.GetRoomPropertyMinValue(), provider.GetRoomPropertyMaxValue());
 
-            return true;
-        }
+			return true;
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    public bool TryAddPropertyOfRoom(Room room, string propertyName, float value)
-    {
-        int propertyIdx = propertyNames.IndexOf(propertyName);
+	public bool TryAddPropertyOfRoom(Room room, string propertyName, float value)
+	{
+		int propertyIdx = propertyNames.IndexOf(propertyName);
 
-        if (propertyIdx >= 0)
-        {
-            return TryAddPropertyOfRoom(room, propertyIdx, value);
-        }
+		if (propertyIdx >= 0)
+		{
+			return TryAddPropertyOfRoom(room, propertyIdx, value);
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    public bool TryGetRoomProperty(Room room, int propertyIdx, out float value)
+	public bool TryGetRoomProperty(Room room, int propertyIdx, out float value)
 	{
 		value = 0.0f;
 

@@ -11,7 +11,7 @@ public class Station : Node2D
 
 	private GameState gameState;
 
-    private RoomGraph rooms;
+	private RoomGraph rooms;
 
 	public bool PropulsorBroken { get; set; } = false;
 
@@ -21,13 +21,13 @@ public class Station : Node2D
 		gameState = GetNode<GameState>("/root/GameState");
 		gameState.station = this;
 
-        rooms = GetNode<RoomGraph>("./Rooms");
+		rooms = GetNode<RoomGraph>("./Rooms");
 	}
 
-    public RoomGraph GetRooms()
-    {
-        return rooms;
-    }
+	public RoomGraph GetRooms()
+	{
+		return rooms;
+	}
 
 	public float GetSpeedAtFuel(float fuel, float maxFuel) {
 		return fuelToSpeedCurve.Interpolate(Mathf.Clamp(fuel / maxFuel, 0.0f, 1.0f)) * maxSpeed;

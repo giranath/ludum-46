@@ -4,4 +4,4 @@
 
 [node name="RoomCryo" instance=ExtResource( 1 )]
 coveredAreaPath = NodePath("../RoomCryo/RoomCoverArea")
-roomName = "Medical Clinic"
+roomName = "Cryogenic Chambers"

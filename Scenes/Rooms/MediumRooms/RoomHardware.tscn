@@ -4,3 +4,4 @@
 
 [node name="RoomHardware" instance=ExtResource( 1 )]
 coveredAreaPath = NodePath("../RoomHardware/RoomCoverArea")
+roomName = "Hardware Storage"
