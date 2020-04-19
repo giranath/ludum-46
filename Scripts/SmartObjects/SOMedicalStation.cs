@@ -35,12 +35,12 @@ public class SOMedicalStation : SmartObject
 			CurrentHealth = "You appear to be hurt.";
 		}
 
-		if (gamestate.player.health <= 70)
+		if (gamestate.player.health <= 99)
 		{
 			CurrentHealth = "You appear to be fine.";
 		}
 
-		if (gamestate.player.health > 99)
+		if (gamestate.player.health >= 99)
 		{
 			CurrentHealth = "You are in perfect shape and form.";
 		}
