@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/O2Meter.cs" type="Script" id=1]
+[ext_resource path="res://Models/o2_meter.png" type="Texture" id=2]
+
+[node name="O2Meter" type="Node2D"]
+script = ExtResource( 1 )
+goodColor = Color( 0.145098, 0.945098, 0.231373, 1 )
+badColor = Color( 0.796078, 0.00784314, 0.00784314, 1 )
+
+[node name="FrontPanel" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="ProgressColor" type="ColorRect" parent="."]
+margin_left = 1.0
+margin_top = -15.0
+margin_right = 5.0
+margin_bottom = 15.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

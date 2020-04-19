@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Room.cs" type="Script" id=1]
 [ext_resource path="res://Models/Textures/metal-wall.jpg" type="Texture" id=2]
+[ext_resource path="res://Scenes/O2Meter.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 515.448, 259.75 )
@@ -22,3 +23,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomCoverArea"]
 visible = false
 shape = SubResource( 1 )
+
+[node name="O2Meter" parent="." instance=ExtResource( 3 )]
+position = Vector2( 159.633, 77.2808 )
+owningRoomPath = NodePath("..")
