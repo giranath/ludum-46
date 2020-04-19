@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Rooms/MediumRoom.tscn" type="PackedScene" id=1]
+
+[node name="RoomCockpit" instance=ExtResource( 1 )]
+coveredAreaPath = NodePath("../RoomCockpit/RoomCoverArea")

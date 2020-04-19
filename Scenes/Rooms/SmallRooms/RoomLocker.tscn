@@ -7,6 +7,3 @@ roomName = "Lockers"
 
 [node name="RoomCoverArea" parent="." index="1"]
 visible = false
-
-[node name="CollisionShape2D" parent="RoomCoverArea" index="0"]
-visible = true

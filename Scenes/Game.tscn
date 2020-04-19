@@ -16,7 +16,7 @@ position = Vector2( 156.314, 10.8707 )
 fuelToSpeedCurve = ExtResource( 6 )
 
 [node name="Character" parent="." instance=ExtResource( 2 )]
-position = Vector2( 318.445, 152.32 )
+position = Vector2( 1157.05, 295.78 )
 z_index = 1
 RunSpeed = 800.0
 ClimbingSpeed = 800.0
