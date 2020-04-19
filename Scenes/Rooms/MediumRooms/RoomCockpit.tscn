@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Rooms/MediumRoom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/SmartObjects/SOTerminal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Fire.tscn" type="PackedScene" id=3]
 
 [node name="RoomCockpit" instance=ExtResource( 1 )]
 roomName = "Cockpit"
 
 [node name="Node2D" parent="." index="3" instance=ExtResource( 2 )]
 position = Vector2( 434.35, 218.499 )
+
+[node name="Fire" parent="." index="4" instance=ExtResource( 3 )]
+position = Vector2( 196.862, 251.842 )
+RoomPath = NodePath("..")
+destroyTime = 2.0
+OxygenCosumptionTime = 1.0
+oxygenConsumption = 5.0
