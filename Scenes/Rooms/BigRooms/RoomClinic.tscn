@@ -4,3 +4,6 @@
 
 [node name="RoomClinic" instance=ExtResource( 1 )]
 roomName = "Medical Clinic"
+
+[node name="Platforms" parent="." index="1"]
+cell_quadrant_size = 64

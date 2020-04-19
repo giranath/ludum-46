@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/RoomGraph.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Rooms/BigRooms/RoomClinic.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Scenes/Rooms/BigRooms/RoomPowerGenerator.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Rooms/BigRooms/RoomCryo.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/SmartObjects/DoorSmartObject.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Rooms/Wall.tscn" type="PackedScene" id=14]
 
 [node name="Station" type="Node2D"]
 script = ExtResource( 1 )
@@ -27,13 +28,6 @@ __meta__ = {
 }
 
 [node name="Rooms" type="Node2D" parent="."]
-
-[node name="RoomPowerGenerator" parent="Rooms" instance=ExtResource( 11 )]
-position = Vector2( 1281, -390.389 )
-connectedLeftRoom = NodePath("../RoomLocker")
-connectedTopRoom = NodePath("../RoomCryo")
-connectedBottomRoom = NodePath("../RoomHardware")
-roomName = "Power"
 
 [node name="RoomLocker" parent="Rooms" instance=ExtResource( 3 )]
 position = Vector2( 1024.1, -291 )
@@ -55,6 +49,18 @@ connectedRightRoom = NodePath("../RoomLocker")
 position = Vector2( 1707.97, -1195.41 )
 connectedBottomRoom = NodePath("../RoomCryo")
 
+[node name="RoomHardware" parent="Rooms" instance=ExtResource( 10 )]
+position = Vector2( 1891.56, -101.496 )
+connectedLeftRoom = NodePath("../RoomLocker2")
+connectedTopRoom = NodePath("../RoomCryo")
+
+[node name="RoomPowerGenerator" parent="Rooms" instance=ExtResource( 11 )]
+position = Vector2( 1281, -390.389 )
+connectedLeftRoom = NodePath("../RoomLocker")
+connectedTopRoom = NodePath("../RoomCryo")
+connectedBottomRoom = NodePath("../RoomHardware")
+roomName = "Power"
+
 [node name="RoomLocker3" parent="Rooms" instance=ExtResource( 3 )]
 position = Vector2( 1071, -944 )
 connectedLeftRoom = NodePath("../RoomClinic")
@@ -75,11 +81,6 @@ connectedRightRoom = NodePath("../RoomCockpit")
 [node name="RoomCockpit" parent="Rooms" instance=ExtResource( 5 )]
 position = Vector2( 2863, -553 )
 connectedLeftRoom = NodePath("../RoomHallway")
-
-[node name="RoomHardware" parent="Rooms" instance=ExtResource( 10 )]
-position = Vector2( 1891.56, -101.496 )
-connectedLeftRoom = NodePath("../RoomLocker2")
-connectedTopRoom = NodePath("../RoomCryo")
 
 [node name="Ladders" type="Node2D" parent="."]
 
@@ -132,7 +133,7 @@ position = Vector2( 1744, -981.798 )
 position = Vector2( 1299.2, -730.875 )
 
 [node name="DoorWorkshop3" parent="Doors" instance=ExtResource( 13 )]
-position = Vector2( 1017.07, -731.177 )
+position = Vector2( 1055.1, -730.498 )
 
 [node name="DoorWorkshop4" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 1050.56, -78.0366 )
@@ -160,3 +161,155 @@ position = Vector2( 2319.79, -470.021 )
 
 [node name="DoorWorkshop12" parent="Doors" instance=ExtResource( 13 )]
 position = Vector2( 2830.64, -334.251 )
+
+[node name="Collissions" type="Node2D" parent="."]
+
+[node name="Wall" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 51.2141, -802.986 )
+rotation = 4.71238
+scale = Vector2( 4.43999, 1 )
+
+[node name="Wall14" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 2727.13, -1054.2 )
+rotation = 4.71238
+scale = Vector2( 4.43999, 1 )
+
+[node name="Wall15" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 4.3187, 148.541 )
+rotation = 4.71238
+scale = Vector2( 4.43999, 1 )
+
+[node name="Wall16" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1026.96, 143.46 )
+rotation = 4.71238
+scale = Vector2( 4.43999, 1 )
+
+[node name="Wall18" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1651.1, 335.913 )
+rotation = 4.71238
+scale = Vector2( 4.43999, 1 )
+
+[node name="Wall26" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1836.97, 44.7446 )
+rotation = 4.71238
+scale = Vector2( 4.5621, 1 )
+
+[node name="Wall27" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1918.02, -24.7195 )
+rotation = 4.71238
+scale = Vector2( 2.3621, 1 )
+
+[node name="Wall19" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 2398.56, -36.507 )
+rotation = 4.71238
+scale = Vector2( 7.03999, 1 )
+
+[node name="Wall20" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 3369.29, -411.202 )
+rotation = 4.71238
+scale = Vector2( 4.43999, 1 )
+
+[node name="Wall17" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1286.88, -50.5775 )
+rotation = 4.71238
+scale = Vector2( 1.43999, 1 )
+
+[node name="Wall6" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 939.604, -152.052 )
+rotation = 4.71238
+scale = Vector2( 4.83999, 1 )
+
+[node name="Wall7" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1213.11, -481.022 )
+rotation = 4.71238
+scale = Vector2( 5.35999, 1 )
+
+[node name="Wall2" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 690.336, -939.243 )
+rotation = 6.28318
+scale = Vector2( 19.92, 1 )
+
+[node name="Wall8" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1075.32, -309.343 )
+rotation = 6.28318
+scale = Vector2( 4.39999, 1 )
+
+[node name="Wall25" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1744.63, 189.984 )
+rotation = 6.28318
+scale = Vector2( 3.09434, 0.805436 )
+
+[node name="Wall9" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1367.78, -819.169 )
+rotation = 6.28318
+scale = Vector2( 1.51999, 1 )
+
+[node name="Wall28" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 2377.87, -595.127 )
+rotation = 6.28318
+scale = Vector2( 1.11996, 1 )
+
+[node name="Wall12" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1535.91, -689.661 )
+rotation = 6.28318
+scale = Vector2( 3.71999, 1 )
+
+[node name="Wall23" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 2035.11, -686.162 )
+rotation = 6.28318
+scale = Vector2( 9.87998, 1 )
+
+[node name="Wall4" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 2187.74, -1197.54 )
+rotation = 6.28318
+scale = Vector2( 16.96, 1 )
+
+[node name="Wall21" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 2890.34, -555.709 )
+rotation = 6.28318
+scale = Vector2( 15.1021, 1 )
+
+[node name="Wall5" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 470.252, 4.24872 )
+rotation = 6.28318
+scale = Vector2( 14.8, 1 )
+
+[node name="Wall3" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1324.14, -878.32 )
+rotation = 7.85397
+scale = Vector2( 1.99997, 1 )
+
+[node name="Wall10" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1413.31, -689.635 )
+rotation = 7.85397
+scale = Vector2( 4.23998, 1 )
+
+[node name="Wall24" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1713.14, -796.227 )
+rotation = 7.85397
+scale = Vector2( 3.58996, 1 )
+
+[node name="Wall22" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 2347.01, -640.778 )
+rotation = 7.85397
+scale = Vector2( 1.50658, 1 )
+
+[node name="Wall30" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 2829.03, -491.427 )
+rotation = 7.85397
+scale = Vector2( 2.10659, 1 )
+
+[node name="Wall29" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 2409.69, -574.233 )
+rotation = 7.85397
+scale = Vector2( 0.706584, 1 )
+
+[node name="Wall13" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1650.4, -943.06 )
+rotation = 7.85397
+scale = Vector2( 7.79998, 1 )
+
+[node name="Wall11" parent="Collissions" instance=ExtResource( 14 )]
+position = Vector2( 1341.65, -326.549 )
+rotation = 7.85397
+scale = Vector2( 2.03998, 1 )
