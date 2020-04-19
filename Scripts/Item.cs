@@ -7,7 +7,8 @@ public enum itemType
 	PowerCell,
 	FireExtinguisher,
 	Pistol,
-	AccessCard
+	AccessCard,
+    Syringe
 }
 
 public abstract class Item : Node2D {

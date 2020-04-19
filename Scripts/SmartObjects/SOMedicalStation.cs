@@ -8,10 +8,17 @@ public class SOMedicalStation : SmartObject
 
 	[Export]
 	public NodePath CooldownSpritePath;
+	
+	[Export]
+	public NodePath ParticlesPath;
 
 	private Node2D CooldownSprite;
 
 	private TimedRepeater StationCooldown;
+
+	private TimedRepeater ParticlesSwitcher;
+
+	private Particles2D Particles;
 
 	public void heal(Item item)
 	{
@@ -45,15 +52,24 @@ public class SOMedicalStation : SmartObject
 				gamestate.player.Damage(-25f);
 
 				StationCooldown = new TimedRepeater(cooldown, 1, CooldownElapsed);
+				ParticlesSwitcher = new TimedRepeater(1, 1, ParticleSwitch);
 				CooldownSprite.Visible = true;
 			}
 
 			gamestate.uiManager.DialogUI.SetText(2, $"{CurrentHealth}");
+			Particles.Emitting = true;
+
 		}
 		else
 		{
 			gamestate.uiManager.DialogUI.SetText(2, $"You cannot reuse the station so soon. {CurrentHealth}");
 		}
+	}
+
+	private void ParticleSwitch(int count)
+	{
+		ParticlesSwitcher = null;
+		Particles.Emitting = false;
 	}
 
 	private void CooldownElapsed(int count)
@@ -69,6 +85,7 @@ public class SOMedicalStation : SmartObject
 		itemActionMap.Add(itemType.Syringe, heal);
 		itemActionMap.Add(itemType.None, heal);
 		CooldownSprite = GetNode<Node2D>(CooldownSpritePath);
+		Particles = GetNode<Particles2D>(ParticlesPath);
 	}
 
 	public override void _Process(float delta)
@@ -76,6 +93,11 @@ public class SOMedicalStation : SmartObject
 		if(StationCooldown != null)
 		{ 
 			StationCooldown._Process(delta);
+		}
+
+		if (ParticlesSwitcher != null)
+		{
+			ParticlesSwitcher._Process(delta);
 		}
 	}
 }

@@ -49,9 +49,9 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="Control"]
-margin_top = 3.0
+margin_top = 4.0
 margin_right = 200.0
-margin_bottom = 103.0
+margin_bottom = 104.0
 rect_min_size = Vector2( 200, 100 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 6 )
