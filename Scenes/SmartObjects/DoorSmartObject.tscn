@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/SmartObjects/SmartObjectScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/SmartObjects/SOBaseDoor.cs" type="Script" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://Images/Keypad.png" type="Texture" id=5]
 [ext_resource path="res://Models/door_2.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/testArea.cs" type="Script" id=7]
+[ext_resource path="res://Scripts/SmartObjects/DoorSounds.vs" type="Script" id=8]
+[ext_resource path="res://Audio/unlock_door.wav" type="AudioStream" id=9]
+[ext_resource path="res://Audio/door_locked.wav" type="AudioStream" id=10]
+[ext_resource path="res://Audio/lock_door.wav" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14.4305, 64.4361 )
@@ -53,5 +57,19 @@ script = ExtResource( 7 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2( 0.513336, -26.1803 )
 shape = SubResource( 2 )
+
+[node name="Sounds" type="Node2D" parent="." index="5"]
+script = ExtResource( 8 )
+
+[node name="Locked" type="AudioStreamPlayer2D" parent="Sounds" index="0"]
+stream = ExtResource( 10 )
+
+[node name="Unlock" type="AudioStreamPlayer2D" parent="Sounds" index="1"]
+stream = ExtResource( 9 )
+
+[node name="Lock" type="AudioStreamPlayer2D" parent="Sounds" index="2"]
+stream = ExtResource( 11 )
+[connection signal="InteractionFailed" from="." to="Sounds" method="_on_DoorSmartObject_InteractionFailed"]
+[connection signal="LockedStateChanged" from="." to="Sounds" method="_on_DoorSmartObject_LockedStateChanged"]
 [connection signal="AreaClicked" from="Area2D" to="." method="OnClick"]
 [connection signal="input_event" from="Area2D" to="Area2D" method="ClickArea"]
