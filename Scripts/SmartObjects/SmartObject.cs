@@ -15,8 +15,6 @@ public class SmartObject : Node
 		
 		Area2D clickArea = GetNode<Area2D>("./ClickArea");
 
-		clickArea.Connect("input_event", this, "OnClickSmartObject");
-
 		gameState = GetNode<GameState>("/root/GameState");
 	}
 

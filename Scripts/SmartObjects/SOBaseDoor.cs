@@ -21,11 +21,11 @@ public class SOBaseDoor : SmartObject
 	[Signal]
 	delegate void OnStateChanged(DoorState newState);
 
-    [Signal]
-    delegate void LockedStateChanged(bool newLockedState);
+	[Signal]
+	delegate void LockedStateChanged(bool newLockedState);
 
-    [Signal]
-    delegate void InteractionFailed();
+	[Signal]
+	delegate void InteractionFailed();
 
 	private void TryToggleDoor(Item item)
 	{
@@ -37,31 +37,31 @@ public class SOBaseDoor : SmartObject
 		// The door is locked
 		else
 		{
-            EmitSignal(nameof(InteractionFailed));
+			EmitSignal(nameof(InteractionFailed));
 		}
 	}
 
 	private void TryToggleLock(Item item)
 	{
-        AccessCard card = item as AccessCard;
+		AccessCard card = item as AccessCard;
 
 		// If the door is lockable
 		if(requiredKey != -1 && card.key == requiredKey)
 		{
-            locked = !locked;
-            EmitSignal(nameof(LockedStateChanged), locked);
+			locked = !locked;
+			EmitSignal(nameof(LockedStateChanged), locked);
 		}
 		// The door is not lockable
 		else
 		{
-            EmitSignal(nameof(InteractionFailed));
+			EmitSignal(nameof(InteractionFailed));
 		}
 	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        base._Ready();
+		base._Ready();
 
 		EmitSignal(nameof(OnStateChanged), currentState);
 

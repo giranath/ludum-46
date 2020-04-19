@@ -22,6 +22,7 @@ public class SOTerminal : SmartObject
 
 	public override void _Ready()
 	{
+		base._Ready();
 		itemActionMap.Add(itemType.None, ShowTime);
 	}
 }
