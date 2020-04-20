@@ -7,7 +7,7 @@ public class SOTerminal : SmartObject
 
 	public void ShowTime(Item item)
 	{
-		if(gameState == null)
+		if(gameState == null || uiManager == null)
 		{
 			gameState = GetNode<GameState>("/root/GameState");
 			uiManager = gameState.uiManager;

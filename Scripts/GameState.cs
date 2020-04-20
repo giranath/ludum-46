@@ -41,6 +41,11 @@ public class GameState : Node
 
     private RandomNumberGenerator rng = new RandomNumberGenerator();
 
+    public override void _Ready()
+    {
+        rng.Seed = Seed.Create();
+    }
+
 	public float GetDistanceToTravel() {
 		return Mathf.Clamp(requiredTravelDistance - traveledDistance, 0.0f, requiredTravelDistance);
 	}

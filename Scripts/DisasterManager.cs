@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System;
 using System.Collections.Generic;
 
 public class DisasterManager : Node
@@ -28,6 +29,7 @@ public class DisasterManager : Node
 
 	public override void _Ready()
 	{
+        rand.Seed = Seed.Create();
 		gameState = GetNode<GameState>("/root/GameState");
 
 		if (DisastersPath.Count == 0)

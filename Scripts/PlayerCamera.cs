@@ -34,7 +34,8 @@ public class PlayerCamera : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		playerNode = GetNode<Node2D>(playerPath);
+        rand.Seed = Seed.Create();
+        playerNode = GetNode<Node2D>(playerPath);
 		camera = GetNode<Camera2D>(cameraPath);
 	}
 

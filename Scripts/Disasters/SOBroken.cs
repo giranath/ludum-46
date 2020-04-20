@@ -14,8 +14,7 @@ public class SOBroken : Disaster
 	}
 
 	public override void Process()
-	{
-		
+	{		
 		int index = rand.RandiRange(0, gameState.destroyables.Count - 1);
 		
 		gameState.destroyables[index].Destroy();
@@ -23,7 +22,9 @@ public class SOBroken : Disaster
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
-	{
-		gameState = GetNode<GameState>("/root/GameState");
+    {
+        rand.Seed = Seed.Create();
+
+        gameState = GetNode<GameState>("/root/GameState");
 	}
 }

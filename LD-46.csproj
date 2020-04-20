@@ -73,6 +73,7 @@
     <Compile Include="Scripts\Item.cs" />
     <Compile Include="Scripts\O2Meter.cs" />
     <Compile Include="Scripts\OxygenConsumer.cs" />
+    <Compile Include="Scripts\Seed.cs" />
     <Compile Include="Scripts\SmartObjects\Breach.cs" />
     <Compile Include="Scripts\SmartObjects\SmartObject.cs" />
     <Compile Include="Scripts\SmartObjects\DoorBody.cs" />
