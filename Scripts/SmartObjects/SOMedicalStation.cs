@@ -22,49 +22,53 @@ public class SOMedicalStation : SmartObject
 
 	public void heal(Item item)
 	{
-		GameState gamestate = GetNode<GameState>("/root/GameState");
-		string CurrentHealth = "";
-
-		if(gamestate.player.health <= 25)
-		{
-			CurrentHealth = "You appear to be dieing.";
-		}
-
-		if (gamestate.player.health <= 50)
-		{
-			CurrentHealth = "You appear to be hurt.";
-		}
-
-		if (gamestate.player.health <= 99)
-		{
-			CurrentHealth = "You appear to be fine.";
-		}
-
-		if (gamestate.player.health >= 99)
-		{
-			CurrentHealth = "You are in perfect shape and form.";
-		}
-
 		if (StationCooldown == null)
 		{ 
-			if(item != null)
-			{ 
-				gamestate.player.Damage(-25f);
+			gameState.player.Damage(-25f);
 
-				StationCooldown = new TimedRepeater(cooldown, 1, CooldownElapsed);
-				ParticlesSwitcher = new TimedRepeater(1, 1, ParticleSwitch);
-				CooldownSprite.Visible = true;
-                Particles.Emitting = true;
-            }
-
-			gamestate.uiManager.DialogUI.SetText(2, $"{CurrentHealth}", Colors.White);
-
+			StationCooldown = new TimedRepeater(cooldown, 1, CooldownElapsed);
+			ParticlesSwitcher = new TimedRepeater(1, 1, ParticleSwitch);
+			CooldownSprite.Visible = true;
+            Particles.Emitting = true;
+            gameState.uiManager.DialogUI.SetText(2, $"You bandage yourself.", Colors.Green);
 		}
 		else
 		{
-			gamestate.uiManager.DialogUI.SetText(2, $"You cannot reuse the station so soon. {CurrentHealth}", Colors.White);
+			gameState.uiManager.DialogUI.SetText(2, $"The station has not refilled yet.", Colors.White);
 		}
 	}
+
+    public void healthCheck(Item item)
+    {
+        gameState.uiManager.DialogUI.SetText(2, $"{GetCurrentHealth()}", Colors.White);
+    }
+
+    private string GetCurrentHealth()
+    {
+        if (gameState.player.health >= 99)
+        {
+            return "You are in perfect shape and form.";
+        }
+
+        if (gameState.player.health <= 25)
+        {
+            return "You appear to be dieing.";
+        }
+
+        if (gameState.player.health <= 50)
+        {
+            return "You appear to be hurt.";
+        }
+
+        if (gameState.player.health < 99)
+        {
+            return "You appear to be fine.";
+        }
+
+
+
+        return "You are unsure wether you are alive or not";
+    }
 
 	private void ParticleSwitch(int count)
 	{
@@ -78,13 +82,19 @@ public class SOMedicalStation : SmartObject
 		CooldownSprite.Visible = false;
 	}
 
+    public void robot(Item item)
+    {
+        gameState.uiManager.DialogUI.SetText(3, "Maybe if I was a robot.", Colors.White);
+    }
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		base._Ready();
 		itemActionMap.Add(itemType.Syringe, heal);
-		itemActionMap.Add(itemType.None, heal);
-		CooldownSprite = GetNode<Node2D>(CooldownSpritePath);
+		itemActionMap.Add(itemType.None, healthCheck);
+        itemActionMap.Add(itemType.ToolBox, robot);
+        CooldownSprite = GetNode<Node2D>(CooldownSpritePath);
 		Particles = GetNode<Particles2D>(ParticlesPath);
 	}
 

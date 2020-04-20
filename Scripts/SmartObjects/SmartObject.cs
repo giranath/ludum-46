@@ -11,16 +11,17 @@ public class SmartObject : Node
 	public GameState gameState;
 
 	[Export]
-	NodePath brokenLightPath;
+	public NodePath brokenLightPath;
 
 	Sprite brokenLight;
 
 	[Export]
-	float rotationSpeed = 0.5f;
+	public float rotationSpeed = 0.5f;
 
 	public override void _Ready() {		
 
 		gameState = GetNode<GameState>("/root/GameState");
+
 		if(brokenLightPath != null)
 		{
 			brokenLight = GetNode<Sprite>(brokenLightPath);
@@ -39,12 +40,11 @@ public class SmartObject : Node
 		Action<Item> itemAction;
 		if (itemActionMap.TryGetValue(typeToTest, out itemAction))
 		{
-			GD.Print("Used item:" + (int)typeToTest);
 			itemAction(item);
 		}
 		else
 		{
-			GD.Print("Used an invalid item on this smart object");
+			gameState.uiManager.DialogUI.SetText(3, "I am unsure how I could manage to use this with that.", Colors.White);
 		}
 	}
 	

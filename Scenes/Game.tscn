@@ -12,10 +12,6 @@
 [ext_resource path="res://Scripts/Game.cs" type="Script" id=10]
 [ext_resource path="res://Inventory/AccessCard.tscn" type="PackedScene" id=11]
 
-
-
-
-
 [node name="Game" type="Node2D"]
 script = ExtResource( 10 )
 
@@ -67,6 +63,7 @@ __meta__ = {
 }
 
 [node name="DisasterManager" parent="." instance=ExtResource( 9 )]
+DisastersPath = [ NodePath("SOBrokenDisaster") ]
 
 [node name="AccessCard" parent="." instance=ExtResource( 11 )]
 position = Vector2( 3050.27, -266.266 )

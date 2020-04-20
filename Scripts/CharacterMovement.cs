@@ -116,9 +116,10 @@ public class CharacterMovement : KinematicBody2D
 	}
 
 	private void Dead()
-	{
-		GD.Print("Dead ouch!");
-	}
+    {
+        GameState gamestate = GetNode<GameState>("/root/GameState");
+        gamestate.OnMissionLost();
+    }
 
 
 	public Inventory GetInventory()

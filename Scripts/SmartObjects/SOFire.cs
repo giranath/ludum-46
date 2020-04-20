@@ -23,6 +23,8 @@ public class SOFire : SmartObject, Destroyable
 
 	private int fisted = 10;
 
+	bool hurtPlayer = false;
+
 	enum State
 	{
 		lit,
@@ -77,9 +79,9 @@ public class SOFire : SmartObject, Destroyable
 			return;
 		}
 
-		if(playerInside)
+		if(hurtPlayer)
 		{
-			gameState.player.Damage(1);
+			gameState.player.Damage(5);
 		}
 
 		float currentRoomOxygen = 0.0f;
@@ -128,13 +130,39 @@ public class SOFire : SmartObject, Destroyable
 
 					ChangeState(State.unlit);
 					itemActionMap.Clear();
+
+                    gameState.uiManager.DialogUI.SetText(3, "You punched the fire extinguish it, ouch.", Colors.Yellow);
 				}
 			}
 			else
 			{
 				ChangeState(State.unlit);
-			}
+                gameState.uiManager.DialogUI.SetText(3, "You use the fire extinguisher to stop the fire.", Colors.Green);
+            }
+		}
+	}
+	
+	private void bodyEntered(object body)
+	{
+		var characterMovement = ((Node)body) as CharacterMovement;
+
+		if (characterMovement != null)
+		{
+			hurtPlayer = true;
+		}
+	}
+	
+	private void bodyExited(object body)
+	{
+		var characterMovement = ((Node)body) as CharacterMovement;
+
+		if (characterMovement != null)
+		{
+			hurtPlayer = false;
 		}
 	}
 }
+
+
+
 

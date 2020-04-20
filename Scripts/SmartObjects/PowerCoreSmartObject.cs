@@ -13,7 +13,8 @@ public class PowerCoreSmartObject : SmartObject, Destroyable
 	
 			GD.Print("wow refuel");
 			item.QueueFree();
-		}
+            gameState.uiManager.DialogUI.SetText(3, "You place the fuel tank and you hear crackling of the fire .", Colors.Green);
+        }
 		else
 		{ 
 			gameState.uiManager.DialogUI.SetText(3, "I wouldn't touch this too much. Maybe you need a power cell?", Colors.White);

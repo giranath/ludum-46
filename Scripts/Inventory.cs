@@ -61,30 +61,35 @@ public class Inventory : Node {
             EmitSignal(nameof(OnHandSelected), handUsed);
 		}
 
-		if (Input.IsActionJustPressed("grabItem")) {
-		GD.Print(groundItem != null);
-			if (handUsed == Hand.Right) {
-				if (GetNode(right).GetChildren().Count == 0 && groundItem != null) {
-					Node2D groundObject = (Node2D) GetNode(groundItem);
-					groundObject.GetParent().RemoveChild(groundObject);
-					GetNode(right).AddChild(groundObject);
-					groundObject.Position = Vector2.Zero;
-					groundItem = null;
+		if (Input.IsActionJustPressed("grabItem")) 
+        {
+			if (handUsed == Hand.Right) 
+            {
+				if (GetNode(right).GetChildren().Count == 0 && groundItem != null)
+                {
+                    Item groundObject = (Item)GetNode(groundItem);
+                    groundObject.pickItem(GetNode(right));
+                    groundItem = null;
                     EmitSignal(nameof(ItemPicked));
-                } else if (GetNode(right).GetChildren().Count != 0) {
+                } 
+                else if (GetNode(right).GetChildren().Count != 0) 
+                {
 					Item itemRight = (Item) GetNode(right).GetChild(0);
 					itemRight.throwItem((Node2D) GetParent());
                     EmitSignal(nameof(ItemDropped));
 				}
-			} else if (handUsed == Hand.Left) {
-				if (GetNode(left).GetChildren().Count == 0 && groundItem != null) {
-					Node2D groundObject = (Node2D) GetNode(groundItem);
-					groundObject.GetParent().RemoveChild(groundObject);
-					GetNode(left).AddChild(groundObject);
-					groundObject.Position = Vector2.Zero;
+			} 
+            else if (handUsed == Hand.Left) 
+            {
+				if (GetNode(left).GetChildren().Count == 0 && groundItem != null) 
+                {
+                    Item groundObject = (Item) GetNode(groundItem);
+                    groundObject.pickItem(GetNode(left));
 					groundItem = null;
                     EmitSignal(nameof(ItemPicked));
-                } else if (GetNode(left).GetChildren().Count != 0) {
+                } 
+                else if (GetNode(left).GetChildren().Count != 0) 
+                {
 					Item itemLeft = (Item) GetNode(left).GetChild(0);
 					itemLeft.throwItem((Node2D) GetParent());
                     EmitSignal(nameof(ItemDropped));

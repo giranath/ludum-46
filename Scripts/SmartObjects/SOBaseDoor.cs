@@ -58,6 +58,7 @@ public class SOBaseDoor : SmartObject
 		{
 			locked = !locked;
 			EmitSignal(nameof(LockedStateChanged), locked);
+            gameState.uiManager.DialogUI.SetText(2, "You swipe the card and you hear the door unlock", Colors.Green);
 		}
 		// The door is not lockable
 		else

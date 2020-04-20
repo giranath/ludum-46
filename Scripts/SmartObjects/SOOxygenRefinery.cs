@@ -40,6 +40,8 @@ public class SOOxygenRefinery : SmartObject, Destroyable
 		repeater = new TimedRepeater(cycleDuration, OnCycle, GiveOxygen);
 		repeater.BindEnded(EndOxygenGeneration);
 		item.QueueFree();
+
+		gameState.uiManager.DialogUI.SetText(3, "You place the fuel tank and you hear the humming of the machine.", Colors.Green);
 	}
 
 	void GiveOxygen(int count)

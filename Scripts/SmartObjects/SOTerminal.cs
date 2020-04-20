@@ -5,8 +5,6 @@ public class SOTerminal : SmartObject
 {
 	public UIManager uiManager = null;
 
-	public GameState gameState = null;
-
 	public void ShowTime(Item item)
 	{
 		if(gameState == null)
